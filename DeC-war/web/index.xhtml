@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+
+    <title>
+      DibreCommerce
+    </title>
+
+    <link rel="stylesheet" type="text/css" media="all"
+          href="http://bootswatch.com/flatly/bootstrap.css" />
+
+    <link rel="stylesheet" type="text/css" media="all"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+  </h:head>
+
+  <h:body>
+
+    <main>
+
+      <div class="container">
+
+        <h1>
+          Cadastrar-se como Membro
+        </h1>
+
+        <h:form class="form-horizontal">
+
+          <div class="input-group">
+
+            <label for="membroNome">
+              Nome:
+            </label>
+
+            <span class="input-group-addon">              
+              <i class="fa fa-fw fa-barcode"></i>              
+            </span>
+
+            <h:inputText styleClass="form-control"
+                         id="membroNome"
+                         value="#{membroBean.membro.nome}" />
+
+          </div>
+
+          <div class="input-group">
+
+            <label for="membroEmail">
+              E-mail:
+            </label>
+
+            <span class="input-group-addon">              
+              <i class="fa fa-fw fa-envelope"></i>              
+            </span>
+
+            <h:inputText styleClass="form-control"
+                         id="membroEmail"
+                         value="#{membroBean.membro.email}" />
+
+          </div>
+
+          <h:commandButton styleClass="btn btn-lg btn-primary"
+                           value="Entrar para o clã"
+                           action="#{membroBean.cadastrar()}" />
+
+        </h:form>
+
+      </div>
+
+    </main>
+
+  </h:body>
+
+</html>
+
