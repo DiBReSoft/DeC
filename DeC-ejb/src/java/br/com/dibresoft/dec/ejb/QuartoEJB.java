@@ -15,9 +15,12 @@ public class QuartoEJB implements QuartoEJBLocal {
   @PersistenceContext
   private EntityManager em;
   
+  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
   @Override
-  public void cadastrar(Quarto quarto) {
+  public boolean cadastrar(Quarto quarto) {
     em.persist(quarto);
+    return true;
   }
+  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
   
 }

@@ -15,8 +15,10 @@ import javax.ejb.Local;
 @Local
 public interface MembroEJBLocal {
 
-  public void cadastrar(Membro membro);
+  public boolean cadastrar(Membro membro);
 
-  public void remover(Membro membro);
+  public boolean remover(Membro membro);
+  
+  public boolean validarCpf(Membro membro);
 
 }

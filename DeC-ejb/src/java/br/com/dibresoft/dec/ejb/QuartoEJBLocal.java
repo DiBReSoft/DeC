@@ -15,6 +15,6 @@ import javax.ejb.Local;
 @Local
 public interface QuartoEJBLocal {
   
-  public void cadastrar(Quarto quarto);
+  public boolean cadastrar(Quarto quarto);
   
 }

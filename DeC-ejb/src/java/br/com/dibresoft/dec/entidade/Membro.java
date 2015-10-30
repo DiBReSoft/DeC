@@ -2,6 +2,7 @@ package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,14 @@ public class Membro implements Serializable {
   private Long id;
 
   private String nome;
-  private String email;
+  private String sexo;
+  private String cpf;  
+  private String rg;
+  private String email;  
+  private String senha;
+  private boolean newsletter;
+  private boolean privacidade;
+  private boolean status;
 
   @Temporal(TemporalType.DATE)
   private Date dataNascimento;
@@ -43,12 +51,12 @@ public class Membro implements Serializable {
     this.nome = nome;
   }
 
-  public String getEmail() {
-    return email;
+  public String getSexo() {
+    return sexo;
   }
 
-  public void setEmail(String email) {
-    this.email = email;
+  public void setSexo(String sexo) {
+    this.sexo = sexo;
   }
 
   public Date getDataNascimento() {
@@ -57,6 +65,62 @@ public class Membro implements Serializable {
 
   public void setDataNascimento(Date dataNascimento) {
     this.dataNascimento = dataNascimento;
+  }
+
+  public String getCpf() {
+    return cpf;
+  }
+
+  public void setCpf(String cpf) {
+    this.cpf = cpf;
+  }
+
+  public String getRg() {
+    return rg;
+  }
+
+  public void setRg(String rg) {
+    this.rg = rg;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public String getSenha() {
+    return senha;
+  }
+
+  public void setSenha(String senha) {
+    this.senha = senha;
+  }
+
+  public boolean isNewsletter() {
+    return newsletter;
+  }
+
+  public void setNewsletter(boolean newsletter) {
+    this.newsletter = newsletter;
+  }
+
+  public boolean isPrivacidade() {
+    return privacidade;
+  }
+
+  public void setPrivacidade(boolean privacidade) {
+    this.privacidade = privacidade;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
   }
 
   @Override

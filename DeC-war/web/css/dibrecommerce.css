@@ -3,6 +3,12 @@ body {
   line-height: 1.6;
 }
 
+.navbar {
+  background-image: url('../img/genericos/geometrico-abstrato.png');
+  background-size: cover;
+  background-position-x: -35px;
+}
+
 .navbar-brand {
   padding-left: 45px;
   background-image: url('../img/logo-lebre.svg');
@@ -55,6 +61,12 @@ body {
   }
 }
 
+@media(max-width: 767px) {
+  .navbar-nav.navbar-right {
+    margin-top: -10px;
+  }
+}
+
 .navbar-nav.navbar-right > li:last-child {
   margin-right: 15px;
 }
@@ -62,7 +74,7 @@ body {
   margin-left: 15px;
 }
 
-.navbar-nav.navbar-right .navbar-btn:last-of-type {
+.navbar-nav.navbar-right > li:last-child .navbar-btn:last-of-type {
   margin-left: -2px;
 }
 
@@ -181,7 +193,8 @@ footer {
   border-top: 1px solid rgba(0,0,0,0.15);
 }
 
-footer .container {
+footer .container,
+footer .container-fluid {
   padding-top: 40px;
   padding-bottom: 40px;
 }

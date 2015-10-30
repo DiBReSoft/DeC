@@ -12,7 +12,7 @@
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
       <header class="header-generico bg-primary">
 
-        <div class="container">
+        <div class="container-fluid">
 
           <h1>
             Me cadastrar
@@ -25,23 +25,21 @@
 
       <section>
 
-        <div class="container">
-
-          <h1 style="margin-top: 0;">
-            Identificação
-          </h1>
-
-          <p class="lead">
-            Cadastre-se na rede de hotéis que mais surpreende no Brasil 
-            (não se preocupe, seus dados serão protegidos), aproveite promoções, 
-            ofertas exclusivas e agilize suas reservas.
-          </p>
+        <div class="container-fluid">
 
           <div class="row">
 
-            <div class="col-md-2"></div>
-
             <div class="col-md-8">
+
+              <h1 style="margin-top: 0;">
+                Identificação
+              </h1>
+
+              <p class="lead">
+                Cadastre-se na rede de hotéis que mais surpreende no Brasil!
+                <br />
+                Aproveite promoções, ofertas exclusivas e agilize suas reservas.
+              </p>
 
               <div class="panel panel-primary">
 
@@ -55,7 +53,7 @@
 
                 <div class="panel-footer text-center">
 
-                  Lebre Hotel | Nos melhores locais
+                  Não se preocupe, seus dados estarão protegidos com a gente.
 
                 </div>
 
@@ -85,23 +83,23 @@
           $('.cadastroNascimento').mask('**/**/****');
 
           /* verificação de email
-          $(".cadastroEmail").focus(function () {
-            $("#cadastroEmailContainer .input-group").removeClass("has-success");
-          });
-          $(".cadastroEmail").blur(function () {
-            var email = $("#cadastroEmail");
-            if (email.val() !== "") {
-              if (!(/^\w([\.-]?\w)*@\w([\.-]?\w)*(\.\w{2,3})$/.test(email.val()))) {
-                $("#cadastroEmailContainer .input-group").addClass("has-error");
-                email.focus();
-                return false;
-              } else {
-                $("#cadastroEmailContainer .input-group").removeClass("has-error");
-                $("#cadastroEmailContainer .input-group").addClass("has-success");
-              }
-            }
-          });
-          // verificação de email */
+           $(".cadastroEmail").focus(function () {
+           $("#cadastroEmailContainer .input-group").removeClass("has-success");
+           });
+           $(".cadastroEmail").blur(function () {
+           var email = $("#cadastroEmail");
+           if (email.val() !== "") {
+           if (!(/^\w([\.-]?\w)*@\w([\.-]?\w)*(\.\w{2,3})$/.test(email.val()))) {
+           $("#cadastroEmailContainer .input-group").addClass("has-error");
+           email.focus();
+           return false;
+           } else {
+           $("#cadastroEmailContainer .input-group").removeClass("has-error");
+           $("#cadastroEmailContainer .input-group").addClass("has-success");
+           }
+           }
+           });
+           // verificação de email */
 
         });
       </script>
