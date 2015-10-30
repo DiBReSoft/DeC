@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Login</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container">
+
+          <h1>
+            Login
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-4">
+
+              <h1 style="margin-top: 0;">
+                Já possui cadastro
+              </h1>
+
+              <div class="panel panel-primary">
+
+                <div class="panel-body">
+
+                  <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                  <!-- Insere o formulário de login -->
+                  <ui:include src="/includes/login-form.xhtml" />
+
+                </div>
+
+                <div class="panel-footer text-center">
+
+                  Lebre Hotel | Nos melhores locais
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-8">
+
+              <h1 style="margin-top: 0;">
+                Ainda não possuo cadastro
+              </h1>
+
+              <div class="panel panel-primary">
+
+                <div class="panel-body">
+
+                  <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                  <!-- Insere o formulário de login -->
+                  <ui:include src="/includes/me-cadastrar-form.xhtml" />
+
+                </div>
+
+                <div class="panel-footer text-center">
+
+                  Junte-se aos hospedes mais satisfeitos do país
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+      <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+
+          $("#cadastroNewsletter").bootstrapToggle();
+
+          $('#cadastroRG').mask('**.999.999-*');
+          $('#cadastroCPF').mask('999.999.999-99');
+          $('#cadastroNascimento').mask('**/**/****');
+
+          // verificação de email
+          $("#cadastroEmail").focus(function () {
+            $("#cadastroEmailContainer .input-group").removeClass("has-success");
+          });
+          $("#cadastroEmail").blur(function () {
+            var email = $("#cadastroEmail");
+            if (email.val() !== "") {
+              if (!(/^\w([\.-]?\w)*@\w([\.-]?\w)*(\.\w{2,3})$/.test(email.val()))) {
+                $("#cadastroEmailContainer .input-group").addClass("has-error");
+                email.focus();
+                return false;
+              } else {
+                $("#cadastroEmailContainer .input-group").removeClass("has-error");
+                $("#cadastroEmailContainer .input-group").addClass("has-success");
+              }
+            }
+          });
+          // verificação de email
+
+        });
+      </script>
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

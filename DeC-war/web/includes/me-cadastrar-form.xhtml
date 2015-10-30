@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition>
+
+    <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+    <h:form class="form-me-cadastrar" id="cadastroClienteForm" enctype="utf-8">
+
+      <div class="col-md-8">
+
+        <div class="form-group" id="cadastroNomeContainer">
+
+          <label for="cadastroNome">
+            Nome completo:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroNome">
+
+                <i class="fa fa-fw fa-user"></i>
+
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroNome" 
+                         pt:required=""
+                         id="cadastroNome"
+                         value="#{clienteBean.cliente.nome}"
+                         pt:placeholder="Ex.: João da Silva">
+              <f:validateLength minimum="5" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="form-group">
+
+          <label class="control-label" for="cadastroSexo">
+            Sexo:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroSexo">
+
+                <i class="fa fa-fw fa-venus-mars"></i>
+
+              </label>
+
+            </div>
+
+            <h:selectOneMenu styleClass="form-control cadastroSexo"
+                             pt:required=""
+                             id="cadastroSexo"
+                             value="#{clienteBean.cliente.sexo}">
+              <f:selectItem itemLabel="Selecionar..." itemValue="" itemDisabled="true" />
+              <f:selectItem itemLabel="Feminino" itemValue="f" />
+              <f:selectItem itemLabel="Masculino" itemValue="m" />
+            </h:selectOneMenu>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="col-md-4">
+
+        <div class="form-group" id="cadastroNascimentoContainer">
+
+          <label for="cadastroNascimento">
+            Data de Nascimento:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroNascimento">
+                <i class="fa fa-fw fa-calendar"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroNascimento"
+                         pt:required=""
+                         id="cadastroNascimento"
+                         value="#{clienteBean.cliente.dt_nasc}"
+                         pt:placeholder="Ex.: 01/01/1970">  
+              <f:convertDateTime pattern="dd/MM/yyyy"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="form-group" id="cadastroCPFContainer">
+
+          <label for="cadastroCPF"
+                 title="Cadastro de Pessoa Física dos Cidadãos Brasileiros">
+            CPF:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroCPF">
+                <i class="fa fa-fw fa-barcode"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroCPF" 
+                         pt:required=""
+                         id="cadastroCPF"
+                         value="#{clienteBean.cliente.cpf}"
+                         pt:placeholder="Ex.: 400.500.600-70" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="form-group" id="cadastroRGContainer">
+
+          <label for="cadastroRG"
+                 title="Registro Geral dos Cidadãos Brasileiros">
+            RG:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroRG">
+                <i class="fa fa-fw fa-barcode"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroRG" 
+                         pt:required=""
+                         id="cadastroRG"
+                         value="#{clienteBean.cliente.rg}"
+                         pt:placeholder="Ex.: 10.200.300-4" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="col-md-8">
+
+        <div class="form-group" id="cadastroEmailContainer">
+
+          <label for="cadastroEmail"
+                 title="Seu endereço de e-mail pessoal">
+            E-mail para contato e login:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroEmail">
+                <i class="fa fa-fw fa-envelope"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroEmail" 
+                         pt:type="email"
+                         pt:placeholder="Ex.: voce@seuprovedor.com"
+                         pt:required=""
+                         id="cadastroEmail"
+                         value="#{clienteBean.cliente.email}" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="form-group" id="cadastroSenhaContainer">
+
+          <label for="cadastroSenha"
+                 title="Defina sua senha para acesso a sua conta conosco">
+            Senha no Lebre Hotel:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroSenha">
+                <i class="fa fa-fw fa-lock"></i>
+              </label>
+
+            </div>
+
+            <h:inputSecret styleClass="form-control cadastroSenha" 
+                           pt:required=""
+                           id="cadastroSenha"
+                           value="#{clienteBean.cliente.senha}"
+                           pt:placeholder="Ex.: eu@apelido" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="col-md-6">
+
+        <div class="form-group" id="cadastroNewsletterContainer">
+
+          <label title="Informes, promoções e ofertas exclusivas por e-mail">
+            Deseja receber Newsletter?
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroNewsletter"    
+                                       value="#{clienteBean.cliente.newsletter}"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO">
+              </h:selectBooleanCheckbox>
+              via e-mail
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="form-group" id="cadastroTermoContainer">
+
+          <label>
+            Aceita nossa
+            <a href="#{request.contextPath}/politica-de-privacidade"
+               target="_blank"
+               >Política de Privacidade</a>?
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroTermo"
+                                       pt:required=""
+                                       value="#{clienteBean.cliente.privacidade}"                          
+                                       pt:checked="checked"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO"
+                                       pt:data-onstyle="success">
+              </h:selectBooleanCheckbox>
+              aceito a política de privacidade
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row form-me-cadastrar-botoes">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4">
+
+          <button id="cadastroLimpar" type="reset" class="btn btn-block btn-link">
+            LIMPAR<i class="fa fa-fw fa-lg fa-eraser"></i>
+          </button>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <h:commandButton type="submit" id="cadastroCadastrar"
+                           styleClass="btn btn-block btn-primary"
+                           action="#{clienteBean.cadastrar()}"
+                           value="CADASTRAR">
+          </h:commandButton>
+
+        </div>
+
+      </div>
+
+    </h:form>
+
+  </ui:composition>
+
+</html>
+
