@@ -12,26 +12,34 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class MembroEJB implements MembroEJBLocal {
 
-  @PersistenceContext
-  private EntityManager em;
-  
-  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
-  @Override
-  public boolean cadastrar(Membro membro) {
-    em.persist(membro);
-    return true;
-  }
-  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
+    @PersistenceContext
+    private EntityManager em;
 
-  @Override
-  public boolean remover(Membro membro) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-  }
+    /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
+    @Override
+    public boolean cadastrar(Membro membro) {
+        em.persist(membro);
+        return true;
+    }
+    /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
 
-  @Override
-  public boolean validarCpf(Membro membro) {
-    em.find(Membro.class, membro);
-    return em.contains(membro);
-  }
+    @Override
+    public boolean inativar(Membro membro) {
+        membro.setStatus(false);
+        em.refresh(membro);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void alterar(Membro membro) {
+        em.refresh(membro);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean validarCpf(Membro membro) {
+        em.find(Membro.class, membro);
+        return em.contains(membro);
+    }
 
 }

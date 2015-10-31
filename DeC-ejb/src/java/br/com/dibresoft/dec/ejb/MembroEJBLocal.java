@@ -17,7 +17,9 @@ public interface MembroEJBLocal {
 
   public boolean cadastrar(Membro membro);
 
-  public boolean remover(Membro membro);
+  public boolean inativar(Membro membro);
+  
+  public void alterar(Membro membro);
   
   public boolean validarCpf(Membro membro);
 
