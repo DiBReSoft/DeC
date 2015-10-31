@@ -6,3 +6,6 @@
 /DeC-ejb/dist/
 /build/
 /DeC-war/dist/
+/DeC-adm/nbproject/private/
+/DeC-adm/build/
+/DeC-adm/dist/
