@@ -6459,7 +6459,7 @@ input.mdl-button[type="submit"] {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  padding: 16px 40px;
+  padding: 10px 15px;
   margin: 0;
   color: #757575; }
 @media screen and (max-width: 1024px) {
@@ -6556,7 +6556,7 @@ input.mdl-button[type="submit"] {
   width: calc(100% - 240px); }
 @media screen and (min-width: 1025px) {
   .mdl-layout--fixed-drawer > .mdl-layout__header .mdl-layout__header-row {
-    padding-left: 40px; } }
+    padding-left: 25px; } }
 .mdl-layout__header > .mdl-layout-icon {
   position: absolute;
   left: 40px;

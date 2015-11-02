@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     <meta name="author" content="Fabio Ernnani, Larissa Franca, Luciano Lourenço, Renato Brandão, Thiago de Melo, Udimberto Junior" />
 
-    <title id="pagina-titulo"><ui:insert name="pagina-titulo" /> @ Lebre Hotel</title>
+    <title id="pagina-titulo"><ui:insert name="pagina-titulo" /> @ DeC</title>
 
     <link rel="shortcut icon" href="#{request.contextPath}/img/favicon.ico" type="image/x-icon" />
 
@@ -22,7 +22,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
     <ui:insert name="pagina-head" />
-    
+
     <!--[if IE]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.1.7/es5-shim.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/classlist/2014.01.31/classList.min.js"></script>
@@ -33,19 +33,7 @@
 
   <h:body>
 
-    <div class="dec-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
-      <ui:include src="/WEB-INF/templates/header.xhtml" />
-
-      <ui:include src="/WEB-INF/templates/menu-lateral.xhtml" />
-      
-      <main class="mdl-layout__content mdl-color--grey-100">
-        
-      <ui:insert name="pagina-conteudo" />
-      
-      </main>
-
-    </div>
+    <ui:insert name="pagina-conteudo" />
 
     <script type="text/javascript" src="#{request.contextPath}/js/material.min.js" />
 

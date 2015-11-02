@@ -1,0 +1,47 @@
+.dec-ribbon {
+  width: 100%;
+  height: 50vh;
+  background-color: rgba(0, 149, 255, 0.25);
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.dec-layout {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.dec-main {
+  margin-top: -35vh;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.dec-header .mdl-layout__header-row {
+  padding-left: 40px;
+}
+
+.dec-container {
+  max-width: 1600px;
+  width: calc(100% - 16px);
+  margin: 0 auto;
+}
+
+.dec-content {
+  border-radius: 2px;
+  padding: 20px 56px 70px 56px;
+  margin-bottom: 80px;
+}
+
+.dec-layout.is-small-screen .dec-content {
+  padding: 40px 28px;
+}
+
+.dec-content h3 {
+  margin-top: 48px;
+}
+
+.dec-footer {
+  padding: 40px;
+}

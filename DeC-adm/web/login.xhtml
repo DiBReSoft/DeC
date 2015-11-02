@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/template-blank.xhtml">
+
+    <ui:define name="pagina-titulo">
+      Login
+    </ui:define>
+
+    <ui:define name="pagina-head">
+      <!-- Adiciona CSS e outros que vão no <head> da página -->
+      <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/login.css" />
+      <link rel="stylesheet" type="text/css" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css" />
+      <style type="text/css">
+        .mdl-textfield {
+          display: block;
+        }
+        .mdl-button {
+          margin-top: 15px;
+        }
+        body {
+          background-image: url('#{request.contextPath}/images/login-screen_00.jpg');
+          background-size: cover;
+          background-color: #333333;
+        }
+      </style>
+    </ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <div class="dec-layout mdl-layout mdl-layout--fixed-header mdl-js-layout">
+
+        <div class="dec-ribbon"></div>
+
+        <main class="dec-main mdl-layout__content">
+
+          <div class="dec-container mdl-grid">
+
+            <div class="mdl-cell mdl-cell--9-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+
+            <div class="dec-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--3-col">
+
+              <h3>
+                <strong>DeC</strong> Login
+              </h3>
+
+              <form method="POST" action="#{request.contextPath}/autenticar"
+                    accept-charset="utf-8" enctype="utf-8">
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                  <input class="mdl-textfield__input"
+                         type="email" id="usuarioLoginEmail"
+                         required="required" />
+
+                  <label class="mdl-textfield__label" for="usuarioLoginEmail">
+                    E-mail
+                  </label>
+
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                  <input class="mdl-textfield__input" 
+                         type="password" id="usuarioLoginSenha"
+                         required="required" />
+
+                  <label class="mdl-textfield__label" for="usuarioLoginSenha">
+                    Senha
+                  </label>
+
+                </div>
+
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                        type="submit">
+                  <i class="material-icons">input</i>
+                  ENTRAR
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </main>
+
+      </div>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      <!-- Adiciona JS e outros que vão no final da página -->
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

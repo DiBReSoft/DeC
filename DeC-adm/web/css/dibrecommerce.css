@@ -235,3 +235,12 @@ _:-ms-input-placeholder, :root .dec-graph {
   -ms-flex-align: center;
   align-items: center;
 }
+
+@media(max-width: 768px) {
+  .mdl-layout-title {
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
