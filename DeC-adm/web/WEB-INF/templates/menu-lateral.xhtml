@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+  <ui:composition>
+
+    <div class="dec-drawer mdl-layout__drawer mdl-color--deep-orange-900 mdl-color-text--deep-orange-50">
+
+      <header class="dec-drawer-header">
+
+        <div class="dec-avatar-dropdown">
+
+          <img src="#{request.contextPath}/images/user.jpg" class="dec-avatar" />
+
+          <span class="dec-avatar-name">
+            Nome Usuário
+          </span>
+
+          <div class="mdl-layout-spacer"></div>
+
+          <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+
+            <i class="material-icons" role="presentation">arrow_drop_down</i>
+
+            <span class="visuallyhidden">
+              Minha Conta
+            </span>
+
+          </button>
+
+          <ul class="dec-navigation mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+
+            <li class="mdl-menu__item">
+              <a class="mdl-navigation__link"
+                 href="#{request.contextPath}/perfil/editar">
+                <i class="material-icons">edit</i>
+                Editar
+              </a>
+            </li>
+
+            <li class="mdl-menu__item">
+              <a class="mdl-navigation__link"
+                 href="#{request.contextPath}/sair">
+                <i class="material-icons">input</i>
+                Sair
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </header>
+
+      <nav class="dec-navigation mdl-navigation mdl-color--deep-orange-800">
+
+        <a href="#{request.contextPath}/"
+           class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">home</i>
+          Início
+        </a>
+
+        <a href="#{request.contextPath}/estadias/"
+           class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">inbox</i>
+          Estadias
+        </a>
+
+        <a href="#{request.contextPath}/hospedes/"
+           class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">people</i>
+          Hospedes
+        </a>
+
+        <a href="#{request.contextPath}/promocoes/"
+           class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">local_offer</i>
+          Promoções
+        </a>
+
+        <a class="mdl-navigation__link" href="">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">shopping_cart</i>
+          Purchases
+        </a>
+
+        <a href="#{request.contextPath}/"
+           class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">delete</i>
+          Trash
+        </a>
+
+        <a class="mdl-navigation__link" href="">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">report</i>
+          Spam
+        </a>
+
+        <a class="mdl-navigation__link" href="">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">forum</i>
+          Forums
+        </a>
+
+        <a class="mdl-navigation__link" href="">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">flag</i>
+          Updates
+        </a>
+
+        <div class="mdl-layout-spacer"></div>
+
+        <a href="#{request.contextPath}/sobre"
+          class="mdl-navigation__link">
+          <i class="mdl-color-text--deep-orange-400 material-icons" 
+             role="presentation">help_outline</i>
+          <span class="visuallyhidden">Help</span>
+          Sobre o DeC
+        </a>
+
+      </nav>
+
+    </div>
+
+  </ui:composition>
+
+</html>
+

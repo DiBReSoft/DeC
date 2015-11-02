@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+  <ui:composition>
+
+    <header class="dec-header mdl-layout__header mdl-color--white mdl-color--grey-100 mdl-color-text--grey-600">
+      <div class="mdl-layout__header-row">
+
+        <span class="mdl-layout-title">
+
+          <ui:insert name="pagina-titulo" />
+
+        </span>
+
+        <div class="mdl-layout-spacer"></div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+
+          <form method="GET" 
+                action="#{request.contextPath}/encontrar">
+
+            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+              <i class="material-icons">search</i>
+            </label>
+
+            <div class="mdl-textfield__expandable-holder">
+
+              <input class="mdl-textfield__input" type="text" id="search"
+                     name="algo" required="required" />
+
+              <label class="mdl-textfield__label" for="search">
+                Buscar por algo...
+              </label>
+
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </header>
+
+  </ui:composition>
+
+</html>
+
