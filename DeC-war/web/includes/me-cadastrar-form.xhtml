@@ -15,7 +15,7 @@
       <h:messages />
 
       <h:selectBooleanCheckbox styleClass="hidden"
-                               value="#{membroBean.membro.status}"
+                               value="#{clienteBean.cliente.status}"
                                pt:checked="checked">
       </h:selectBooleanCheckbox>
 
@@ -42,7 +42,7 @@
             <h:inputText styleClass="form-control cadastroNome" 
                          pt:required=""
                          id="cadastroNome"
-                         value="#{membroBean.membro.nome}"
+                         value="#{clienteBean.cliente.nome}"
                          pt:placeholder="Ex.: João da Silva">
               <f:validateLength minimum="5" maximum="64"/>
             </h:inputText>
@@ -76,7 +76,7 @@
             <h:selectOneMenu styleClass="form-control cadastroSexo"
                              pt:required=""
                              id="cadastroSexo"
-                             value="#{membroBean.membro.sexo}">
+                             value="#{clienteBean.cliente.sexo}">
               <f:selectItem itemLabel="Selecionar..." itemValue="" itemDisabled="true" />
               <f:selectItem itemLabel="Feminino" itemValue="f" />
               <f:selectItem itemLabel="Masculino" itemValue="m" />
@@ -111,7 +111,7 @@
             <h:inputText styleClass="form-control cadastroNascimento"
                          pt:required=""
                          id="cadastroNascimento"
-                         value="#{membroBean.membro.dataNascimento}"
+                         value="#{clienteBean.cliente.dataNascimento}"
                          pt:placeholder="Ex.: 01/01/1970">  
               <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
             </h:inputText>
@@ -144,9 +144,9 @@
             <h:inputText styleClass="form-control cadastroCPF" 
                          pt:required=""
                          id="cadastroCPF"
-                         value="#{membroBean.membro.cpf}"
+                         value="#{clienteBean.cliente.cpf}"
                          pt:placeholder="Ex.: 400.500.600-70">
-              <f:ajax event="change" listener="#{membroBean.verificarCpf()}" render="cadastroCPFresult" />
+              <f:ajax event="change" listener="#{clienteBean.verificarCpf()}" render="cadastroCPFresult" />
             </h:inputText>
 
           </div>
@@ -177,7 +177,7 @@
             <h:inputText styleClass="form-control cadastroRG" 
                          pt:required=""
                          id="cadastroRG"
-                         value="#{membroBean.membro.rg}"
+                         value="#{clienteBean.cliente.rg}"
                          pt:placeholder="Ex.: 10.200.300-4" />
 
           </div>
@@ -212,7 +212,7 @@
                          pt:placeholder="Ex.: voce@seuprovedor.com"
                          pt:required=""
                          id="cadastroEmail"
-                         value="#{membroBean.membro.email}" />
+                         value="#{clienteBean.cliente.email}" />
 
           </div>
 
@@ -242,7 +242,7 @@
             <h:inputSecret styleClass="form-control cadastroSenha" 
                            pt:required=""
                            id="cadastroSenha"
-                           value="#{membroBean.membro.senha}"
+                           value="#{clienteBean.cliente.senha}"
                            pt:placeholder="Ex.: eu@apelido" />
 
           </div>
@@ -265,8 +265,9 @@
 
             <label>
               <h:selectBooleanCheckbox styleClass="cadastroNewsletter"    
-                                       value="#{membroBean.membro.newsletter}"
+                                       value="#{clienteBean.cliente.newsletter}"
                                        pt:data-toggle="toggle"
+                                       pt:checked="checked"
                                        pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
                                        pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO">
               </h:selectBooleanCheckbox>
@@ -295,7 +296,7 @@
             <label>
               <h:selectBooleanCheckbox styleClass="cadastroTermo"
                                        pt:required=""
-                                       value="#{membroBean.membro.privacidade}"                          
+                                       value="#{clienteBean.cliente.privacidade}"                          
                                        pt:checked="checked"
                                        pt:data-toggle="toggle"
                                        pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
@@ -329,7 +330,7 @@
 
           <h:commandButton type="submit" id="cadastroCadastrar"
                            styleClass="btn btn-block btn-primary"
-                           action="#{membroBean.cadastrar()}"
+                           action="#{clienteBean.cadastrar()}"
                            value="CADASTRAR">
           </h:commandButton>
 

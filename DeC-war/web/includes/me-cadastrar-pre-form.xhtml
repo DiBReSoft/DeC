@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
+
+  <ui:composition>
+
+    <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+    <h:form class="form-me-cadastrar" id="preCadastroClienteForm" enctype="utf-8">
+
+      <h:messages />
+
+      <h:selectBooleanCheckbox styleClass="hidden"
+                               value="#{clienteBean.cliente.status}"
+                               pt:checked="checked">
+      </h:selectBooleanCheckbox>
+
+      <div class="col-md-12">
+
+        <div class="form-group" id="preCadastroEmailContainer">
+
+          <label for="cadastroEmail"
+                 title="Seu endereço de e-mail pessoal">
+            E-mail para contato e login:
+          </label>
+
+          <div class="input-group">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroEmail">
+                <i class="fa fa-fw fa-envelope"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroEmail" 
+                         pt:type="email"
+                         pt:placeholder="Ex.: voce@seuprovedor.com"
+                         pt:required=""
+                         id="preCadastroEmail"
+                         value="#{clienteBean.cliente.email}" />
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row form-me-cadastrar-botoes">
+
+        <div class="col-md-2"></div>
+
+        <div class="col-md-4">
+
+          <button id="preCadastroLimpar" type="reset" class="btn btn-block btn-link">
+            LIMPAR<i class="fa fa-fw fa-lg fa-eraser"></i>
+          </button>
+
+        </div>
+
+        <div class="col-md-4">
+
+          <h:commandButton type="submit" id="preCadastroVerificar"
+                           styleClass="btn btn-block btn-primary"
+                           action="#{clienteBean.verificar()}"
+                           value="VERIFICAR">
+          </h:commandButton>
+
+        </div>
+
+      </div>
+
+    </h:form>
+
+  </ui:composition>
+
+</html>
+

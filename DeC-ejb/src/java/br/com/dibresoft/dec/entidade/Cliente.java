@@ -2,11 +2,11 @@ package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,22 +15,24 @@ import javax.persistence.TemporalType;
  * @author udimberto.sjunior
  */
 @Entity
-public class Membro implements Serializable {
+@Table(name = "DeC_MEMBRO")
+public class Cliente implements Serializable {
 
   private static final long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  private boolean status;
+
   private String nome;
   private String sexo;
-  private String cpf;  
+  private String cpf;
   private String rg;
-  private String email;  
+  private String email;
   private String senha;
   private boolean newsletter;
   private boolean privacidade;
-  private boolean status;
 
   @Temporal(TemporalType.DATE)
   private Date dataNascimento;
@@ -41,6 +43,14 @@ public class Membro implements Serializable {
 
   public void setId(Long id) {
     this.id = id;
+  }
+
+  public boolean isStatus() {
+    return status;
+  }
+
+  public void setStatus(boolean status) {
+    this.status = status;
   }
 
   public String getNome() {
@@ -115,14 +125,6 @@ public class Membro implements Serializable {
     this.privacidade = privacidade;
   }
 
-  public boolean isStatus() {
-    return status;
-  }
-
-  public void setStatus(boolean status) {
-    this.status = status;
-  }
-
   @Override
   public int hashCode() {
     int hash = 0;
@@ -133,10 +135,10 @@ public class Membro implements Serializable {
   @Override
   public boolean equals(Object object) {
     // TODO: Warning - this method won't work in the case the id fields are not set
-    if (!(object instanceof Membro)) {
+    if (!(object instanceof Cliente)) {
       return false;
     }
-    Membro other = (Membro) object;
+    Cliente other = (Cliente) object;
     if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
       return false;
     }

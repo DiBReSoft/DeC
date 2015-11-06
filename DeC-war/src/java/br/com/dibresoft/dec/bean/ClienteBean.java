@@ -1,7 +1,7 @@
 package br.com.dibresoft.dec.bean;
 
-import br.com.dibresoft.dec.ejb.MembroEJBLocal;
-import br.com.dibresoft.dec.entidade.Membro;
+import br.com.dibresoft.dec.ejb.ClienteEJBLocal;
+import br.com.dibresoft.dec.entidade.Cliente;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -15,32 +15,41 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class MembroBean {
+public class ClienteBean {
 
-  private Membro membro;
+  private Cliente cliente;
   @EJB
-  private MembroEJBLocal membroEJB;
+  private ClienteEJBLocal clienteEJB;
   String msgDadoExistente = "Já existe cadastro com estes dados.";
 
-  public MembroBean() {
-    membro = new Membro();
+  public ClienteBean() {
+    cliente = new Cliente();
   }
 
   public void cadastrar() throws IOException {
-    membroEJB.cadastrar(membro);
+    clienteEJB.cadastrar(cliente);
     FacesContext.getCurrentInstance().getExternalContext().redirect("sucesso-no-cadastro");
+  }
+
+  public void verificar() throws IOException {
+    // Verificar se o cliente já tem cadastro
+    boolean temCadastro;
+    //temCadastro = clienteEJB.verificar(cliente);    
+    //if (temCadastro) {
+    //}
+    FacesContext.getCurrentInstance().getExternalContext().redirect("me-cadastrar?email=" + cliente.getEmail());
   }
 
   public void verificarCpf() {
 
   }
 
-  public Membro getMembro() {
-    return membro;
+  public Cliente getCliente() {
+    return cliente;
   }
 
-  public void setMembro(Membro membro) {
-    this.membro = membro;
+  public void setCliente(Cliente cliente) {
+    this.cliente = cliente;
   }
 
   public String getMsgDadoExistente() {

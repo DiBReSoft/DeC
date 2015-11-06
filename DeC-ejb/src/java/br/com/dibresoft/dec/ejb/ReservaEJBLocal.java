@@ -5,7 +5,6 @@
  */
 package br.com.dibresoft.dec.ejb;
 
-import br.com.dibresoft.dec.entidade.Membro;
 import javax.ejb.Local;
 
 /**
@@ -13,14 +12,6 @@ import javax.ejb.Local;
  * @author udimberto.sjunior
  */
 @Local
-public interface MembroEJBLocal {
-
-  public boolean cadastrar(Membro membro);
-
-  public boolean inativar(Membro membro);
+public interface ReservaEJBLocal {
   
-  public void alterar(Membro membro);
-  
-  public boolean validarCpf(Membro membro);
-
 }

@@ -29,6 +29,39 @@
 
           <div class="row">
 
+
+            <div class="col-md-4">
+
+              <h1 style="margin-top: 0;">
+                Verificação
+              </h1>
+
+              <p class="lead">
+                Antes de você tentar se cadastrar, precisamos ver se já possui
+                cadastro conosco.
+              </p>
+
+              <div class="panel panel-primary">
+
+                <div class="panel-body">
+
+                  <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                  <ui:include src="/includes/me-cadastrar-pre-form.xhtml" />
+
+                </div>
+
+                <div class="panel-footer text-center">
+
+                  ...
+
+                </div>
+
+              </div>
+
+            </div>
+
+
             <div class="col-md-8">
 
               <h1 style="margin-top: 0;">
@@ -72,6 +105,7 @@
     <ui:define name="pagina-bottom">
       <!-- Adiciona JS e outros que vão no final da página -->
 
+      <script type="text/javascript" src="#{request.contextPath}/js/me-cadastrar.js"></script>
       <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
       <script type="text/javascript">
         $(document).ready(function () {
@@ -81,25 +115,19 @@
           $('.cadastroRG').mask('**.999.999-*');
           $('.cadastroCPF').mask('999.999.999-99');
           $('.cadastroNascimento').mask('**/**/****');
-
-          /* verificação de email
-           $(".cadastroEmail").focus(function () {
-           $("#cadastroEmailContainer .input-group").removeClass("has-success");
-           });
-           $(".cadastroEmail").blur(function () {
-           var email = $("#cadastroEmail");
-           if (email.val() !== "") {
-           if (!(/^\w([\.-]?\w)*@\w([\.-]?\w)*(\.\w{2,3})$/.test(email.val()))) {
-           $("#cadastroEmailContainer .input-group").addClass("has-error");
-           email.focus();
-           return false;
-           } else {
-           $("#cadastroEmailContainer .input-group").removeClass("has-error");
-           $("#cadastroEmailContainer .input-group").addClass("has-success");
-           }
-           }
-           });
-           // verificação de email */
+          
+          if (QueryString.email) {
+            // Se tiver e-mail na URL, adiciona ele no campo de cadastro e trava
+            //$('#cadastroClienteForm')
+          } else {
+            // Se não e-mail na URL, trava os campos do formulário de cadastro
+            $('#cadastroClienteForm .form-control').attr('disabled', 'disabled');
+            $('#cadastroClienteForm .checkbox').addClass('disabled');
+            $('#cadastroClienteForm .checkbox input').attr('disabled', 'disabled');
+            $('#cadastroClienteForm .btn').addClass('disabled');
+            $('#cadastroClienteForm input[type=submit]').removeAttr('action');
+            $('#cadastroClienteForm input[type=submit]').attr('type', 'button');
+          }
 
         });
       </script>
