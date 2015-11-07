@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
  * @author udimberto.sjunior
  */
 @Entity
-@Table(name = "DeC_MEMBRO")
+@Table(name = "DeC_CLIENTE")
 public class Cliente implements Serializable {
 
   private static final long serialVersionUID = 1L;
