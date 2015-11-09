@@ -37,7 +37,7 @@ public class ClienteBean {
     //temCadastro = clienteEJB.verificar(cliente);    
     //if (temCadastro) {
     //}
-    FacesContext.getCurrentInstance().getExternalContext().redirect("me-cadastrar?email=" + cliente.getEmail());
+    FacesContext.getCurrentInstance().getExternalContext().redirect("me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
   }
 
   public void verificarCpf() {

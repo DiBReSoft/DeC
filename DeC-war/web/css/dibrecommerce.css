@@ -226,6 +226,18 @@ label[for]:hover {
   margin-bottom: 15px;
 }
 
+.form-me-cadastrar-botoes {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.form-me-cadastrar-botoes .btn {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 @media(min-width: 992px) {
   /*
   .form-me-cadastrar .form-group .input-group .input-group-addon {
