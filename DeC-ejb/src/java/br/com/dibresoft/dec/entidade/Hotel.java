@@ -43,6 +43,22 @@ public class Hotel implements Serializable {
     this.status = status;
   }
 
+  public String getTitulo() {
+    return titulo;
+  }
+
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
+  }
+
+  public Endereco getEndereco() {
+    return endereco;
+  }
+
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
+  }
+
   @Override
   public int hashCode() {
     int hash = 0;

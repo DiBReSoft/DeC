@@ -9,10 +9,10 @@ INSERT INTO app.DEC_CLIENTE (ID,NOME, SEXO, DATANASCIMENTO, CPF, RG, EMAIL, SENH
 
 INSERT INTO APP.DEC_ENDERECO (ID, BAIRRO, CEP, CIDADE, COMPLEMENTO, ESTADO, LOGRADOURO, NUMERO, PAIS, STATUS) 
 	VALUES
-        (1, 'Santa Teresa', '04403060', 'Rio de Janeiro', '', 'RJ', 'Jurubatuba', '1502', 'Brasil', 1),
-	(2, 'Copa Cabana', '04403102', 'Ria De Janeiro', '', 'RJ', 'Santo Amaro', '2345', 'Brasill', 1),
-	(3, 'Bela Vista', '04403191', 'São Paulo', '', 'SP', 'Av. Paulista', '250', 'Brasil', 1),
-	(4, 'Maragogi', '04402127', 'Alagoas', '', 'AL', 'Av. Francisco almeida', '1230', 'Brasil', 1);
+          (1, 'Santa Teresa', '04403060', 'Rio de Janeiro', '', 'RJ', 'Jurubatuba', '1502', 'Brasil', 1),
+          (2, 'Copacabana', '04403102', 'Ria De Janeiro', '', 'RJ', 'Santo Amaro', '2345', 'Brasill', 1),
+          (3, 'Bela Vista', '04403191', 'São Paulo', '', 'SP', 'Av. Paulista', '250', 'Brasil', 1),
+          (4, 'Maragogi', '04402127', 'Alagoas', '', 'AL', 'Av. Francisco almeida', '1230', 'Brasil', 1);
 
 
 INSERT INTO APP.DEC_HOTEL (ID, STATUS, TITULO, ENDERECO_ID) 
@@ -24,14 +24,14 @@ INSERT INTO APP.DEC_HOTEL (ID, STATUS, TITULO, ENDERECO_ID)
 
 INSERT INTO APP.DEC_QUARTO (ID, NOME, STATUS, VALOR, HOTEL_ID) 
 	VALUES 
-         (1, 'Simples', '1',150.55, 1),
-	 (2, 'Simples', '1',122.00, 2),
-	 (3, 'Simples', '1',122.00, 3),
-	 (4, 'Simples', '1',122.00, 4),
-	 (5, 'Luxo', '1',1500.00, 1),
-	 (6, 'Luxo', '1',1232.00, 2),
-	 (7, 'Luxo', '1',2002.00, 3),
-	 (8, 'Luxo', '1',2150.00, 4);
+          (1, 'Simples', '1',150.55, 1),
+          (2, 'Simples', '1',122.00, 2),
+          (3, 'Simples', '1',122.00, 3),
+          (4, 'Simples', '1',122.00, 4),
+          (5, 'Luxo', '1',1500.00, 1),
+          (6, 'Luxo', '1',1232.00, 2),
+          (7, 'Luxo', '1',2002.00, 3),
+          (8, 'Luxo', '1',2150.00, 4);
 
 INSERT INTO APP.DEC_RESERVA (ID, CHECKIN, CHECKOUT, STATUS, VALORESTADIA, CLIENTE_ID, QUARTO_ID) 
 	VALUES 

@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -42,6 +44,178 @@
 
       </header>
       <!-- TOPO DA PÁGINA COM AS SUGESTÕES -->
+
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
+      <section>
+
+        <div class="container-fluid">
+
+          <h:form>
+
+            <div class="col-md-8">
+
+              <h1 class="titulo-secao">
+                Hospede-se conosco
+              </h1>
+
+              <div class="panel panel-primary">
+
+                <div class="panel-body">
+
+                  <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                  <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+                  <form method="post" action="adicionar-ao-carrinho" enctype="utf-8">
+
+                    <div class="col-md-6">
+
+                      <div class="form-group" id="reservaCheckInContainer">
+
+                        <label for="reservaCheckIn" class="hidden-lg hidden-md">
+                          Data de Check-in:
+                        </label>
+
+                        <div class="input-group">
+
+                          <div class="input-group-addon">
+
+                            <label for="reservaCheckIn">
+
+                              <i class="fa fa-fw fa-calendar-plus-o"></i>
+
+                              <span class="hidden-sm hidden-xs">
+                                Check-in: 
+                              </span>
+
+                            </label>
+
+                          </div>
+
+                          <input type="text" class="form-control init-datepicker"
+                                 id="reservaCheckIn" name="reservaCheckIn"
+                                 required="required"
+                                 value="#{indexBean.reserva.checkIn}" />
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                      <div class="form-group" id="reservaCheckOutContainer">
+
+                        <label for="reservaCheckOut" class="hidden-lg hidden-md">
+                          Data de Check-out:
+                        </label>
+
+                        <div class="input-group">
+
+                          <div class="input-group-addon">
+
+                            <label for="reservaCheckOut">
+
+                              <i class="fa fa-fw fa-calendar-minus-o"></i>
+
+                              <span class="hidden-sm hidden-xs">
+                                Check-out:
+                              </span>
+
+                            </label>
+
+                          </div>
+
+                          <input type="text" class="form-control init-datepicker" 
+                                 id="reservaCheckOut" name="reservaCheckOut"
+                                 required="required"
+                                 value="#{indexBean.reserva.checkOut}" />
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-8">
+
+                      <div class="form-group">
+
+                        <label class="control-label hidden-lg hidden-md" for="reservaHotel">
+                          Selecione uma unidade:
+                        </label>
+
+                        <div class="input-group">
+
+                          <div class="input-group-addon">
+
+                            <label for="focusedInput">
+
+                              <i class="fa fa-fw fa-map-marker"></i>
+
+                              <span class="hidden-sm hidden-xs">
+                                Unidade:
+                              </span>
+
+                            </label>
+
+                          </div>
+
+                          <select class="form-control" 
+                                  id="reservaHotel" name="reservaHotel"
+                                  required="required"
+                                  value="#{indexBean.reserva.quarto}">
+                            <option value="" disabled="disabled" selected="true">
+                              Selecione...
+                            </option>
+                            <option value="1">
+                              Teste
+                            </option>
+                            <ui:repeat var="_hotel" value="#{indexBean.hoteis}">
+                              <option value="#{_hotel.id}">
+                                #{_hotel.endereco.estado}
+                                |
+                                #{_hotel.endereco.cidade}
+                              </option>
+                            </ui:repeat>
+                          </select>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                      <h:commandButton class="btn btn-primary btn-block"
+                                       action="#{indexBean.reservar()}"
+                                       value="RESERVAR" />
+
+                    </div>
+
+                  </form>        
+
+                </div>
+
+                <div class="panel-footer text-center">
+
+                  Encontre o melhor custo benefício para seu conforto
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </h:form>
+
+        </div>
+
+      </section>
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
 
       <!-- SEÇÃO COM OFERTAS -->
       <section>
@@ -411,167 +585,6 @@
 
       </section>
       <!-- SEÇÃO COM OFERTAS -->
-
-
-      <section>
-
-        <div class="container-fluid">
-
-          <div class="col-md-8">
-
-            <h1 class="titulo-secao">
-              Hospede-se conosco
-            </h1>
-
-            <div class="panel panel-primary">
-
-              <div class="panel-body">
-
-                <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
-
-                <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-                <form method="post" action="reservar" enctype="utf-8">
-
-                  <div class="col-md-6">
-
-                    <div class="form-group" id="reservaCheckInContainer">
-
-                      <label for="reservaCheckIn" class="hidden-lg hidden-md">
-                        Data de Check-in:
-                      </label>
-
-                      <div class="input-group">
-
-                        <div class="input-group-addon">
-
-                          <label for="reservaCheckIn">
-
-                            <i class="fa fa-fw fa-calendar-plus-o"></i>
-
-                            <span class="hidden-sm hidden-xs">
-                              Check-in: 
-                            </span>
-
-                          </label>
-
-                        </div>
-
-                        <input type="text" class="form-control init-datepicker"
-                               id="reservaCheckIn" name="reservaCheckIn"
-                               required="required" />
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md-6">
-
-                    <div class="form-group" id="reservaCheckOutContainer">
-
-                      <label for="reservaCheckOut" class="hidden-lg hidden-md">
-                        Data de Check-out:
-                      </label>
-
-                      <div class="input-group">
-
-                        <div class="input-group-addon">
-
-                          <label for="reservaCheckOut">
-
-                            <i class="fa fa-fw fa-calendar-minus-o"></i>
-
-                            <span class="hidden-sm hidden-xs">
-                              Check-out:
-                            </span>
-
-                          </label>
-
-                        </div>
-
-                        <input type="text" class="form-control init-datepicker" 
-                               id="reservaCheckOut" name="reservaCheckOut"
-                               required="required" />
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <div class="clearfix"></div>
-
-                  <div class="col-md-8">
-
-                    <div class="form-group">
-
-                      <label class="control-label hidden-lg hidden-md" for="reservaHotel">
-                        Selecione uma unidade:
-                      </label>
-
-                      <div class="input-group">
-
-                        <div class="input-group-addon">
-
-                          <label for="focusedInput">
-
-                            <i class="fa fa-fw fa-map-marker"></i>
-
-                            <span class="hidden-sm hidden-xs">
-                              Unidade:
-                            </span>
-
-                          </label>
-
-                        </div>
-
-                        <select class="form-control" 
-                                id="reservaHotel" name="reservaHotel"
-                                required="required">
-                          <option value="" disabled="disabled" selected="true">
-                            Selecione...
-                          </option>
-                          <option value="1">
-                            SP | São Paulo
-                          </option>
-                          <option value="2">
-                            SP | São José dos Campos
-                          </option>
-                        </select>
-
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <div class="col-md-4">
-
-                    <button id="reservaCotar" type="button" class="btn btn-primary btn-block disabled">
-                      Cotar Preço
-                      <i class="fa fa-fw fa-search"></i>
-                    </button>
-
-                  </div>
-
-                </form>        
-
-              </div>
-
-              <div class="panel-footer text-center">
-
-                Encontre o melhor custo benefício para seu conforto
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
 
     </ui:define>
 
