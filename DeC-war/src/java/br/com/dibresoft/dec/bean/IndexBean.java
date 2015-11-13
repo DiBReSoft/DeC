@@ -6,6 +6,7 @@ import br.com.dibresoft.dec.ejb.ReservaEJBLocal;
 import br.com.dibresoft.dec.entidade.Reserva;
 import java.io.IOException;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,7 +23,7 @@ public class IndexBean {
   private List<Hotel> hoteis;
   @EJB
   private HotelEJBLocal hoteisEJB;
-  
+
   private Reserva reserva;
   @EJB
   private ReservaEJBLocal reservaEJB;
@@ -30,12 +31,12 @@ public class IndexBean {
   public IndexBean() {
     reserva = new Reserva();
     reserva.setCliente(null);
-    reserva.setQuarto(null);
+    reserva.setQuarto(null); 
   }
-  
-  public void listarTodosHoteis() throws IOException {
+
+  @PostConstruct
+  public void init() {
     hoteis = hoteisEJB.listarTodos();
-    FacesContext.getCurrentInstance().getExternalContext().redirect("");
   }
 
   public List<Hotel> getHoteis() {
@@ -45,7 +46,7 @@ public class IndexBean {
   public void setHoteis(List<Hotel> hoteis) {
     this.hoteis = hoteis;
   }
-  
+
   public void reservar() {
     reservaEJB.cadastrar(reserva);
   }
