@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,24 @@ public class Carrinho implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+  private ArrayList<Quarto> itens = new ArrayList();
+
+    public ArrayList<Quarto> getItens() {
+        return itens;
+    }
+
+    public void setItens(ArrayList<Quarto> itens) {
+        this.itens = itens;
+    }
+
+    public int getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(int precoTotal) {
+        this.precoTotal = precoTotal;
+    }
+  private int precoTotal;
 
   private boolean status;
 
