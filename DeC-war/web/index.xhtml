@@ -65,7 +65,7 @@
                   <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
 
                   <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-                  <form method="post" action="adicionar-ao-carrinho" enctype="utf-8">
+                  <h:form enctype="utf-8">
 
                     <div class="col-md-6">
 
@@ -91,10 +91,12 @@
 
                           </div>
 
-                          <input type="text" class="form-control init-datepicker"
-                                 id="reservaCheckIn" name="reservaCheckIn"
+                          <h:inputText  class="form-control init-datepicker"
+                                 id="reservaCheckIn" 
                                  required="required"
-                                 value="#{indexBean.reserva.checkIn}" />
+                                 value="#{carrinhoTesteBean.reserva.checkIn}">
+                                  <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                          </h:inputText>
 
                         </div>
 
@@ -126,11 +128,12 @@
 
                           </div>
 
-                          <input type="text" class="form-control init-datepicker" 
-                                 id="reservaCheckOut" name="reservaCheckOut"
+                          <h:inputText  class="form-control init-datepicker" 
+                                 id="reservaCheckOut"
                                  required="required"
-                                 value="#{indexBean.reserva.checkOut}" />
-
+                                 value="#{carrinhoTesteBean.reserva.checkOut}" >    
+                                 <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                          </h:inputText>
                         </div>
 
                       </div>
@@ -163,24 +166,13 @@
 
                           </div>
 
-                          <select class="form-control" 
-                                  id="reservaHotel" name="reservaHotel"
+                            <h:selectOneMenu class="form-control" 
+                                  id="reservaHotel" 
                                   required="required"
-                                  value="#{indexBean.reserva.quarto}">
-                            <option value="" disabled="disabled" selected="true">
-                              Selecione...
-                            </option>
-                            <option value="1">
-                              teste
-                            </option>
-                            <ui:repeat var="_hotel" value="#{indexBean.hoteis}">
-                              <option value="#{_hotel.id}">
-                                #{_hotel.endereco.estado}
-                                |
-                                #{_hotel.endereco.cidade}
-                              </option>
-                            </ui:repeat>
-                          </select>
+                                  value="#{carrinhoTesteBean.reserva.quarto.id}">
+                              <f:selectItem itemValue="" itemLabel="Selecione..."/>
+                              <f:selectItems value="#{indexBean.comboHoteis}"/>
+                            </h:selectOneMenu>
 
                         </div>
 
@@ -190,15 +182,13 @@
 
                     <div class="col-md-4">
 
-                     <!-- <h:commandButton class="btn btn-primary btn-block"
-                                       action="#{indexBean.reservar()}"
-                                       value="RESERVAR" />-->
-<h:commandButton class="btn btn-primary btn-block"
-                                       action="#{CarrinhoTesteBean.create()}"
+              
+<h:commandButton class="btn btn-primary btn-block" id="teste"
+                                       action="#{carrinhoTesteBean.create()}"
                                        value="RESERVAR" />
                     </div>
 
-                  </form>        
+                   </h:form>      
 
                 </div>
 

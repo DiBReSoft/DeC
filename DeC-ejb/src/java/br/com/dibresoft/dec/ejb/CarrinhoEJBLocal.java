@@ -8,6 +8,7 @@ package br.com.dibresoft.dec.ejb;
 import javax.ejb.Local;
 import java.util.ArrayList;
 import br.com.dibresoft.dec.entidade.Quarto;
+import br.com.dibresoft.dec.entidade.Reserva;
 /**
  *
  * @author fabio
@@ -15,9 +16,9 @@ import br.com.dibresoft.dec.entidade.Quarto;
 @Local
 public interface CarrinhoEJBLocal {
     
-    public boolean adicionaItem(Quarto quarto);
+    public boolean adicionaItem(Reserva reserva);
     
-    public boolean removeItem(Quarto quarto);
+    public boolean removeItem(Reserva reserva);
     
-    public float calculaTotal(ArrayList<Quarto> itens);
+    public float calculaTotal(ArrayList<Reserva> itens);
 }
