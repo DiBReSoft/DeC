@@ -9,13 +9,16 @@ import br.com.dibresoft.dec.ejb.CarrinhoEJB;
 import br.com.dibresoft.dec.ejb.CarrinhoEJBLocal;
 import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -23,40 +26,54 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean
 @SessionScoped
-public class CarrinhoTesteBean{
-  
+public class CarrinhoTesteBean {
+
   private Reserva reserva = new Reserva();
-    private List<Reserva> lista = new ArrayList<>();
-    @EJB
-    private CarrinhoEJBLocal carrinhoEJB;
-    
-    public CarrinhoTesteBean(){
-      reserva.setQuarto(new Quarto());
-            }
-    public CarrinhoTesteBean(List<Reserva> lista) {
-        this.lista = lista;
-    }
+  private List<Reserva> lista = new ArrayList<>();
+  @EJB
+  private CarrinhoEJBLocal carrinhoEJB;
 
-    public List<Reserva> getLista() {
-        return lista;
-    }
+  public CarrinhoTesteBean() {
+    reserva.setQuarto(new Quarto());
+  }
 
-    public void setLista(List<Reserva> lista) {
-        this.lista = lista;
- 
-    }
-    public String create(){
+  public CarrinhoTesteBean(List<Reserva> lista) {
+    this.lista = lista;
+  }
+
+  public List<Reserva> getLista() {
+    return lista;
+  }
+
+  public void setLista(List<Reserva> lista) {
+    this.lista = lista;
+  }
+
+  public void create() throws IOException {
+
+    try {
+
       lista.add(reserva);
+      System.out.println("[INFO SITE] Adicionada nova reserva à Mala de Reservas:");
       System.out.println(lista.size());
-      System.out.println(reserva.getCheckIn());
-      System.out.println(reserva.getCheckOut());
-      System.out.println(reserva.getQuarto());
+      System.out.println("Data de CheckIn: " + reserva.getCheckIn());
+      System.out.println("Data de CheckOut: " + reserva.getCheckOut());
+      System.out.println("Quarto Selecionado: " + reserva.getQuarto());
+
       reserva = new Reserva();
       reserva.setQuarto(new Quarto());
-      
-      
-      return "carrinho";
- }
+
+      FacesContext.getCurrentInstance().getExternalContext().redirect("mala-de-reservas");
+
+    } catch (IOException ex) {
+
+      Logger.getLogger(CarrinhoTesteBean.class.getName()).log(Level.SEVERE, null, ex);
+
+      FacesContext.getCurrentInstance().getExternalContext().redirect("erro");
+
+    }
+
+  }
 
   public Reserva getReserva() {
     return reserva;
@@ -65,6 +82,5 @@ public class CarrinhoTesteBean{
   public void setReserva(Reserva reserva) {
     this.reserva = reserva;
   }
-    
-    
+
 }

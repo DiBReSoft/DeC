@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Mala de Reservas</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico">
+
+        <div class="container-fluid">
+
+          <h1>
+            Mala de Reservas
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container-fluid">
+
+
+          <!-- CASO NÃO TENHAM RESERVAS ADICIONADAS NA MALA DE SESSÃO -->
+          <h:panelGroup layout="block" rendered="#{empty carrinhoTesteBean.lista}">
+
+            <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
+              Você ainda não adicionou reservas
+            </h1>
+
+            <p class="lead">
+              Escolha seus destinos, período e os adicione nas sua Mala de Reservas!
+            </p>
+
+            <p class="lead">
+              <a class="btn btn-primary"
+                 href="#{request.contextPath}/">
+                <i class="fa fa-lg fa-suitcase"></i>
+                Vai lá! Faça suas escolhas
+              </a>
+            </p>
+
+          </h:panelGroup>
+          <!-- CASO NÃO TENHAM RESERVAS ADICIONADAS NA MALA DE SESSÃO -->
+
+
+          <!-- CASO TENHAM RESERVAS JÁ ADICIONADAS NA MALA DE SESSÃO -->
+          <h:panelGroup layout="block" rendered="#{not empty carrinhoTesteBean.lista}">
+
+            <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
+              Reservas escolhidas por você
+            </h1>
+
+            <h:dataTable var="item" value="#{carrinhoTesteBean.lista}"
+                         styleClass="table table-responsive table-striped table-hover">
+
+              <h:column>
+                <f:facet name="header">
+                  <i class="fa fa-lg fa-calendar-plus-o"></i>
+                  CheckIn
+                </f:facet>
+                #{item.checkIn}
+              </h:column>
+
+              <h:column>
+                <f:facet name="header">
+                  <i class="fa fa-lg fa-calendar-minus-o"></i>
+                  CheckOut
+                </f:facet>
+                #{item.checkOut}
+              </h:column>
+
+              <h:column>
+                <f:facet name="header">
+                  <i class="fa fa-lg fa-bed"></i>
+                  Quarto
+                </f:facet>
+                #{item.quarto.id}
+              </h:column>
+
+            </h:dataTable>
+
+          </h:panelGroup>
+          <!-- CASO TENHAM RESERVAS JÁ ADICIONADAS NA MALA DE SESSÃO -->
+
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

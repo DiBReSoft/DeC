@@ -10,7 +10,7 @@ INSERT INTO app.DEC_CLIENTE (ID,NOME, SEXO, DATANASCIMENTO, CPF, RG, EMAIL, SENH
 INSERT INTO app.DEC_ENDERECO (ID, BAIRRO, CEP, CIDADE, COMPLEMENTO, ESTADO, LOGRADOURO, NUMERO, PAIS, STATUS) 
 	VALUES
           (1, 'Santa Teresa', '04403060', 'Rio de Janeiro', '', 'RJ', 'Jurubatuba', '1502', 'Brasil', 1),
-          (2, 'Copacabana', '04403102', 'Ria de Janeiro', '', 'RJ', 'Santo Amaro', '2345', 'Brasill', 1),
+          (2, 'Copacabana', '04403102', 'Rio de Janeiro', '', 'RJ', 'Santo Amaro', '2345', 'Brasill', 1),
           (3, 'Bela Vista', '04403191', 'São Paulo', '', 'SP', 'Av. Paulista', '250', 'Brasil', 1),
           (4, 'Maragogi', '04402127', 'Alagoas', '', 'AL', 'Av. Francisco almeida', '1230', 'Brasil', 1);
 

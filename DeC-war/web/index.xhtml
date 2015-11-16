@@ -92,10 +92,10 @@
                           </div>
 
                           <h:inputText  class="form-control init-datepicker"
-                                 id="reservaCheckIn" 
-                                 required="required"
-                                 value="#{carrinhoTesteBean.reserva.checkIn}">
-                                  <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                                        id="reservaCheckIn" 
+                                        required="required"
+                                        value="#{carrinhoTesteBean.reserva.checkIn}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
 
                         </div>
@@ -129,10 +129,10 @@
                           </div>
 
                           <h:inputText  class="form-control init-datepicker" 
-                                 id="reservaCheckOut"
-                                 required="required"
-                                 value="#{carrinhoTesteBean.reserva.checkOut}" >    
-                                 <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                                        id="reservaCheckOut"
+                                        required="required"
+                                        value="#{carrinhoTesteBean.reserva.checkOut}" >    
+                            <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
                         </div>
 
@@ -166,13 +166,13 @@
 
                           </div>
 
-                            <h:selectOneMenu class="form-control" 
-                                  id="reservaHotel" 
-                                  required="required"
-                                  value="#{carrinhoTesteBean.reserva.quarto.id}">
-                              <f:selectItem itemValue="" itemLabel="Selecione..."/>
-                              <f:selectItems value="#{indexBean.comboHoteis}"/>
-                            </h:selectOneMenu>
+                          <h:selectOneMenu class="form-control" 
+                                           id="reservaHotel" 
+                                           required="required"
+                                           value="#{carrinhoTesteBean.reserva.quarto.id}">
+                            <f:selectItem itemValue="" itemLabel="Selecione..."/>
+                            <f:selectItems value="#{indexBean.comboHoteis}"/>
+                          </h:selectOneMenu>
 
                         </div>
 
@@ -182,13 +182,13 @@
 
                     <div class="col-md-4">
 
-              
-<h:commandButton class="btn btn-primary btn-block" id="teste"
+
+                      <h:commandButton class="btn btn-primary btn-block" id="teste"
                                        action="#{carrinhoTesteBean.create()}"
                                        value="RESERVAR" />
                     </div>
 
-                   </h:form>      
+                  </h:form>      
 
                 </div>
 

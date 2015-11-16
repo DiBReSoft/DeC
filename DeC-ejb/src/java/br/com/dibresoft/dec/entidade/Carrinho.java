@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.ArrayList;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -15,27 +16,30 @@ import java.util.ArrayList;
 @Entity
 @Table(name = "DeC_CARRINHO")
 public class Carrinho implements Serializable {
+
   private static final long serialVersionUID = 1L;
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
+  
+  @OneToMany
   private ArrayList<Quarto> itens = new ArrayList();
 
-    public ArrayList<Quarto> getItens() {
-        return itens;
-    }
+  public ArrayList<Quarto> getItens() {
+    return itens;
+  }
 
-    public void setItens(ArrayList<Quarto> itens) {
-        this.itens = itens;
-    }
+  public void setItens(ArrayList<Quarto> itens) {
+    this.itens = itens;
+  }
 
-    public int getPrecoTotal() {
-        return precoTotal;
-    }
+  public int getPrecoTotal() {
+    return precoTotal;
+  }
 
-    public void setPrecoTotal(int precoTotal) {
-        this.precoTotal = precoTotal;
-    }
+  public void setPrecoTotal(int precoTotal) {
+    this.precoTotal = precoTotal;
+  }
   private int precoTotal;
 
   private boolean status;
@@ -80,5 +84,5 @@ public class Carrinho implements Serializable {
   public String toString() {
     return "br.com.dibresoft.dec.entidade.Carrinho[ id=" + id + " ]";
   }
-  
+
 }

@@ -53,9 +53,12 @@
           <ul class="nav navbar-nav navbar-right">
             <li>
               <button class="navbar-btn btn btn-primary tooltip-bottom"
-                      title="Reservas que você já selecionou">
-                Reservas
+                      title="Reservas que você já selecionou"
+                      onclick="location.href = '#{request.contextPath}/mala-de-reservas'">
                 <i class="fa fa-fw fa-lg fa-suitcase"></i>
+                <h:outputText rendered="#{carrinhoTesteBean.lista.size() > 0}"
+                              value="#{carrinhoTesteBean.lista.size()} " />
+                Reservas
               </button>
             </li>
             <li>

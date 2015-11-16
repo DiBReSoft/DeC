@@ -13,7 +13,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.SelectItem;
 
-
 /**
  *
  * @author udimberto.sjunior
@@ -33,7 +32,7 @@ public class IndexBean {
   public IndexBean() {
     reserva = new Reserva();
     reserva.setCliente(null);
-    reserva.setQuarto(null); 
+    reserva.setQuarto(null);
   }
 
   @PostConstruct
@@ -60,14 +59,19 @@ public class IndexBean {
   public void setReserva(Reserva reserva) {
     this.reserva = reserva;
   }
-  
-  public List<SelectItem> getComboHoteis(){
+
+  public List<SelectItem> getComboHoteis() {
+
     List<SelectItem> lista = new ArrayList<>();
-    lista.add(new SelectItem(1,"teste"));
-     
-  for(Hotel hotel : hoteis){
-      lista.add(new SelectItem(hotel.getId(),hotel.getEndereco().getEstado()+"-"+hotel.getEndereco().getCidade()));
-  }
+
+    for (Hotel hotel : hoteis) {
+      lista.add(
+              new SelectItem(
+                      hotel.getId(),
+                      hotel.getEndereco().getEstado() + " - " + hotel.getTitulo()
+              )
+      );
+    }
     return lista;
   }
 
