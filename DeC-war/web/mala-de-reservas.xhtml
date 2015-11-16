@@ -54,40 +54,107 @@
 
 
           <!-- CASO TENHAM RESERVAS JÁ ADICIONADAS NA MALA DE SESSÃO -->
-          <h:panelGroup layout="block" rendered="#{not empty carrinhoTesteBean.lista}">
+          <h:panelGroup layout="block" rendered="#{not empty carrinhoTesteBean.lista}"
+                        styleClass="row">
 
-            <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
-              Reservas escolhidas por você
-            </h1>
+            <div class="col-md-8">
 
-            <h:dataTable var="item" value="#{carrinhoTesteBean.lista}"
-                         styleClass="table table-responsive table-striped table-hover">
+              <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
+                Reservas escolhidas por você
+              </h1>
 
-              <h:column>
-                <f:facet name="header">
-                  <i class="fa fa-lg fa-calendar-plus-o"></i>
-                  CheckIn
-                </f:facet>
-                #{item.checkIn}
-              </h:column>
+              <h:form>
 
-              <h:column>
-                <f:facet name="header">
-                  <i class="fa fa-lg fa-calendar-minus-o"></i>
-                  CheckOut
-                </f:facet>
-                #{item.checkOut}
-              </h:column>
+                <h:dataTable var="item" value="#{carrinhoTesteBean.lista}"
+                             styleClass="table table-responsive table-striped table-hover">
 
-              <h:column>
-                <f:facet name="header">
-                  <i class="fa fa-lg fa-bed"></i>
-                  Quarto
-                </f:facet>
-                #{item.quarto.id}
-              </h:column>
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-calendar-plus-o"></i>
+                      CheckIn
+                    </f:facet>
+                    <h:outputText value="#{item.checkIn}">
+                      <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                    </h:outputText>
+                  </h:column>
 
-            </h:dataTable>
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-calendar-minus-o"></i>
+                      CheckOut
+                    </f:facet>
+                    <h:outputText value="#{item.checkOut}">
+                      <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-money"></i>
+                      Valor Diária
+                    </f:facet>
+                    #{item.quarto.valor}
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-bed"></i>
+                      Quarto
+                    </f:facet>
+                    #{item.quarto.id}
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-times-circle"></i>
+                    </f:facet>
+                    <h:commandLink action="#{carrinhoTesteBean.removerReserva(item.id)}"
+                                   value="Remover da Mala" />
+                  </h:column>
+
+                  <f:facet name="footer">
+                    <h:outputText value="Total: R$ " />
+                  </f:facet>
+
+                </h:dataTable>
+
+              </h:form>
+
+              <p class="lead">
+                <a class="btn btn-primary"
+                   href="#{request.contextPath}/">
+                  <i class="fa fa-lg fa-suitcase"></i>
+                  Continue comprando
+                </a>
+              </p>
+
+            </div>
+
+            <div class="col-lg-1 visible-lg"></div>
+
+            <div class="col-md-4 col-lg-3">
+
+              <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
+                Finalizar compra
+              </h1>
+
+              <p class="lead">
+                <a class="btn btn-lg btn-block btn-success"
+                   href="#{request.contextPath}/pagar">
+                  <i class="fa fa-lg fa-paypal"></i>
+                  Pague em até 12X
+                </a>
+              </p>
+
+              <h:form>
+                <p class="lead">
+                  <h:commandLink action="#{carrinhoTesteBean.limparCarrinho()}"
+                                 value="Esvaziar a Mala"
+                                 styleClass="btn btn-lg btn-block btn-link" />
+                </p>
+              </h:form>
+
+            </div>
 
           </h:panelGroup>
           <!-- CASO TENHAM RESERVAS JÁ ADICIONADAS NA MALA DE SESSÃO -->

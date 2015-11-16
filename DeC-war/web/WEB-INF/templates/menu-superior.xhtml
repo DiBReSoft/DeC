@@ -55,10 +55,12 @@
               <button class="navbar-btn btn btn-primary tooltip-bottom"
                       title="Reservas que você já selecionou"
                       onclick="location.href = '#{request.contextPath}/mala-de-reservas'">
-                <i class="fa fa-fw fa-lg fa-suitcase"></i>
-                <h:outputText rendered="#{carrinhoTesteBean.lista.size() > 0}"
-                              value="#{carrinhoTesteBean.lista.size()} " />
+                <h:panelGroup rendered="#{carrinhoTesteBean.lista.size() > 0}"
+                              styleClass="badge">
+                  <h:outputText value="#{carrinhoTesteBean.lista.size()}" />
+                </h:panelGroup>
                 Reservas
+                <i class="fa fa-fw fa-lg fa-suitcase"></i>
               </button>
             </li>
             <li>

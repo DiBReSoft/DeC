@@ -52,13 +52,15 @@ public class CarrinhoTesteBean {
   public void create() throws IOException {
 
     try {
+      
+      reserva.setId(lista.size());
 
       lista.add(reserva);
       System.out.println("[INFO SITE] Adicionada nova reserva à Mala de Reservas:");
-      System.out.println(lista.size());
       System.out.println("Data de CheckIn: " + reserva.getCheckIn());
       System.out.println("Data de CheckOut: " + reserva.getCheckOut());
       System.out.println("Quarto Selecionado: " + reserva.getQuarto());
+      System.out.println("Itens na Mala: " + lista.size());
 
       reserva = new Reserva();
       reserva.setQuarto(new Quarto());
@@ -73,6 +75,29 @@ public class CarrinhoTesteBean {
 
     }
 
+  }
+  
+  public void removerReserva(int idReserva) throws IOException {
+    
+    try {
+      lista.remove(idReserva);
+      
+      FacesContext.getCurrentInstance().getExternalContext().redirect("mala-de-reservas");
+      
+    } catch (IOException ex) {
+      
+      Logger.getLogger(CarrinhoTesteBean.class.getName()).log(Level.SEVERE, null, ex);
+      
+      FacesContext.getCurrentInstance().getExternalContext().redirect("erro");
+      
+    }
+    
+  }
+  
+  public void limparCarrinho() {
+    
+    lista.clear();
+    
   }
 
   public Reserva getReserva() {

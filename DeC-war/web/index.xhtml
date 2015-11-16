@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -93,7 +94,7 @@
 
                           <h:inputText  class="form-control init-datepicker"
                                         id="reservaCheckIn" 
-                                        required="required"
+                                        pt:required=""
                                         value="#{carrinhoTesteBean.reserva.checkIn}">
                             <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
@@ -130,7 +131,7 @@
 
                           <h:inputText  class="form-control init-datepicker" 
                                         id="reservaCheckOut"
-                                        required="required"
+                                        pt:required=""
                                         value="#{carrinhoTesteBean.reserva.checkOut}" >    
                             <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
@@ -168,9 +169,9 @@
 
                           <h:selectOneMenu class="form-control" 
                                            id="reservaHotel" 
-                                           required="required"
+                                           pt:required=""
                                            value="#{carrinhoTesteBean.reserva.quarto.id}">
-                            <f:selectItem itemValue="" itemLabel="Selecione..."/>
+                            <f:selectItem itemValue="" itemLabel="Selecione..." />
                             <f:selectItems value="#{indexBean.comboHoteis}"/>
                           </h:selectOneMenu>
 
@@ -181,7 +182,6 @@
                     </div>
 
                     <div class="col-md-4">
-
 
                       <h:commandButton class="btn btn-primary btn-block" id="teste"
                                        action="#{carrinhoTesteBean.create()}"
