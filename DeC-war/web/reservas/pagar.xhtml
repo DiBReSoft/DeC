@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Pagamento</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Pagamento
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container-fluid">
+
+          <h1 style="margin-top: 0;">
+            Tudo certo!
+          </h1>
+
+          <p class="lead">
+            Agora você possui cadastro na rede de hotéis que mais surpreende 
+            no país.
+          </p>
+
+          <h:form>
+
+            <h:outputLabel value="Parcelas: " />
+
+            <h:selectOneMenu pt:required="">
+
+              <f:selectItem itemValue="" itemLabel="Selecione..." />
+              <f:selectItem itemValue="1" itemLabel="1x" /> 
+              <f:selectItem itemValue="2" itemLabel="2x" />   
+              <f:selectItem itemValue="3" itemLabel="3x" />           
+
+            </h:selectOneMenu>
+            <br/>
+
+            <h:outputLabel value="Número do Cartão: " />
+
+            <h:inputText pt:required="" /> 
+            <br/>
+
+            <h:outputLabel value="Código de Segurança: " />
+
+            <h:inputText pt:required="" /> 
+            <br/>
+
+            <h:outputLabel value="Validade do Cartão: " />
+
+            <h:inputText pt:required="" />   
+            <br/>
+
+            <h:outputLabel value="Nome Impresso no Cartão: " />
+
+            <h:inputText pt:required="" /> 
+            <br/>
+
+            <h:outputLabel value="Data de Nascimento: " />
+
+            <h:inputText pt:required="" /> 
+            <br/>
+
+            <h:commandButton value="Enviar"/>
+            <br/>
+
+          </h:form> 
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+
