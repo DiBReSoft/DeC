@@ -17,5 +17,9 @@ public interface ClienteEJBLocal {
   public void alterar(Cliente membro);
   
   public boolean validarCpf(Cliente membro);
+  
+  public boolean buscarClientePorCpf(String cpf);
+  
+  
 
 }

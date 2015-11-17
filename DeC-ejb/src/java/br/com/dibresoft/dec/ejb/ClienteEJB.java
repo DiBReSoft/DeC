@@ -42,4 +42,9 @@ public class ClienteEJB implements ClienteEJBLocal {
         return em.contains(membro);
     }
 
+  @Override
+  public boolean buscarClientePorCpf(String cpf) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
 }
