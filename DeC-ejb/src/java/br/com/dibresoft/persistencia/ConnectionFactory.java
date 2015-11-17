@@ -22,7 +22,7 @@ public class ConnectionFactory {
     public Statement stm;
     public ResultSet rs;
     private String driver = "org.apache.derby.jdbc.ClientDriver";//Esse é o nome do driver, que na internet você vai encontrar de varias maneiras, mas só esse resolveu meus problemas  
-    private String caminho = "jdbc:derby://localhost:1527/dibrebd";//se não for acessar localmente mude localhost pelo nome do servidor  
+    private String caminho = "jdbc:derby://localhost:1527/sample";//se não for acessar localmente mude localhost pelo nome do servidor  
     private String usuario = "app";//esse usuário é um sysadmin ele tem todos os poderes, é bom que se crie um login e usuário a parte  
     private String senha = "app";
     public Connection conn;
