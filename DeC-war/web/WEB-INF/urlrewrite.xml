@@ -74,6 +74,18 @@
       <from>^/([A-Za-z0-9,-]+)/([A-Za-z0-9,-]+)/([A-Za-z0-9,-]+)/([A-Za-z0-9,-]+)$</from>
       <to type="forward" last="true">/$1/$2/$3/$4.xhtml</to>
     </rule>
+    
+    <rule>
+      <note>Remove jsessionid from embedded urls - for urls WITH query parameters</note>
+      <from>^/(.*);JSESSIONID=.*[?](.*)$</from>
+      <to type="redirect">/$1?$2</to>
+    </rule>
+
+    <rule>
+      <note>Remove jsessionid from embedded urls - for urls WITHOUT query parameters</note>
+      <from>^/(.*);JSESSIONID=.*[^?]$</from>
+      <to type="redirect">/$1</to>
+    </rule>
 
     <!--
 
