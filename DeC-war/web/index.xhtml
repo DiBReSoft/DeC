@@ -66,7 +66,7 @@
                   <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
 
                   <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-                  <h:form enctype="utf-8">
+                  <h:form id="formReservar" enctype="utf-8">
 
                     <div class="col-md-6">
 
@@ -92,7 +92,7 @@
 
                           </div>
 
-                          <h:inputText  class="form-control init-datepicker"
+                          <h:inputText  class="form-control init-datepicker reservaCheckIn"
                                         id="reservaCheckIn" 
                                         pt:required=""
                                         value="#{carrinhoTesteBean.reserva.checkIn}">
@@ -129,7 +129,7 @@
 
                           </div>
 
-                          <h:inputText  class="form-control init-datepicker" 
+                          <h:inputText  class="form-control init-datepicker reservaCheckOut" 
                                         id="reservaCheckOut"
                                         pt:required=""
                                         value="#{carrinhoTesteBean.reserva.checkOut}" >    

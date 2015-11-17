@@ -63,4 +63,9 @@ $(document).ready(function () {
     $('#cadastroClienteForm input[type=submit]').attr('type', 'button');
   }
 
+  $('.cadastroClienteForm').on('submit', function () {
+    $('#cadastroClienteForm .cadastroCPF').removeAttr('disabled');
+    $('#cadastroClienteForm .cadastroEmail').removeAttr('disabled');
+  });
+
 });
