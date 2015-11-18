@@ -31,55 +31,97 @@
         <div class="container-fluid">
 
           <h1 style="margin-top: 0;">
-            Tudo certo!
+            Selecione a forma de pagamento
           </h1>
 
           <p class="lead">
-            Agora você possui cadastro na rede de hotéis que mais surpreende 
-            no país.
+            Xablau texto.
           </p>
 
-          <h:form>
+          <h:form styleClass="col-md-4">
 
-            <h:outputLabel value="Parcelas: " />
+            <!-- PARCELAS -->
+            <div class="form-group">
 
-            <h:selectOneMenu pt:required="">
+              <h:outputLabel value="Parcelas: " />
 
-              <f:selectItem itemValue="" itemLabel="Selecione..." />
-              <f:selectItem itemValue="1" itemLabel="1x" /> 
-              <f:selectItem itemValue="2" itemLabel="2x" />   
-              <f:selectItem itemValue="3" itemLabel="3x" />           
+              <h:selectOneMenu styleClass="form-control"
+                               pt:required="">
 
-            </h:selectOneMenu>
-            <br/>
+                <f:selectItem itemValue="" itemLabel="Selecione..." />
+                <f:selectItem itemValue="1" itemLabel="1x" /> 
+                <f:selectItem itemValue="2" itemLabel="2x" />   
+                <f:selectItem itemValue="3" itemLabel="3x" />           
 
-            <h:outputLabel value="Número do Cartão: " />
+              </h:selectOneMenu>
 
-            <h:inputText pt:required="" /> 
-            <br/>
+            </div>
+            <!-- PARCELAS -->            
 
-            <h:outputLabel value="Código de Segurança: " />
+            <!-- CARTÃO NÚMERO -->
+            <div class="form-group">
 
-            <h:inputText pt:required="" /> 
-            <br/>
+              <h:outputLabel value="Número do Cartão: " />
 
-            <h:outputLabel value="Validade do Cartão: " />
+              <h:inputText styleClass="form-control"
+                           pt:required=""
+                           pt:max="16" />
 
-            <h:inputText pt:required="" />   
-            <br/>
+            </div>
+            <!-- CARTÃO NÚMERO -->
 
-            <h:outputLabel value="Nome Impresso no Cartão: " />
+            <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+            <div class="form-group">
 
-            <h:inputText pt:required="" /> 
-            <br/>
+              <h:outputLabel value="Código de Segurança: " />
 
-            <h:outputLabel value="Data de Nascimento: " />
+              <h:inputText styleClass="form-control"
+                           pt:required=""
+                           pt:max="3"
+                           />
 
-            <h:inputText pt:required="" /> 
-            <br/>
+            </div>
+            <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
 
-            <h:commandButton value="Enviar"/>
-            <br/>
+            <!-- CARTÃO VALIDADE -->
+            <div class="form-group">
+
+              <h:outputLabel value="Validade do Cartão: " />
+
+              <h:inputText styleClass="form-control init-datepicker cartaoValidade"
+                           pt:required="">
+                <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
+              </h:inputText>
+
+            </div>
+            <!-- CARTÃO VALIDADE -->
+
+            <!-- CARTÃO NOME IMPRESSO -->
+            <div class="form-group">
+
+              <h:outputLabel value="Nome Impresso no Cartão: " />
+
+              <h:inputText styleClass="form-control"
+                           pt:required="" />
+
+            </div>
+            <!-- CARTÃO NOME IMPRESSO -->
+
+            <!-- DATA NASCIMENTO -->
+            <div class="form-group">
+
+              <h:outputLabel value="Data de Nascimento: " />
+
+              <h:inputText styleClass="form-control init-datepicker"
+                           pt:required="" />
+
+            </div>
+            <!-- DATA NASCIMENTO -->
+
+            <!-- BOTÃO ENVIAR -->
+            <h:commandButton styleClass="btn btn-lg btn-primary"
+                             value="Enviar" />
+            <!-- BOTÃO ENVIAR -->
 
           </h:form> 
 

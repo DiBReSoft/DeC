@@ -65,7 +65,7 @@ public class CarrinhoTesteBean {
       reserva = new Reserva();
       reserva.setQuarto(new Quarto());
 
-      FacesContext.getCurrentInstance().getExternalContext().redirect("mala-de-reservas");
+      FacesContext.getCurrentInstance().getExternalContext().redirect("reservas/mala");
 
     } catch (IOException ex) {
 
@@ -82,7 +82,7 @@ public class CarrinhoTesteBean {
     try {
       lista.remove(idReserva);
       
-      FacesContext.getCurrentInstance().getExternalContext().redirect("mala-de-reservas");
+      FacesContext.getCurrentInstance().getExternalContext().redirect("reservas/mala");
       
     } catch (IOException ex) {
       
