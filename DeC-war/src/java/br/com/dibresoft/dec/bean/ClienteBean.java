@@ -40,8 +40,9 @@ public class ClienteBean {
     FacesContext.getCurrentInstance().getExternalContext().redirect("./clientes/me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
   }
 
-  public void verificarCpf() {
+  public String autenticar() {
 
+    return "home";
   }
 
   public Cliente getCliente() {
