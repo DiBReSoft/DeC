@@ -54,7 +54,7 @@
             <li>
               <button class="navbar-btn btn btn-primary tooltip-bottom"
                       title="Reservas que você já selecionou"
-                      onclick="location.href = '#{request.contextPath}/mala-de-reservas'">
+                      onclick="location.href = '#{request.contextPath}/reservas/mala'">
                 <h:panelGroup rendered="#{carrinhoTesteBean.lista.size() > 0}"
                               styleClass="badge">
                   <h:outputText value="#{carrinhoTesteBean.lista.size()}" />
@@ -80,13 +80,13 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li>
-                    <a href="#{request.contextPath}/me-cadastrar">
+                    <a href="#{request.contextPath}/clientes/me-cadastrar">
                       Cadastre-se
                     </a>
                   </li>
                   <li role="separator" class="divider"></li>
                   <li>
-                    <a href="#{request.contextPath}/recuperar-senha">
+                    <a href="#{request.contextPath}/clientes/recuperar-senha">
                       Recupere sua senha
                     </a>
                   </li>

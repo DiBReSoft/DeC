@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
   <ui:composition>
 
     <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-    <form class="form-me-cadastrar"
-          method="post" action="reservar" enctype="utf-8">
+    <h:form styleClass="form-me-cadastrar">
 
       <div class="col-xs-12">
 
@@ -71,22 +71,29 @@
 
       <div class="clearfix"></div>
 
-      <div class="col-md-6">
+      <div class="row form-me-cadastrar-botoes">
 
-        <button id="cadastroLimpar" type="reset" class="btn btn-block btn-link">
-          LIMPAR<i class="fa fa-fw fa-lg fa-eraser"></i>
-        </button>
+        <div class="col-md-6">
+
+          <button id="cadastroLimpar" type="reset" class="btn btn-block btn-lg btn-link">
+            LIMPAR<i class="fa fa-fw fa-lg fa-eraser"></i>
+          </button>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <button id="cadastroCadastrar" type="button" class="btn btn-block btn-lg btn-primary disabled">
+            <i class="fa fa-fw fa-lg fa-unlock-alt"></i>ENTRAR
+          </button>
+
+        </div>
 
       </div>
+      
+      <div class="clearfix"></div>
 
-      <div class="col-md-6">
-
-        <button id="cadastroCadastrar" type="button" class="btn btn-block btn-primary disabled">
-          <i class="fa fa-fw fa-lg fa-unlock-alt"></i>ENTRAR
-        </button>
-
-      </div>
-    </form>        
+    </h:form>
 
   </ui:composition>
 
