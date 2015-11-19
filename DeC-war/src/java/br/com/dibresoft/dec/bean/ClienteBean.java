@@ -42,10 +42,10 @@ public class ClienteBean {
 
   public String autenticar() {
     if(clienteEJB.autenticar(cliente.getEmail(), cliente.getSenha())){
-      return "home";
+      return "home?faces-redirect=true";
     }
 
-    return"404";
+    return "404?faces-redirect=true";
   }
 
   public Cliente getCliente() {

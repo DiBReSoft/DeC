@@ -59,11 +59,9 @@ public class ClienteEJB implements ClienteEJBLocal {
     q.setParameter("senha",senha);
     
     clientes = q.getResultList();
-    
+        
     if (clientes.size() > 0){
-      for (Cliente c : clientes){
-        System.out.println(c.getEmail());
-      }
+      
     return true;
     }
     
