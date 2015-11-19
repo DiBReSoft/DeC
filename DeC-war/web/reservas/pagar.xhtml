@@ -31,14 +31,38 @@
         <div class="container-fluid">
 
           <h1 style="margin-top: 0;">
-            Selecione a forma de pagamento
+            Informe os dados do seu cartão de crédito
           </h1>
 
-          <p class="lead">
-            Xablau texto.
-          </p>
-
           <h:form styleClass="col-md-4">
+              
+            <!-- BANDEIRA -->
+            <div class="form-group">
+
+                <h:selectOneRadio id="subscriptions"
+                      value="#{subscriptionController.subscriptions}">
+                  
+                    <f:selectItem id="cartao1" itemLabel="Visa" itemValue="1" />
+                    <f:selectItem id="cartao2" itemLabel="MasterCard" itemValue="2" />
+                    <f:selectItem id="cartao3" itemLabel="Diners Club International" itemValue="3" />
+                    <f:selectItem id="cartao4" itemLabel="American Express" itemValue="4" />
+                    
+                </h:selectOneRadio>
+              
+             <!--
+              <h:selectOneMenu styleClass="form-control"
+                               pt:required="">
+
+                <i class="fa fa-cc-visa"></i>
+                <i class="fa fa-cc-mastercard"></i>
+                <i class="fa fa-cc-diners-club"></i>
+                <i class="fa fa-cc-american"></i>
+                    
+              </h:selectOneMenu>
+             -->
+             
+             </div>
+            <!-- BANDEIRA --> 
 
             <!-- PARCELAS -->
             <div class="form-group">
@@ -52,15 +76,6 @@
                 <f:selectItem itemValue="1" itemLabel="1x" /> 
                 <f:selectItem itemValue="2" itemLabel="2x" />   
                 <f:selectItem itemValue="3" itemLabel="3x" />           
-                <f:selectItem itemValue="1" itemLabel="4x" /> 
-                <f:selectItem itemValue="2" itemLabel="5x" />   
-                <f:selectItem itemValue="3" itemLabel="6x" />  
-                <f:selectItem itemValue="1" itemLabel="7x" /> 
-                <f:selectItem itemValue="2" itemLabel="8x" />   
-                <f:selectItem itemValue="3" itemLabel="9x" />  
-                <f:selectItem itemValue="1" itemLabel="10x" /> 
-                <f:selectItem itemValue="2" itemLabel="11x" />   
-                <f:selectItem itemValue="3" itemLabel="12x" />  
                 
               </h:selectOneMenu>
 
@@ -115,17 +130,6 @@
 
             </div>
             <!-- CARTÃO NOME IMPRESSO -->
-
-            <!-- DATA NASCIMENTO -->
-            <div class="form-group">
-
-              <h:outputLabel value="Data de Nascimento: " />
-
-              <h:inputText styleClass="form-control init-datepicker"
-                           pt:required="" />
-
-            </div>
-            <!-- DATA NASCIMENTO -->
 
             <!-- BOTÃO ENVIAR -->
             <h:commandButton styleClass="btn btn-lg btn-primary"
