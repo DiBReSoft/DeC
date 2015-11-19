@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Relatório de Vendas</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <header class="header-generico bg-primary">
+        
+        <div class="container-fluid">
+
+          <h1>
+            Relatório de Vendas
+          </h1>
+
+        </div>
+
+      </header>
+
+      <h:body>   
+
+        <section>
+
+          <div class="container-fluid">
+
+            <h:dataTable id="tbRelatorio" styleClass="table table-hover table-striped"
+                         value="#{carrinhoTesteBean.lista}" var="venda">
+
+              <h:column>
+                <!-- coluna -->
+                <f:facet name="header">ID</f:facet>
+                <!-- trazer linha-->
+                <!--{venda.id}-->
+              </h:column>
+
+              <h:column>
+                <!-- coluna -->
+                <f:facet name="header">Cliente</f:facet>
+                <!-- trazer linha -->
+                <!--{venda.cliente.nome}-->
+              </h:column>
+
+              <h:column>
+                <f:facet name="header">Data da Compra</f:facet>
+                <!-- trazer linha-->
+                <!--{venda.data}-->
+              </h:column>
+              <h:column>
+                <!-- coluna -->
+                <f:facet name="header">Bandeira</f:facet>
+                <!-- trazer linha-->
+                <!--{venda.bandeira}-->
+              </h:column>
+
+              <h:column>
+                <!-- coluna -->
+                <f:facet name="header">Parcelamento</f:facet>
+                <!-- trazer linha-->
+                <!--{venda.parcelas}-->
+              </h:column>
+
+              <h:column>
+                <!-- coluna -->
+                <f:facet name="header">Valor Total</f:facet>
+                <!-- trazer linha-->
+                <!--{venda.total}-->
+              </h:column>
+
+            </h:dataTable>
+
+          </div>
+
+        </section>
+
+      </h:body>
+
+    </ui:define>  
+
+  </ui:composition>
+
+</html>
+
