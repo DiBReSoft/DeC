@@ -37,12 +37,15 @@ public class ClienteBean {
     //temCadastro = clienteEJB.verificar(cliente);    
     //if (temCadastro) {
     //}
-    FacesContext.getCurrentInstance().getExternalContext().redirect("./clientes/me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/clientes/me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
   }
 
   public String autenticar() {
+    if(clienteEJB.autenticar(cliente.getEmail(), cliente.getSenha())){
+      return "home";
+    }
 
-    return "home";
+    return"404";
   }
 
   public Cliente getCliente() {

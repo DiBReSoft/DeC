@@ -2,6 +2,7 @@ package br.com.dibresoft.dec.ejb;
 
 import br.com.dibresoft.dec.entidade.Cliente;
 import br.com.dibresoft.dec.entidade.Quarto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -51,8 +52,22 @@ public class ClienteEJB implements ClienteEJBLocal {
 
   @Override
   public boolean autenticar(String email, String senha) {
-   
-   return true; 
+    List <Cliente> clientes;
+    
+    Query q = em.createNamedQuery("Cliente.autenticar");
+    q.setParameter("email",email);
+    q.setParameter("senha",senha);
+    
+    clientes = q.getResultList();
+    
+    if (clientes.size() > 0){
+      for (Cliente c : clientes){
+        System.out.println(c.getEmail());
+      }
+    return true;
+    }
+    
+   return false; 
   }
 
   @Override

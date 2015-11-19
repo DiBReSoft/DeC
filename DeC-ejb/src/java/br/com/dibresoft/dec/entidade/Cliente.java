@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,6 +18,10 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "DeC_CLIENTE")
+@NamedQueries(
+  @NamedQuery(name ="Cliente.autenticar", query = "SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha")
+)
+
 public class Cliente implements Serializable {
 
   private static final long serialVersionUID = 1L;
