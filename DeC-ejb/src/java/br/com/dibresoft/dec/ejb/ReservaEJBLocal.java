@@ -10,15 +10,15 @@ import javax.ejb.Local;
  */
 @Local
 public interface ReservaEJBLocal {
-  
-  public double valorReserva(Date checkIn, Date checkOut, double valorQuarto);
-  
+
+  public double calcularValorReserva(Reserva reserva);
+
   public void cadastrar(Reserva reserva);
-  
+
   public void buscar(Reserva reserva);
-  
+
   public void alterar(Reserva reserva);
-  
+
   public void inativar(Reserva reserva);
-  
+
 }

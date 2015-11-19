@@ -2,7 +2,9 @@ package br.com.dibresoft.dec.bean;
 
 import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.ejb.HotelEJBLocal;
+import br.com.dibresoft.dec.ejb.QuartoEJBLocal;
 import br.com.dibresoft.dec.ejb.ReservaEJBLocal;
+import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
 
 import java.util.ArrayList;
@@ -24,20 +26,18 @@ public class IndexBean {
   private List<Hotel> hoteis;
   @EJB
   private HotelEJBLocal hoteisEJB;
-
-  private Reserva reserva;
+  
+  private List<Quarto> quartos;
   @EJB
-  private ReservaEJBLocal reservaEJB;
+  private QuartoEJBLocal quartosEJB;
 
   public IndexBean() {
-    reserva = new Reserva();
-    reserva.setCliente(null);
-    reserva.setQuarto(null);
   }
 
   @PostConstruct
   public void init() {
     hoteis = hoteisEJB.listarTodos();
+    quartos = quartosEJB.listarTodos();
   }
 
   public List<Hotel> getHoteis() {
@@ -48,16 +48,12 @@ public class IndexBean {
     this.hoteis = hoteis;
   }
 
-  public void reservar() {
-    reservaEJB.cadastrar(reserva);
+  public List<Quarto> getQuartos() {
+    return quartos;
   }
 
-  public Reserva getReserva() {
-    return reserva;
-  }
-
-  public void setReserva(Reserva reserva) {
-    this.reserva = reserva;
+  public void setQuartos(List<Quarto> quartos) {
+    this.quartos = quartos;
   }
 
   public List<SelectItem> getComboHoteis() {
@@ -69,6 +65,21 @@ public class IndexBean {
               new SelectItem(
                       hotel.getId(),
                       hotel.getEndereco().getEstado() + " - " + hotel.getTitulo()
+              )
+      );
+    }
+    return lista;
+  }
+  
+  public List<SelectItem> getComboQuartos() {
+
+    List<SelectItem> lista = new ArrayList<>();
+
+    for (Quarto quarto : quartos) {
+      lista.add(
+              new SelectItem(
+                      quarto.getId(),
+                      quarto.getNome() + " ( Diária: R$ " + quarto.getValor() + " )"
               )
       );
     }

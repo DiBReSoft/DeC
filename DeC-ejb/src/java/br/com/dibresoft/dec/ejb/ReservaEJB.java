@@ -12,13 +12,23 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ReservaEJB implements ReservaEJBLocal {
-  
+
   @PersistenceContext
   private EntityManager em;
-  
+
   @Override
-  public double valorReserva(Date checkIn, Date checkOut, double valorQuarto) {
-    throw new UnsupportedOperationException("Not supported yet.");
+  public double calcularValorReserva(Reserva reserva) {
+    double valor;
+    long t1 = reserva.getCheckIn().getTime();
+    long t2 = reserva.getCheckOut().getTime();
+    long t3 = t2 - t1;
+    t3 = (t3 / 86400000) + 1;
+
+    if (t3 < 0) {
+      return 0;
+    } else {
+      return valor = t3 * reserva.getQuarto().getValor();
+    }
   }
 
   @Override
@@ -40,5 +50,5 @@ public class ReservaEJB implements ReservaEJBLocal {
   public void inativar(Reserva reserva) {
     throw new UnsupportedOperationException("Not supported yet.");
   }
-  
+
 }

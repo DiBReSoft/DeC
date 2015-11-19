@@ -51,7 +51,7 @@
 
         <div class="container-fluid">
 
-          <h:form>
+          <h:form class="reservaForm">
 
             <div class="col-md-8">
 
@@ -92,10 +92,10 @@
 
                           </div>
 
-                          <h:inputText  class="form-control init-datepicker reservaCheckIn"
-                                        id="reservaCheckIn" 
-                                        pt:required=""
-                                        value="#{carrinhoTesteBean.reserva.checkIn}">
+                          <h:inputText class="form-control reservaCheckIn"
+                                       id="reservaCheckIn" 
+                                       pt:required=""
+                                       value="#{carrinhoTesteBean.reserva.checkIn}">
                             <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
 
@@ -129,10 +129,10 @@
 
                           </div>
 
-                          <h:inputText  class="form-control init-datepicker reservaCheckOut" 
-                                        id="reservaCheckOut"
-                                        pt:required=""
-                                        value="#{carrinhoTesteBean.reserva.checkOut}" >    
+                          <h:inputText class="form-control reservaCheckOut" 
+                                       id="reservaCheckOut"
+                                       pt:required=""
+                                       value="#{carrinhoTesteBean.reserva.checkOut}" >    
                             <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
                           </h:inputText>
                         </div>
@@ -147,32 +147,32 @@
 
                       <div class="form-group">
 
-                        <label class="control-label hidden-lg hidden-md" for="reservaHotel">
-                          Selecione uma unidade:
+                        <label class="control-label hidden-lg hidden-md" for="reservaCategoria">
+                          Selecione uma Categoria:
                         </label>
 
                         <div class="input-group">
 
                           <div class="input-group-addon">
 
-                            <label for="focusedInput">
+                            <label for="reservaCategoria">
 
-                              <i class="fa fa-fw fa-map-marker"></i>
+                              <i class="fa fa-fw fa-bed"></i>
 
                               <span class="hidden-sm hidden-xs">
-                                Unidade:
+                                Categoria:
                               </span>
 
                             </label>
 
                           </div>
 
-                          <h:selectOneMenu class="form-control" 
-                                           id="reservaHotel" 
+                          <h:selectOneMenu class="form-control reservaCategoria"
+                                           id="reservaCategoria" 
                                            pt:required=""
                                            value="#{carrinhoTesteBean.reserva.quarto.id}">
                             <f:selectItem itemValue="" itemLabel="Selecione..." />
-                            <f:selectItems value="#{indexBean.comboHoteis}"/>
+                            <f:selectItems value="#{indexBean.comboQuartos}"/>
                           </h:selectOneMenu>
 
                         </div>
@@ -583,19 +583,7 @@
     <ui:define name="pagina-bottom">
       <!-- Adiciona JS e outros que vão no final da página -->
 
-      <script type="text/javascript">
-        $(document).ready(function () {
-
-          /* Preenche o Placeholder nos campos de data, com datas reais */
-          var dataHoje = new Date();
-          $("#reservaIn").attr("placeholder", "Ex.: " + dataHoje.getDate() + "/" + (dataHoje.getMonth() + 1) + "/" + dataHoje.getFullYear());
-          var dataFutura = new Date();
-          dataFutura.setDate(dataHoje.getDate() + 5);
-          $("#reservaOut").attr("placeholder", "Ex.: " + dataFutura.getDate() + "/" + (dataFutura.getMonth() + 1) + "/" + dataFutura.getFullYear());
-          /* Preenche o Placeholder nos campos de data, com datas reais */
-
-        });
-      </script>
+      <script type="text/javascript" src="#{request.contextPath}/js/index-reservas.js"></script>
 
     </ui:define>
 

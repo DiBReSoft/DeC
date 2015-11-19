@@ -15,4 +15,6 @@ public interface QuartoEJBLocal {
   
   public List<Quarto> listarTodos();
   
+  public Quarto getQuartoById(long id);
+  
 }

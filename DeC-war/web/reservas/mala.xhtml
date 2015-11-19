@@ -12,7 +12,7 @@
     <ui:define name="pagina-conteudo">
 
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
-      <header class="header-generico">
+      <header class="header-generico bg-primary">
 
         <div class="container-fluid">
 
@@ -90,10 +90,10 @@
 
                   <h:column>
                     <f:facet name="header">
-                      <i class="fa fa-lg fa-money"></i>
-                      Valor Diária
+                      <i class="fa fa-lg fa-building"></i>
+                      Hotel
                     </f:facet>
-                    #{item.quarto.valor}
+                    #{item.quarto.hotel.titulo}
                   </h:column>
 
                   <h:column>
@@ -101,27 +101,44 @@
                       <i class="fa fa-lg fa-bed"></i>
                       Quarto
                     </f:facet>
-                    #{item.quarto.id}
-                  </h:column>
-                  
-                  <h:column>
-                    <f:facet name="header">
-                      <i class="fa fa-lg fa-building"></i>
-                      Hotel
-                    </f:facet>
-                    
+                    #{item.quarto.nome}
                   </h:column>
 
                   <h:column>
                     <f:facet name="header">
-                      <i class="fa fa-lg fa-times-circle"></i>
+                      <i class="fa fa-lg fa-money"></i>
+                      Diária
+                    </f:facet>
+                    <h:outputText value="#{item.quarto.valor}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-money"></i>
+                      Total
+                    </f:facet>
+                    <h:outputText value="#{item.valorEstadia}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-suitcase"></i>                      
                     </f:facet>
                     <h:commandLink action="#{carrinhoTesteBean.removerReserva(item.id)}"
-                                   value="Remover da Mala" />
+                                   styleClass="btn btn-xs btn-primary">
+                      Remover
+                    </h:commandLink>
                   </h:column>
 
                   <f:facet name="footer">
-                    <h:outputText value="Total: R$ #{item.valorEstadia}" />
+                    Total:
+                    <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
                   </f:facet>
 
                 </h:dataTable>
@@ -148,7 +165,7 @@
 
               <p class="lead">
                 <a class="btn btn-lg btn-block btn-success"
-                   href="#{request.contextPath}/pagar">
+                   href="#{request.contextPath}/reservas/pagar">
                   <i class="fa fa-lg fa-paypal"></i>
                   Pague em até 12X
                 </a>

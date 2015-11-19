@@ -32,4 +32,10 @@ public class QuartoEJB implements QuartoEJBLocal {
     return query.getResultList();
   }
 
+  @Override
+  public Quarto getQuartoById(long id) {
+    Query query = em.createQuery("Select c from Quarto c where c.id = " + id);
+    return (Quarto) query.getSingleResult();
+  }
+
 }
