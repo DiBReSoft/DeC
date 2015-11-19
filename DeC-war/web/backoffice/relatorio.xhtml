@@ -15,7 +15,7 @@
     <ui:define name="pagina-conteudo">
 
       <header class="header-generico bg-primary">
-        
+
         <div class="container-fluid">
 
           <h1>
@@ -33,47 +33,63 @@
           <div class="container-fluid">
 
             <h:dataTable id="tbRelatorio" styleClass="table table-hover table-striped"
-                         value="#{carrinhoTesteBean.lista}" var="venda">
+                         value="#{relatorioBean.listaCompras}" var="venda">
 
               <h:column>
                 <!-- coluna -->
                 <f:facet name="header">ID</f:facet>
                 <!-- trazer linha-->
-                <!--{venda.id}-->
+                #{venda.id}
               </h:column>
 
               <h:column>
                 <!-- coluna -->
                 <f:facet name="header">Cliente</f:facet>
                 <!-- trazer linha -->
-                <!--{venda.cliente.nome}-->
+                #{venda.cliente.nome}
               </h:column>
 
               <h:column>
                 <f:facet name="header">Data da Compra</f:facet>
                 <!-- trazer linha-->
-                <!--{venda.data}-->
+                <h:outputText value="#{venda.dataCompra}">
+                  <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                </h:outputText>
               </h:column>
+
               <h:column>
                 <!-- coluna -->
                 <f:facet name="header">Bandeira</f:facet>
                 <!-- trazer linha-->
-                <!--{venda.bandeira}-->
+                <span class="text-capitalize">
+                  #{venda.cartaoBandeira}
+                </span>
               </h:column>
 
               <h:column>
                 <!-- coluna -->
                 <f:facet name="header">Parcelamento</f:facet>
                 <!-- trazer linha-->
-                <!--{venda.parcelas}-->
+                #{venda.cartaoParcelas}
               </h:column>
 
               <h:column>
                 <!-- coluna -->
                 <f:facet name="header">Valor Total</f:facet>
                 <!-- trazer linha-->
-                <!--{venda.total}-->
+                <h:outputText value="#{venda.valorTotal}">
+                  <f:convertNumber currencyCode="BRL" type="currency" />
+                </h:outputText>
               </h:column>
+
+              <f:facet name="footer">
+                <strong>
+                  Total do Relatório:
+                  <h:outputText value="#{relatorioBean.valorTotalRelatorio()}">
+                    <f:convertNumber currencyCode="BRL" type="currency" />
+                  </h:outputText>
+                </strong>
+              </f:facet>
 
             </h:dataTable>
 

@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
   <ui:composition>
 
@@ -65,51 +66,71 @@
             </li>
             <li>
               <!-- Split button -->
-              <div class="btn-group">
-                <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
-                        data-toggle="modal" data-target="#login"
-                        title="Acesse sua conta para reservar ou gerenciar suas reservas">
-                  Entrar
-                  <i class="fa fa-fw fa-lg fa-user"></i>
-                </button>
-                <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" 
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        title="Outras Opções">
-                  <span class="caret"></span>
-                  <span class="sr-only">Outras Opções</span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="#{request.contextPath}/clientes/me-cadastrar">
-                      Cadastre-se
-                    </a>
-                  </li>
-                  <li role="separator" class="divider"></li>
-                  <li>
-                    <a href="#{request.contextPath}/clientes/recuperar-senha">
-                      Recupere sua senha
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <c:choose>
+
+                <c:when test="#{clienteSessionBean.cliente != null}">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
+                            data-toggle="modal" data-target="#login"
+                            title="Acesse sua conta para reservar ou gerenciar suas reservas">
+                      #{clienteSessionBean.cliente.nome}
+                      <i class="fa fa-fw fa-lg fa-user"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            title="Outras Opções">
+                      <span class="caret"></span>
+                      <span class="sr-only">Outras Opções</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#{request.contextPath}/clientes/me-cadastrar">
+                          Cadastre-se
+                        </a>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <a href="#{request.contextPath}/clientes/recuperar-senha">
+                          Recupere sua senha
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </c:when>
+
+                <c:otherwise>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
+                            data-toggle="modal" data-target="#login"
+                            title="Acesse sua conta para reservar ou gerenciar suas reservas">
+                      Entrar
+                      <i class="fa fa-fw fa-lg fa-user"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" 
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            title="Outras Opções">
+                      <span class="caret"></span>
+                      <span class="sr-only">Outras Opções</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a href="#{request.contextPath}/clientes/me-cadastrar">
+                          Cadastre-se
+                        </a>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <a href="#{request.contextPath}/clientes/recuperar-senha">
+                          Recupere sua senha
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </c:otherwise>
+
+              </c:choose>
             </li>
           </ul>
-
-          <!--
-          <form class="navbar-form navbar-right"
-                method="GET" action="/LebreHotel/">
-            <div class="form-group">
-              <input type="text" placeholder="Ex.: Hotel na praia" 
-                     class="form-control"
-                     name="q" id="q" />
-            </div>
-            <button type="submit" class="btn btn-primary"
-                    title="Pressione para pesquisar">
-              <span class="glyphicon glyphicon-search"></span>
-              Buscar
-            </button>
-          </form>
-          -->
 
         </div><!--/.navbar-collapse -->
 

@@ -20,6 +20,8 @@ public interface ClienteEJBLocal {
   
   public boolean buscarClientePorCpf(String cpf);
   
+  public Cliente buscarClientePorId(long id);
+  
   public boolean autenticar (String email, String senha);
   
   

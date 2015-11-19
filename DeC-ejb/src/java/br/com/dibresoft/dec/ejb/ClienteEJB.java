@@ -1,9 +1,11 @@
 package br.com.dibresoft.dec.ejb;
 
 import br.com.dibresoft.dec.entidade.Cliente;
+import br.com.dibresoft.dec.entidade.Quarto;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -51,6 +53,12 @@ public class ClienteEJB implements ClienteEJBLocal {
   public boolean autenticar(String email, String senha) {
    
    return true; 
+  }
+
+  @Override
+  public Cliente buscarClientePorId(long id) {    
+    Query query = em.createQuery("Select c from Cliente c where c.id = " + id);
+    return (Cliente) query.getSingleResult();
   }
 
 }

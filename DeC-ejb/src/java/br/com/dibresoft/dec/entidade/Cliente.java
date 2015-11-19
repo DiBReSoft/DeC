@@ -150,4 +150,8 @@ public class Cliente implements Serializable {
     return "br.com.dibresoft.dec.entidade.Membro[ id=" + id + " ]";
   }
 
+  public void setId(int i) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
 }

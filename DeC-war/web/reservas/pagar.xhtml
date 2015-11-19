@@ -34,106 +34,107 @@
             Informe os dados do seu cartão de crédito
           </h1>
 
-          <h:form styleClass="col-md-4">
-              
+          <h:form>
+
             <!-- BANDEIRA -->
             <div class="form-group">
 
-                <h:selectOneRadio id="subscriptions"
-                      value="#{subscriptionController.subscriptions}">
-                  
-                    <f:selectItem id="cartao1" itemLabel="Visa" itemValue="1" />
-                    <f:selectItem id="cartao2" itemLabel="MasterCard" itemValue="2" />
-                    <f:selectItem id="cartao3" itemLabel="Diners Club International" itemValue="3" />
-                    <f:selectItem id="cartao4" itemLabel="American Express" itemValue="4" />
-                    
-                </h:selectOneRadio>
-              
-             <!--
-              <h:selectOneMenu styleClass="form-control"
+              <h:selectOneRadio styleClass="table"
+                                value="#{compraBean.compra.cartaoBandeira}"
+                                pt:required="">
+
+                <f:selectItem class="cartao-visa" itemLabel="Visa" itemValue="visa" />
+                <f:selectItem class="cartao-mastercard" itemLabel="MasterCard" itemValue="mastercard" />
+                <f:selectItem class="cartao-diners" itemLabel="Diners Club International" itemValue="diners" />
+                <f:selectItem class="cartao-amex" itemLabel="American Express" itemValue="amex" />
+
+              </h:selectOneRadio>
+
+            </div>
+            <!-- BANDEIRA -->
+
+            <div class="row">
+
+              <div class="col-sm-3"></div>
+
+              <div class="col-sm-6">
+
+                <!-- PARCELAS -->
+                <div class="form-group">
+
+                  <h:outputLabel value="Parcelas: " />
+
+                  <h:selectOneMenu styleClass="form-control"
+                                   pt:required=""
+                                   value="#{compraBean.compra.cartaoParcelas}">
+
+                    <f:selectItem itemValue="" itemLabel="Selecione..." />
+                    <f:selectItem itemValue="1" itemLabel="1x" /> 
+                    <f:selectItem itemValue="2" itemLabel="2x" />   
+                    <f:selectItem itemValue="3" itemLabel="3x" />           
+
+                  </h:selectOneMenu>
+
+                </div>
+                <!-- PARCELAS -->
+
+                <!-- CARTÃO NOME IMPRESSO -->
+                <div class="form-group">
+
+                  <h:outputLabel value="Nome Impresso no Cartão: " />
+
+                  <h:inputText styleClass="form-control"
+                               pt:required="" />
+
+                </div>
+                <!-- CARTÃO NOME IMPRESSO -->
+
+                <!-- CARTÃO NÚMERO -->
+                <div class="form-group">
+
+                  <h:outputLabel value="Número do Cartão: " />
+
+                  <h:inputText styleClass="form-control"
+                               pt:required=""
+                               pt:max="16" />
+
+                </div>
+                <!-- CARTÃO NÚMERO -->
+
+                <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+                <div class="form-group">
+
+                  <h:outputLabel value="Código de Segurança: " />
+
+                  <h:inputText styleClass="form-control"
+                               pt:required=""
+                               pt:max="3"
+                               />
+
+                </div>
+                <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+
+                <!-- CARTÃO VALIDADE -->
+                <div class="form-group">
+
+                  <h:outputLabel value="Validade do Cartão: " />
+
+                  <h:inputText styleClass="form-control init-datepicker cartaoValidade"
                                pt:required="">
+                    <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
+                  </h:inputText>
 
-                <i class="fa fa-cc-visa"></i>
-                <i class="fa fa-cc-mastercard"></i>
-                <i class="fa fa-cc-diners-club"></i>
-                <i class="fa fa-cc-american"></i>
-                    
-              </h:selectOneMenu>
-             -->
-             
-             </div>
-            <!-- BANDEIRA --> 
+                </div>
+                <!-- CARTÃO VALIDADE -->
 
-            <!-- PARCELAS -->
-            <div class="form-group">
-
-              <h:outputLabel value="Parcelas: " />
-
-              <h:selectOneMenu styleClass="form-control"
-                               pt:required="">
-
-                <f:selectItem itemValue="" itemLabel="Selecione..." />
-                <f:selectItem itemValue="1" itemLabel="1x" /> 
-                <f:selectItem itemValue="2" itemLabel="2x" />   
-                <f:selectItem itemValue="3" itemLabel="3x" />           
-                
-              </h:selectOneMenu>
+              </div>
 
             </div>
-            <!-- PARCELAS -->            
-
-            <!-- CARTÃO NÚMERO -->
-            <div class="form-group">
-
-              <h:outputLabel value="Número do Cartão: " />
-
-              <h:inputText styleClass="form-control"
-                           pt:required=""
-                           pt:max="16" />
-
-            </div>
-            <!-- CARTÃO NÚMERO -->
-
-            <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
-            <div class="form-group">
-
-              <h:outputLabel value="Código de Segurança: " />
-
-              <h:inputText styleClass="form-control"
-                           pt:required=""
-                           pt:max="3"
-                           />
-
-            </div>
-            <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
-
-            <!-- CARTÃO VALIDADE -->
-            <div class="form-group">
-
-              <h:outputLabel value="Validade do Cartão: " />
-
-              <h:inputText styleClass="form-control init-datepicker cartaoValidade"
-                           pt:required="">
-                <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
-              </h:inputText>
-
-            </div>
-            <!-- CARTÃO VALIDADE -->
-
-            <!-- CARTÃO NOME IMPRESSO -->
-            <div class="form-group">
-
-              <h:outputLabel value="Nome Impresso no Cartão: " />
-
-              <h:inputText styleClass="form-control"
-                           pt:required="" />
-
-            </div>
-            <!-- CARTÃO NOME IMPRESSO -->
 
             <!-- BOTÃO ENVIAR -->
             <h:commandButton styleClass="btn btn-lg btn-primary"
-                             value="Enviar" />
+                             value="Enviar" 
+                             action="#{compraBean.gravar(clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}"/>
             <!-- BOTÃO ENVIAR -->
 
           </h:form> 
