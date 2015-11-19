@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Vendas</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Vendas
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container-fluid">
+
+          <h1 style="margin-top: 0;">
+            <!-- NÃO SEI O QUE COLOCAR -->
+          </h1>
+
+          <p class="lead">
+            Xablau texto. <!-- Udim, que porra é essa?-->
+          </p>
+
+          <h:form styleClass="col-md-4">
+
+            <!-- NÚMERO DE VENDA (ID)-->
+            <div class="form-group">
+
+              <h:outputLabel value="Número de Venda" />
+
+            <!-- NÚMERO DE VENDA (ID)-->
+            
+            <!-- DATA DA VENDA -->
+            <div class="form-group">
+
+              <h:outputLabel value="Data da Venda" />
+
+              <h:inputText styleClass="form-control init-datepicker cartaoValidade"
+                           pt:required="">
+                <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
+              </h:inputText>
+
+            </div>
+            
+            <!-- DATA DA VENDA -->
+            
+            <!-- QUARTO -->
+            <div class="form-group">
+
+              <h:outputLabel value="Quarto" />
+
+            <!-- QUARTO -->    
+            
+            <!-- UNIDADE -->
+            <div class="form-group">
+
+              <h:outputLabel value="Unidade" />
+
+            <!-- UNIDADE -->
+            
+            <!-- VALOR DE VENDA -->
+            <div class="form-group">
+
+              <h:outputLabel value="Total" />
+
+            <!-- VALOR DA VENDA -->
+
+            </div>
+
+          </h:form> 
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

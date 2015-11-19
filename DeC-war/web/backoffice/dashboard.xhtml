@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Dashboard</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Dashboard
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container-fluid">
+
+          <h1 style="margin-top: 0;">
+            Veja bem vindo!
+          </h1>
+
+          <p class="lead">
+            Xablau texto.
+          </p>
+
+          <h:form styleClass="col-md-4">
+
+            <!-- BOTÃO QUARTO -->
+            <h:commandButton styleClass="btn btn-lg btn-primary"
+                             value="Quartos" />
+            <!-- BOTÃO QUARTO -->
+            
+            <!-- BOTÃO HOTEIS -->
+            <h:commandButton styleClass="btn btn-lg btn-primary"
+                             value="Hotéis" />
+            <!-- BOTÃO HOTEIS -->
+            
+            <!-- BOTÃO VENDAS -->
+            <h:commandButton styleClass="btn btn-lg btn-primary"
+                             value="Vendas" />
+            <!-- BOTÃO VENDAS 
+            
+            <!-- BOTÃO CLIENTES -->
+            <h:commandButton styleClass="btn btn-lg btn-primary"
+                             value="Clientes" />
+            <!-- BOTÃO CLIENTES -->
+
+          </h:form> 
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+
