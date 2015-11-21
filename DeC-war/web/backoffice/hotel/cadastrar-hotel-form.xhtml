@@ -122,28 +122,27 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" id="cadastroCPFContainer">
+        <div class="form-group" id="cadastroEnderecoContainer">
 
-          <label for="cadastroCPF"
-                 title="Cadastro de Pessoa Física dos Cidadãos Brasileiros">
-            CPF:
+          <label for="cadastroEndereco">
+            Endereço:
           </label>
 
           <div class="input-group">
 
             <div class="input-group-addon">
               
-              <label for="cadastroCPF">
+              <label for="cadastroEndereco">
                 <i class="fa fa-fw fa-barcode"></i>
               </label>
 
             </div>
 
-            <h:inputText styleClass="form-control cadastroCPF" 
+            <h:inputText styleClass="form-control cadastroEndereco" 
                          pt:required=""
-                         id="cadastroCPF"
-                         value="#{clienteBean.cliente.cpf}"
-                         pt:placeholder="Ex.: 400.500.600-70" />
+                         id="cadastroEndereco"
+                         value="#{hotelBean.hotel.endereco}"
+                         pt:placeholder="Ex.: Av. Paulista, 123" />
 
           </div>
 
@@ -153,28 +152,27 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" id="cadastroRGContainer">
+        <div class="form-group" id="cadastroTelefoneContainer">
 
-          <label for="cadastroRG"
-                 title="Registro Geral dos Cidadãos Brasileiros">
-            RG:
+          <label for="cadastroTelefone">
+            Telefone:
           </label>
 
           <div class="input-group">
 
             <div class="input-group-addon">
 
-              <label for="cadastroRG">
+              <label for="cadastroTelefone">
                 <i class="fa fa-fw fa-barcode"></i>
               </label>
 
             </div>
 
-            <h:inputText styleClass="form-control cadastroRG" 
+            <h:inputText styleClass="form-control cadastroTelefone" 
                          pt:required=""
-                         id="cadastroRG"
-                         value="#{clienteBean.cliente.rg}"
-                         pt:placeholder="Ex.: 10.200.300-4" />
+                         id="cadastroTelefone"
+                         value="#{hotelBean.hotel.telefone}"
+                         pt:placeholder="Ex.: 11 1234-5678" />
 
           </div>
 
@@ -188,9 +186,8 @@
 
         <div class="form-group" id="cadastroEmailContainer">
 
-          <label for="cadastroEmail"
-                 title="Seu endereço de e-mail pessoal">
-            E-mail para contato e login:
+          <label for="cadastroEmail">
+            E-mail para contato:
           </label>
 
           <div class="input-group">
@@ -208,106 +205,14 @@
                          pt:placeholder="Ex.: voce@seuprovedor.com"
                          pt:required=""
                          id="cadastroEmail"
-                         value="#{clienteBean.cliente.email}" />
+                         value="#{hotelBean.hotel.email}" />
 
           </div>
 
         </div>
 
       </div>
-
-      <div class="col-md-4">
-
-        <div class="form-group" id="cadastroSenhaContainer">
-
-          <label for="cadastroSenha"
-                 title="Defina sua senha para acesso a sua conta conosco">
-            Senha no Lebre Hotel:
-          </label>
-
-          <div class="input-group">
-
-            <div class="input-group-addon">
-
-              <label for="cadastroSenha">
-                <i class="fa fa-fw fa-lock"></i>
-              </label>
-
-            </div>
-
-            <h:inputSecret styleClass="form-control cadastroSenha" 
-                           pt:required=""
-                           id="cadastroSenha"
-                           value="#{clienteBean.cliente.senha}"
-                           pt:placeholder="Ex.: eu@apelido" />
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="clearfix"></div>
-
-      <div class="col-md-6">
-
-        <div class="form-group" id="cadastroNewsletterContainer">
-
-          <label title="Informes, promoções e ofertas exclusivas por e-mail">
-            Deseja receber Newsletter?
-          </label>
-
-          <div class="checkbox" style="margin: 0;">
-
-            <label>
-              <h:selectBooleanCheckbox styleClass="cadastroNewsletter"    
-                                       value="#{clienteBean.cliente.newsletter}"
-                                       pt:data-toggle="toggle"
-                                       pt:checked="checked"
-                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
-                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO">
-              </h:selectBooleanCheckbox>
-              via e-mail
-            </label>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      <div class="col-md-6">
-
-        <div class="form-group" id="cadastroTermoContainer">
-
-          <label>
-            Aceita nossa
-            <a href="#{request.contextPath}/politica-de-privacidade"
-               target="_blank"
-               >Política de Privacidade</a>?
-          </label>
-
-          <div class="checkbox" style="margin: 0;">
-
-            <label>
-              <h:selectBooleanCheckbox styleClass="cadastroTermo"
-                                       pt:required=""
-                                       value="#{clienteBean.cliente.privacidade}"                          
-                                       pt:checked="checked"
-                                       pt:data-toggle="toggle"
-                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; SIM"
-                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO"
-                                       pt:data-onstyle="success">
-              </h:selectBooleanCheckbox>
-              aceito a política de privacidade
-            </label>
-
-          </div>
-
-        </div>
-
-      </div>
-
+      
       <div class="clearfix"></div>
 
       <div class="row form-me-cadastrar-botoes">
@@ -316,7 +221,7 @@
 
           <h:commandButton type="submit" id="cadastroCadastrar"
                            styleClass="btn btn-block btn-success"
-                           action="#{clienteBean.cadastrar()}"
+                           action="#{hotelBean.cadastrar()}"
                            value="CADASTRAR">
           </h:commandButton>
 
