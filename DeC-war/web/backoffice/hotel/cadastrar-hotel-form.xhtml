@@ -42,7 +42,7 @@
                          pt:required=""
                          id="cadastroNome"
                          value="#{hotelBean.hotel.nome}"
-                         pt:placeholder="Ex.: Lebre Rio de Janeiro">
+                         pt:placeholder="Ex.: Carioca Lebre">
               <f:validateLength minimum="10" maximum="100"/>
             </h:inputText>
 
@@ -72,12 +72,12 @@
 
             </div>
 
-                          <h:inputText styleClass="form-control cadastroNome" 
+            <h:inputText styleClass="form-control cadastroCidade" 
                          pt:required=""
-                         id="cadastroNome"
-                         value="#{hotelBean.hotel.nome}"
-                         pt:placeholder="Ex.: Lebre Rio de Janeiro">
-              <f:validateLength minimum="10" maximum="100"/>
+                         id="cadastroCidade"
+                         value="#{hotelBean.hotel.cidade}"
+                         pt:placeholder="Ex.: Rio de Janeiro">
+              <f:validateLength minimum="5" maximum="100"/>
             </h:inputText>
 
           </div>
@@ -90,28 +90,28 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" id="cadastroNascimentoContainer">
+        <div class="form-group" id="cadastroQuartosContainer">
 
-          <label for="cadastroNascimento">
-            Data de Nascimento:
+          <label for="cadastroQuartos">
+            Quantidade de quartos:
           </label>
 
           <div class="input-group">
 
             <div class="input-group-addon">
 
-              <label for="cadastroNascimento">
+              <label for="cadastroQuartos">
                 <i class="fa fa-fw fa-calendar"></i>
               </label>
 
             </div>
 
-            <h:inputText styleClass="form-control cadastroNascimento"
+            <h:inputText styleClass="form-control cadastroQuartos"
                          pt:required=""
-                         id="cadastroNascimento"
-                         value="#{clienteBean.cliente.dataNascimento}"
-                         pt:placeholder="Ex.: 01/01/1970">  
-              <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                         id="cadastroQuartos"
+                         value="#{hotelBean.hotel.quartos}"
+                         pt:placeholder="Ex.: 100">
+              <f:validateLength minimum="5" maximum="100"/>
             </h:inputText>
 
           </div>
