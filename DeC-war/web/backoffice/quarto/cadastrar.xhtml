@@ -8,7 +8,7 @@
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Quarto</ui:define>
+    <ui:define name="pagina-titulo">Cadastro de Quarto</ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -16,7 +16,7 @@
       <header>
 
         <h2 class="page-header">
-          Cadastro de Quartos
+          Cadastro de Quarto
         </h2>
 
       </header>
@@ -34,53 +34,124 @@
                                    pt:checked="checked">
           </h:selectBooleanCheckbox>
 
-          <!-- Tipo Quarto-->
-          <div class="form-group">
+          <div class="col-md-4">
 
-            <h:outputLabel value="Tipo: " />
+            <!-- Hotel do Quarto -->
+            <div class="form-group">
 
-            <h:selectOneMenu styleClass="form-control"
+              <label for="cadastroQuartoHotel">
+                Hotel do Quarto:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroQuartoHotel">
+                    <i class="fa fa-fw fa-building"></i>
+                  </label>
+
+                </div>
+
+                <h:selectOneMenu styleClass="form-control"
+                                 pt:required=""
+                                 pt:id="cadastroQuartoHotel"
+                                 value="#{quartoBean.quarto.hotel}">
+                  <f:selectItem itemValue="" itemLabel="Selecione..." />
+                </h:selectOneMenu>
+
+              </div>
+
+            </div>
+            <!-- Hotel do Quarto -->
+
+            <div class="clearfix"></div>
+
+            <!-- Tipo Quarto -->
+            <div class="form-group">
+
+              <label for="cadastroQuartoCategoria">
+                Categoria do Quarto:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroQuartoCategoria">
+                    <i class="fa fa-fw fa-tags"></i>
+                  </label>
+
+                </div>
+
+                <h:selectOneMenu styleClass="form-control"
+                                 pt:required=""
+                                 pt:id="cadastroQuartoCategoria"
+                                 value="#{quartoBean.quarto.categoria}">
+
+                  <f:selectItem itemValue="" itemLabel="Selecione..." />
+                  <f:selectItem itemValue="Solteiro" itemLabel="Solteiro" /> 
+                  <f:selectItem itemValue="Solteiro Duplo" itemLabel="Solteiro Duplo" />   
+                  <f:selectItem itemValue="Casal" itemLabel="Casal" />
+                  <f:selectItem itemValue="Casal Duplo" itemLabel="Casal Duplo" />
+                  <f:selectItem itemValue="Quarto Conjulgado" itemLabel="Quarto Conjulgado" />
+
+                </h:selectOneMenu>
+
+              </div>
+
+            </div>
+            <!-- Tipo Quarto -->
+
+            <div class="clearfix"></div>
+
+            <!-- Quantidade de Quartos -->
+            <div class="form-group">
+
+              <label for="cadastroQuartoQuantidade">
+                Quantidade de Quartos:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroQuartoQuantidade">
+                    <i class="fa fa-fw fa-bed"></i>
+                  </label>
+
+                </div>
+
+                <h:inputText styleClass="form-control"
                              pt:required=""
-                             value="#{quartoBean.quarto.tipoQuarto}">
+                             pt:type="number"
+                             pt:id="cadastroQuartoQuantidade"
+                             value="#{quartoBean.quarto.quantidade}"
+                             pt:placeholder="Ex.: 4" />
 
-              <f:selectItem itemValue="" itemLabel="Selecione..." />
-              <f:selectItem itemValue="Solteiro" itemLabel="Solteiro" /> 
-              <f:selectItem itemValue="Solteiro Duplo" itemLabel="Solteiro Duplo" />   
-              <f:selectItem itemValue="Casal" itemLabel="Casal" />
-              <f:selectItem itemValue="Casal Duplo" itemLabel="Casal Duplo" />
-              <f:selectItem itemValue="Quarto Conjulgado" itemLabel="Quarto Conjulgado" />
+              </div>
 
-            </h:selectOneMenu>   
-
-          </div>
-          <!-- Tipo Quarto-->
-
-          <!-- Valor do Quarto-->
-          <div class="form-group">
-
-            <h:outputLabel value="Valor do quarto: " />
-
-            <h:inputText styleClass="form-control"
-                         pt:required="" />
+            </div>
+            <!-- Quantidade de Quartos -->
 
           </div>
-          <!-- Valor do Quarto-->
 
-          <!-- Quantidade Disponivel-->      
-          <div class="form-group">
-
-            <h:outputLabel value="Quantidade de quartos: " />
-
-            <h:inputText styleClass="form-control"
-                         pt:required="" />
-
-          </div>
-          <!-- Quantidade Disponivel-->  
+          <div class="clearfix" style="padding: 15px 0px;"></div>
 
           <!-- Botão Cadastrar -->
-          <h:commandButton styleClass="btn btn-lg btn-primary"
-                           value="Cadastrar" /> <!-- NÃO SEI O QUE POR AQUI -->
+          <div class="row">
+
+            <div class="col-md-3">
+
+              <h:commandButton styleClass="btn btn-block btn-lg btn-primary"
+                               value="Cadastrar"
+                               action="#{quartoBean.cadastrar()}"/>
+
+            </div>
+
+          </div>
           <!-- Botão Cadastrar -->
+
         </h:form>
 
       </section>

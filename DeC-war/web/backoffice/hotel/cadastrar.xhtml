@@ -8,7 +8,7 @@
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Quarto</ui:define>
+    <ui:define name="pagina-titulo">Cadastrar Hotel</ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -38,17 +38,17 @@
 
           <div class="col-md-8">
 
-            <div class="form-group" id="cadastroNomeContainer">
+            <div class="form-group">
 
-              <label for="cadastroNome">
-                Nome do Hotel:
+              <label for="cadastroHotelNome">
+                Título do Hotel:
               </label>
 
               <div class="input-group input-group-lg">
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroNome">
+                  <label for="cadastroHotelNome">
 
                     <i class="fa fa-fw fa-building"></i>
 
@@ -56,11 +56,11 @@
 
                 </div>
 
-                <h:inputText styleClass="form-control cadastroNome" 
+                <h:inputText styleClass="form-control cadastroHotelNome" 
                              pt:required=""
-                             id="cadastroNome"
-                             value="#{hotelBean.hotel.nome}"
-                             pt:placeholder="Ex.: Carioca Lebre">
+                             pt:id="cadastroHotelNome"
+                             value="#{hotelBean.hotel.titulo}"
+                             pt:placeholder="Ex.: São Paulo - Brooklin">
                   <f:validateLength minimum="10" maximum="100"/>
                 </h:inputText>
 
@@ -71,33 +71,32 @@
           </div>
           <!-- Nome Hotel-->
 
-          <!-- Cidade Hotel-->
+          <!-- Quartos Hotel -->
           <div class="col-md-4">
 
             <div class="form-group">
 
-              <label class="control-label" for="cadastroCidade">
-                Cidade:
+              <label for="cadastroHotelQuartos">
+                Quantidade de Quartos:
               </label>
 
               <div class="input-group input-group-lg">
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroCidade">
-
-                    <i class="fa fa-fw fa-venus-mars"></i>
-
+                  <label for="cadastroHotelQuartos">
+                    <i class="fa fa-fw fa-bed"></i>
                   </label>
 
                 </div>
 
-                <h:inputText styleClass="form-control cadastroCidade" 
+                <h:inputText styleClass="form-control cadastroHotelQuartos"
                              pt:required=""
-                             id="cadastroCidade"
-                             value="#{hotelBean.hotel.cidade}"
-                             pt:placeholder="Ex.: Rio de Janeiro">
-                  <f:validateLength minimum="5" maximum="100"/>
+                             pt:id="cadastroHotelQuartos"
+                             value="#{hotelBean.hotel.quartos}"
+                             pt:placeholder="Ex.: 100"
+                             pt:type="number">
+                  <f:validateLength minimum="4" maximum="100"/>
                 </h:inputText>
 
               </div>
@@ -105,50 +104,16 @@
             </div>
 
           </div>
-          <!-- Cidade Hotel-->
+          <!-- Quartos Hotel -->
 
-          <!-- Quartos Hotel-->
           <div class="clearfix"></div>
 
-          <div class="col-md-4">
-
-            <div class="form-group" id="cadastroQuartosContainer">
-
-              <label for="cadastroQuartos">
-                Quantidade de quartos:
-              </label>
-
-              <div class="input-group input-group-lg">
-
-                <div class="input-group-addon">
-
-                  <label for="cadastroQuartos">
-                    <i class="fa fa-fw fa-calendar"></i>
-                  </label>
-
-                </div>
-
-                <h:inputText styleClass="form-control cadastroQuartos"
-                             pt:required=""
-                             id="cadastroQuartos"
-                             value="#{hotelBean.hotel.quartos}"
-                             pt:placeholder="Ex.: 100">
-                  <f:validateLength minimum="5" maximum="100"/>
-                </h:inputText>
-
-              </div>
-
-            </div>
-
-          </div>
-          <!-- Cidade Hotel-->
-
           <!-- Endereço Hotel-->
-          <div class="col-md-4">
+          <div class="col-md-8">
 
-            <div class="form-group" id="cadastroEnderecoContainer">
+            <div class="form-group">
 
-              <label for="cadastroEndereco">
+              <label for="cadastroHotelEndereco">
                 Endereço:
               </label>
 
@@ -156,15 +121,15 @@
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroEndereco">
-                    <i class="fa fa-fw fa-barcode"></i>
+                  <label for="cadastroHotelEndereco">
+                    <i class="fa fa-fw fa-map-pin"></i>
                   </label>
 
                 </div>
 
                 <h:inputText styleClass="form-control cadastroEndereco" 
                              pt:required=""
-                             id="cadastroEndereco"
+                             pt:id="cadastroHotelEndereco"
                              value="#{hotelBean.hotel.endereco}"
                              pt:placeholder="Ex.: Av. Paulista, 123" />
 
@@ -175,12 +140,50 @@
           </div>
           <!-- Cidade Hotel-->
 
-          <!-- Telefone Hotel-->
+          <!-- Cidade Hotel-->
           <div class="col-md-4">
 
-            <div class="form-group" id="cadastroTelefoneContainer">
+            <div class="form-group">
 
-              <label for="cadastroTelefone">
+              <label class="control-label" for="cadastroHotelCidade">
+                Cidade:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroHotelCidade">
+
+                    <i class="fa fa-fw fa-map-marker"></i>
+
+                  </label>
+
+                </div>
+
+                <h:inputText styleClass="form-control cadastroCidade" 
+                             pt:required=""
+                             pt:id="cadastroHotelCidade"
+                             value="#{hotelBean.hotel.cidade}"
+                             pt:placeholder="Ex.: São Paulo">
+                  <f:validateLength minimum="5" maximum="100"/>
+                </h:inputText>
+
+              </div>
+
+            </div>
+
+          </div>
+          <!-- Cidade Hotel-->
+
+          <div class="clearfix"></div>
+
+          <!-- Telefone Hotel-->
+          <div class="col-md-6">
+
+            <div class="form-group">
+
+              <label for="cadastroHotelTelefone">
                 Telefone:
               </label>
 
@@ -188,17 +191,18 @@
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroTelefone">
-                    <i class="fa fa-fw fa-barcode"></i>
+                  <label for="cadastroHotelTelefone">
+                    <i class="fa fa-fw fa-phone"></i>
                   </label>
 
                 </div>
 
-                <h:inputText styleClass="form-control cadastroTelefone" 
+                <h:inputText styleClass="form-control cadastroHotelTelefone"
+                             pt:type="phone"
                              pt:required=""
-                             id="cadastroTelefone"
+                             pt:id="cadastroHotelTelefone"
                              value="#{hotelBean.hotel.telefone}"
-                             pt:placeholder="Ex.: 11 1234-5678" />
+                             pt:placeholder="Ex.: (11) 1234-5678" />
 
               </div>
 
@@ -208,13 +212,11 @@
           <!-- Telefone Hotel-->
 
           <!-- Email Hotel-->
-          <div class="clearfix"></div>
+          <div class="col-md-6">
 
-          <div class="col-md-8">
+            <div class="form-group">
 
-            <div class="form-group" id="cadastroEmailContainer">
-
-              <label for="cadastroEmail">
+              <label for="cadastroHotelEmail">
                 E-mail para contato:
               </label>
 
@@ -222,17 +224,17 @@
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroEmail">
+                  <label for="cadastroHotelEmail">
                     <i class="fa fa-fw fa-envelope"></i>
                   </label>
 
                 </div>
 
-                <h:inputText styleClass="form-control cadastroEmail" 
+                <h:inputText styleClass="form-control" 
                              pt:type="email"
-                             pt:placeholder="Ex.: voce@seuprovedor.com"
+                             pt:placeholder="Ex.: saopaulo@lebrehotel.com.br"
                              pt:required=""
-                             id="cadastroEmail"
+                             pt:id="cadastroHotelEmail"
                              value="#{hotelBean.hotel.email}" />
 
               </div>
@@ -242,15 +244,15 @@
           </div>
           <!-- Email Hotel-->
 
-          <!-- Botão Hotel-->
-          <div class="clearfix"></div>
+          <div class="clearfix" style="padding: 15px 0px;"></div>
 
+          <!-- Botão Hotel-->
           <div class="row form-me-cadastrar-botoes">
 
-            <div class="col-md-12">
+            <div class="col-md-3">
 
               <h:commandButton type="submit" id="cadastroCadastrar"
-                               styleClass="btn btn-lg btn-primary"
+                               styleClass="btn btn-block btn-lg btn-primary"
                                action="#{hotelBean.cadastrar()}"
                                value="CADASTRAR">
               </h:commandButton>
@@ -258,6 +260,7 @@
             </div>
 
           </div>
+          <!-- Botão Hotel-->
           <!-- Botão Hotel-->
 
         </h:form>
