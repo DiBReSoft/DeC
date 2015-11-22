@@ -37,7 +37,11 @@ public class ClienteBean {
     //temCadastro = clienteEJB.verificar(cliente);    
     //if (temCadastro) {
     //}
-    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/clientes/me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
+     if(clienteEJB.validar(cliente.getCpf(), cliente.getEmail())){
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/clientes/me-cadastrar?cpf=" + cliente.getCpf()+ "&email=" + cliente.getEmail());
+    }
+
+     
   }
 
   public String autenticar() {

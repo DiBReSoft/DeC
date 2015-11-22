@@ -18,8 +18,10 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "DeC_CLIENTE")
-@NamedQueries(
-  @NamedQuery(name ="Cliente.autenticar", query = "SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha")
+@NamedQueries({
+  @NamedQuery(name ="Cliente.autenticar", query = "SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha"),
+  @NamedQuery(name ="Cliente.validar", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf or c.email = :email")
+}
 )
 
 public class Cliente implements Serializable {
