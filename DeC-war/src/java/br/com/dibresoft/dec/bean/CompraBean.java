@@ -37,7 +37,7 @@ public class CompraBean {
     
     compraEJB.cadastrar(compra);
     
-    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/relatorio");
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
     
   }
   

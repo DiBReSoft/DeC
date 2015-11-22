@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition>
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+
+          <li class="sidebar-search">            
+            <h:form>
+              <div class="input-group custom-search-form disabled" title="Desabilitado">
+                <h:inputText class="form-control" pt:disabled="" pt:placeholder="Buscar (em breve)" />
+                <span class="input-group-btn">
+                  <button class="btn btn-primary disabled" type="button">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </span>
+              </div>
+            </h:form>
+          </li>
+
+          <li>
+            <a href="#{request.contextPath}/backoffice/dashboard">
+              <i class="fa fa-dashboard fa-fw"></i> 
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-building"></i> 
+              Hotel
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="#{request.contextPath}/backoffice/hotel/cadastrar">
+                  Cadastrar
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/hotel/alterar">
+                  Alterar
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/hotel/listar">
+                  Listar
+                </a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-bed"></i> 
+              Quartos
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="#{request.contextPath}/backoffice/quarto/cadastrar">
+                  Cadastrar
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/quarto/alterar">
+                  Alterar
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/quarto/listar">
+                  Listar
+                </a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-bar-chart-o"></i> 
+              Relatórios
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="#{request.contextPath}/backoffice/relatorio/padrao">
+                  Padrão
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/relatorio/grafico">
+                  Gráficos
+                </a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->            
+          </li>
+
+        </ul>
+
+      </div>
+      <!-- /.sidebar-collapse -->
+
+    </div>
+    <!-- /.navbar-static-side -->
+
+  </ui:composition>
+
+</html>
+

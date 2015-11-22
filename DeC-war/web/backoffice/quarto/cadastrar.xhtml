@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Quarto</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header>
+
+        <h2 class="page-header">
+          Cadastro de Quartos
+        </h2>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+        <h:form class="form-cadastrar-quarto cadastroQuartoForm" id="cadastroQuartoForm" enctype="utf-8">
+
+          <h:messages />
+
+          <h:selectBooleanCheckbox styleClass="hidden"
+                                   value="#{quartoBean.quarto.status}"
+                                   pt:checked="checked">
+          </h:selectBooleanCheckbox>
+
+          <!-- Tipo Quarto-->
+          <div class="form-group">
+
+            <h:outputLabel value="Tipo: " />
+
+            <h:selectOneMenu styleClass="form-control"
+                             pt:required=""
+                             value="#{quartoBean.quarto.tipoQuarto}">
+
+              <f:selectItem itemValue="" itemLabel="Selecione..." />
+              <f:selectItem itemValue="Solteiro" itemLabel="Solteiro" /> 
+              <f:selectItem itemValue="Solteiro Duplo" itemLabel="Solteiro Duplo" />   
+              <f:selectItem itemValue="Casal" itemLabel="Casal" />
+              <f:selectItem itemValue="Casal Duplo" itemLabel="Casal Duplo" />
+              <f:selectItem itemValue="Quarto Conjulgado" itemLabel="Quarto Conjulgado" />
+
+            </h:selectOneMenu>   
+
+          </div>
+          <!-- Tipo Quarto-->
+
+          <!-- Valor do Quarto-->
+          <div class="form-group">
+
+            <h:outputLabel value="Valor do quarto: " />
+
+            <h:inputText styleClass="form-control"
+                         pt:required="" />
+
+          </div>
+          <!-- Valor do Quarto-->
+
+          <!-- Quantidade Disponivel-->      
+          <div class="form-group">
+
+            <h:outputLabel value="Quantidade de quartos: " />
+
+            <h:inputText styleClass="form-control"
+                         pt:required="" />
+
+          </div>
+          <!-- Quantidade Disponivel-->  
+
+          <!-- Botão Cadastrar -->
+          <h:commandButton styleClass="btn btn-lg btn-primary"
+                           value="Cadastrar" /> <!-- NÃO SEI O QUE POR AQUI -->
+          <!-- Botão Cadastrar -->
+        </h:form>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

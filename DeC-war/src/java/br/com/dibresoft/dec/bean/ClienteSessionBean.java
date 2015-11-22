@@ -28,7 +28,7 @@ public class ClienteSessionBean {
     cliente = new Cliente();
 
     // SOMENTE PARA PRÉ-APRESENTAÇÃO
-    cliente = clienteEJB.buscarClientePorId(4L);
+    /*cliente = clienteEJB.buscarClientePorId(4L);*/
   }
 
   public Cliente getCliente() {
