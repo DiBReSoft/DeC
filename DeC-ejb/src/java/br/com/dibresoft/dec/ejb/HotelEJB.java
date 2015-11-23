@@ -19,17 +19,19 @@ public class HotelEJB implements HotelEJBLocal {
 
   @Override
   public void cadastrar(Hotel hotel) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    
+    em.persist(hotel);
+    
   }
 
   @Override
   public void buscar(Hotel hotel) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    
   }
 
   @Override
   public void alterar(Hotel hotel) {
-    throw new UnsupportedOperationException("Not supported yet.");
+    em.refresh(hotel);
   }
 
   @Override
@@ -43,6 +45,14 @@ public class HotelEJB implements HotelEJBLocal {
     List<Hotel> hoteis = query.getResultList();
     System.out.println("Número de hoteis encontrados: " + hoteis.size());
     return hoteis;
+  }
+
+  @Override
+  public Hotel buscarHotel(String nome) {
+  
+    Query query = em.createQuery("Select c from DeC_HOTEL where c c.nome = " + nome);
+  
+    return (Hotel) query.getSingleResult();
   }
 
 }

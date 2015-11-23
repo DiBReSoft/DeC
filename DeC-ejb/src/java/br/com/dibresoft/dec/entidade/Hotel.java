@@ -22,10 +22,14 @@ public class Hotel implements Serializable {
   private Long id;
 
   private boolean status;
-
-  private String titulo;
+  
+  private String tituloHotel;
   @OneToOne
   private Endereco endereco;
+  private int qtdeQuartos;
+  private String cidade;
+  private int telefone;
+  private String email;
 
   public Long getId() {
     return id;
@@ -44,11 +48,11 @@ public class Hotel implements Serializable {
   }
 
   public String getTitulo() {
-    return titulo;
+    return tituloHotel;
   }
 
-  public void setTitulo(String titulo) {
-    this.titulo = titulo;
+  public void setTitulo(String tituloHotel) {
+    this.tituloHotel = tituloHotel;
   }
 
   public Endereco getEndereco() {
@@ -82,6 +86,46 @@ public class Hotel implements Serializable {
   @Override
   public String toString() {
     return "br.com.dibresoft.dec.entidade.Hotel[ id=" + id + " ]";
+  }
+
+  public String getTituloHotel() {
+    return tituloHotel;
+  }
+
+  public void setTituloHotel(String tituloHotel) {
+    this.tituloHotel = tituloHotel;
+  }
+
+  public int getQtdeQuartos() {
+    return qtdeQuartos;
+  }
+
+  public void setQtdeQuartos(int qtdeQuartos) {
+    this.qtdeQuartos = qtdeQuartos;
+  }
+
+  public String getCidade() {
+    return cidade;
+  }
+
+  public void setCidade(String cidade) {
+    this.cidade = cidade;
+  }
+
+  public int getTelefone() {
+    return telefone;
+  }
+
+  public void setTelefone(int telefone) {
+    this.telefone = telefone;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
 }
