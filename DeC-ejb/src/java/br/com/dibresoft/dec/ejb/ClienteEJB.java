@@ -40,9 +40,21 @@ public class ClienteEJB implements ClienteEJBLocal {
     }
 
     @Override
-    public boolean validarCpf(Cliente membro) {
-        em.find(Cliente.class, membro);
-        return em.contains(membro);
+    public boolean validar(String cpf, String email) {
+        List <Cliente> clientes;
+    
+    Query q = em.createNamedQuery("Cliente.validar");
+    q.setParameter("cpf",cpf);
+    q.setParameter("email",email);
+    
+    clientes = q.getResultList();
+        
+    if (clientes.size() > 0){
+      
+    return true;
+    }
+    
+   return false; 
     }
 
   @Override

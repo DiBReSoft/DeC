@@ -45,7 +45,8 @@
             <f:facet name="header">Data da Compra</f:facet>
             <!-- trazer linha-->
             <h:outputText value="#{venda.dataCompra}">
-              <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+              <f:convertDateTime pattern="dd/MM/yyyy hh:mm" locale="pt-BR" timeZone="GMT-03:00"
+                                 dateStyle="short"/>
             </h:outputText>
           </h:column>
 

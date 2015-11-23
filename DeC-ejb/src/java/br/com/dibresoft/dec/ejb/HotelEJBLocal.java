@@ -20,5 +20,7 @@ public interface HotelEJBLocal {
   public void inativar(Hotel hotel);
 
   public List<Hotel> listarTodos();
+  
+  public Hotel buscarHotel(String nome);
 
 }
