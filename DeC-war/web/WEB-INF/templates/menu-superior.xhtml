@@ -68,7 +68,7 @@
               <!-- Split button -->
               <c:choose>
 
-                <c:when test="#{clienteSessionBean.cliente != null}">
+                  <c:when test="#{clienteSessionBean.cliente.nome != null}">
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
                             data-toggle="modal" data-target="#login"

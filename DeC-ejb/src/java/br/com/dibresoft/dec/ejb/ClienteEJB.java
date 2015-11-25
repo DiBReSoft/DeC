@@ -49,7 +49,7 @@ public class ClienteEJB implements ClienteEJBLocal {
     
     clientes = q.getResultList();
         
-    if (clientes.size() > 0){
+    if (clientes.isEmpty()){
       
     return true;
     }
@@ -63,7 +63,8 @@ public class ClienteEJB implements ClienteEJBLocal {
   }
 
   @Override
-  public boolean autenticar(String email, String senha) {
+  public Cliente autenticar(String email, String senha) {
+    Cliente c = null;
     List <Cliente> clientes;
     
     Query q = em.createNamedQuery("Cliente.autenticar");
@@ -73,11 +74,12 @@ public class ClienteEJB implements ClienteEJBLocal {
     clientes = q.getResultList();
         
     if (clientes.size() > 0){
+      c = clientes.get(0);
       
-    return true;
+    return c;
     }
     
-   return false; 
+   return c; 
   }
 
   @Override

@@ -15,7 +15,7 @@ INSERT INTO app.DEC_ENDERECO (ID, BAIRRO, CEP, CIDADE, COMPLEMENTO, ESTADO, LOGR
           (4, 'Maragogi', '04402127', 'Alagoas', '', 'AL', 'Av. Francisco almeida', '1230', 'Brasil', 1);
 
 
-INSERT INTO app.DEC_HOTEL (ID, STATUS, TITULO, ENDERECO_ID) 
+INSERT INTO app.DEC_HOTEL (ID, STATUS, TITULOHOTEL, ENDERECO_ID) 
 	VALUES 
            (1, 1, 'Rio de Janeiro' , 1),
            (2, 1, 'Rio de Janeiro II' , 2),

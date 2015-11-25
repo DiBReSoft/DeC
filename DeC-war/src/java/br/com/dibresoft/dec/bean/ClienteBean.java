@@ -44,14 +44,7 @@ public class ClienteBean {
      
   }
 
-  public String autenticar() {
-    if(clienteEJB.autenticar(cliente.getEmail(), cliente.getSenha())){
-      return "home?faces-redirect=true";
-    }
-
-    return "404?faces-redirect=true";
-  }
-
+  
   public Cliente getCliente() {
     return cliente;
   }

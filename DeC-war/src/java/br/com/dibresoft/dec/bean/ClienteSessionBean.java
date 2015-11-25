@@ -38,5 +38,18 @@ public class ClienteSessionBean {
   public void setCliente(Cliente cliente) {
     this.cliente = cliente;
   }
+  
+  public String autenticar() {
+    cliente = clienteEJB.autenticar(cliente.getEmail(), cliente.getSenha());
+    if(cliente != null){
+      return "home?faces-redirect=true";
+    }
+
+    return "404?faces-redirect=true";
+  }
+  
+  
+
+
 
 }

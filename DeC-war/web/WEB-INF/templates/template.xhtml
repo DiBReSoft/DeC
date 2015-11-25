@@ -72,7 +72,7 @@
                 <h:inputText class="form-control"
                              required="required"
                              id="usuarioCredencial"
-                             value="#{clienteBean.cliente.email}" />
+                             value="#{clienteSessionBean.cliente.email}" />
 
               </div>
 
@@ -82,11 +82,11 @@
               <h:inputSecret class="form-control"
                              required="required"
                              id="usuarioSenha"
-                             value="#{clienteBean.cliente.senha}" />
+                             value="#{clienteSessionBean.cliente.senha}" />
 
               <h:commandButton  class="btn btn-block btn-sm btn-primary"
                                 value="Login"
-                                action="#{clienteBean.autenticar()}">
+                                action="#{clienteSessionBean.autenticar()}">
 
               </h:commandButton>
 

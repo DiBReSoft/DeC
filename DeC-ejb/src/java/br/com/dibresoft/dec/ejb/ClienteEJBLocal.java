@@ -22,7 +22,7 @@ public interface ClienteEJBLocal {
   
   public Cliente buscarClientePorId(long id);
   
-  public boolean autenticar (String email, String senha);
+  public Cliente autenticar (String email, String senha);
   
   
 
