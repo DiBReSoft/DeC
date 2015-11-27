@@ -4,7 +4,7 @@ INSERT INTO app.DEC_CLIENTE (ID,NOME, SEXO, DATANASCIMENTO, CPF, RG, EMAIL, SENH
           (2,'Luciano', 'M', '2015-10-08', 'Teste', 'Teste', 'Teste', '123456', 1, 1,1),
           (3,'Fabio', 'M', '2015-10-08', 'Teste', 'Teste', 'Teste', '123456', 1, 1,1),
           (4,'Larissa', 'F', '2015-10-08', 'Teste', 'Teste', 'Teste', '123456', 1, 0,1),
-          (5,'Thiago', 'M', '2015-10-08', 'Teste', 'Teste', 'Teste', '123456', 1, 1,1),
+          (5,'Thiago', 'M', '2015-10-08', '41229801863', 'Teste', 'thiago@novatela.com.br', '123456', 1, 1,1),
           (6,'Renato', 'M', '2015-10-08', 'Teste', 'Teste', 'Teste', '123456', 1, 1,1);
 
 INSERT INTO app.DEC_ENDERECO (ID, BAIRRO, CEP, CIDADE, COMPLEMENTO, ESTADO, LOGRADOURO, NUMERO, PAIS, STATUS) 
