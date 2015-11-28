@@ -4,7 +4,9 @@ import br.com.dibresoft.dec.ejb.EnderecoEJBLocal;
 import br.com.dibresoft.dec.ejb.HotelEJBLocal;
 import br.com.dibresoft.dec.entidade.Endereco;
 import br.com.dibresoft.dec.entidade.Hotel;
+import br.com.dibresoft.dec.entidade.Quarto;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
@@ -12,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 
 /**
  *
@@ -27,6 +30,7 @@ public class HotelBean {
   private List<Hotel> hoteis;
   private List<Hotel> hoteisAtivos;
   private List<Hotel> hoteisInativos;
+  private List<Quarto> quartos;
 
   @EJB
   private HotelEJBLocal hotelEJB;
@@ -37,6 +41,7 @@ public class HotelBean {
   @PostConstruct
   public void init() {
     hotel = new Hotel();
+    hotel.setStatus(true);
     endereco = new Endereco();
     endereco.setPais("Brasil");
     hoteis = hotelEJB.listarTodos();
@@ -45,7 +50,7 @@ public class HotelBean {
   }
 
   public void cadastrar() throws IOException {
-    
+
     endereco.setHotel(hotel);
 
     hotel.setEndereco(endereco);
@@ -70,28 +75,6 @@ public class HotelBean {
 
   }
 
-  public void inativar() throws IOException {
-
-    endereco.setHotel(hotel);
-
-    hotel.setEndereco(endereco);
-
-    hotelEJB.inativar(hotel);
-    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
-
-  }
-
-  public void reativar() throws IOException {
-
-    endereco.setHotel(hotel);
-
-    hotel.setEndereco(endereco);
-
-    hotelEJB.reativar(hotel);
-    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
-
-  }
-
   public void carregarInfos() {
 
     Map<String, String> params = FacesContext.getCurrentInstance().
@@ -110,13 +93,27 @@ public class HotelBean {
 
   }
 
+  public List<SelectItem> getComboHoteis() {
+
+    List<SelectItem> lista = new ArrayList<>();
+
+    for (Hotel hotel : hoteisAtivos) {
+      lista.add(
+              new SelectItem(
+                      hotel.getId(),
+                      hotel.getEndereco().getEstado() + " - " + hotel.getTituloHotel()
+              )
+      );
+    }
+    return lista;
+  }
+
   public Hotel getHotel() {
     return hotel;
   }
 
   public void setHotel(Hotel hotel) {
     this.hotel = hotel;
-
   }
 
   public Endereco getEndereco() {
@@ -149,6 +146,14 @@ public class HotelBean {
 
   public void setHoteisInativos(List<Hotel> hoteisInativos) {
     this.hoteisInativos = hoteisInativos;
+  }
+
+  public List<Quarto> getQuartos() {
+    return quartos;
+  }
+
+  public void setQuartos(List<Quarto> quartos) {
+    this.quartos = quartos;
   }
 
 }

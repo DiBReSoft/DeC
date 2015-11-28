@@ -17,10 +17,6 @@ public interface HotelEJBLocal {
 
   public void alterar(Hotel hotel);
 
-  public void inativar(Hotel hotel);
-
-  public void reativar(Hotel hotel);
-
   public List<Hotel> listarTodos();
 
   public List<Hotel> listarAtivos();

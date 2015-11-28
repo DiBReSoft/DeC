@@ -17,25 +17,70 @@ public class QuartoEJB implements QuartoEJBLocal {
   @PersistenceContext
   private EntityManager em;
 
-  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
   @Override
-  public boolean cadastrar(Quarto quarto) {
+  public void cadastrar(Quarto quarto) {
+
     em.persist(quarto);
-    return true;
+
   }
 
-  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
+  @Override
+  public void buscar(Quarto quarto) {
+
+  }
+
+  @Override
+  public void alterar(Quarto quarto) {
+
+    em.merge(quarto);
+
+  }
 
   @Override
   public List<Quarto> listarTodos() {
-    Query query = em.createQuery("Select c from Quarto c");
-    return query.getResultList();
+
+    Query query = em.createQuery("Select c from Quarto c ORDER BY c.titulo");
+
+    List<Quarto> hoteis = query.getResultList();
+
+    return hoteis;
+
   }
 
   @Override
-  public Quarto getQuartoById(long id) {
-    Query query = em.createQuery("Select c from Quarto c where c.id = " + id);
-    return (Quarto) query.getSingleResult();
+  public List<Quarto> listarAtivos() {
+
+    Query query = em.createQuery("Select c from Quarto c WHERE c.status = 1 ORDER BY c.titulo");
+
+    List<Quarto> hoteis = query.getResultList();
+
+    return hoteis;
+
+  }
+
+  @Override
+  public List<Quarto> listarInativos() {
+
+    Query query = em.createQuery("Select c from Quarto c WHERE c.status = 0 ORDER BY c.titulo");
+
+    List<Quarto> hoteis = query.getResultList();
+
+    return hoteis;
+
+  }
+
+  @Override
+  public Quarto buscarQuarto(String tituloQuarto) {
+
+    return em.find(Quarto.class, tituloQuarto);
+
+  }
+
+  @Override
+  public Quarto buscarQuartoPorID(Long id) {
+
+    return em.find(Quarto.class, id);
+
   }
 
 }

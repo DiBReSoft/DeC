@@ -1,13 +1,14 @@
 package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -36,6 +37,9 @@ public class Hotel implements Serializable {
 
   @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
   private Endereco endereco;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Quarto quartos;
 
   public Long getId() {
     return id;
@@ -91,6 +95,14 @@ public class Hotel implements Serializable {
 
   public void setEndereco(Endereco endereco) {
     this.endereco = endereco;
+  }
+
+  public Quarto getQuartos() {
+    return quartos;
+  }
+
+  public void setQuartos(Quarto quartos) {
+    this.quartos = quartos;
   }
 
   @Override

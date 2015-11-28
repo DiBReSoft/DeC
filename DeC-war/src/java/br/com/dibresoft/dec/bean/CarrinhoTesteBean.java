@@ -52,7 +52,7 @@ public class CarrinhoTesteBean {
       reserva.setId(lista.size());
       
       long oi = reserva.getQuarto().getId();
-      reserva.setQuarto(quartoEJB.getQuartoById(oi));
+      reserva.setQuarto(quartoEJB.buscarQuartoPorID(oi));
       
       double valorEstadia = reservaEJB.calcularValorReserva(reserva);      
       reserva.setValorEstadia(valorEstadia);

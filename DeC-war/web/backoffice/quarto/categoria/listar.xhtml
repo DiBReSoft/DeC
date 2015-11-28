@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Lista de Categorias de Quartos</ui:define>
+
+    <ui:define name="pagina-head">
+      <style type="text/css">
+        hr {
+          margin-top: 55px;
+          margin-bottom: 35px;
+        }
+      </style>
+    </ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header>
+
+        <h2 class="page-header">
+          Lista de Categorias de Quartos
+        </h2>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <c:choose>
+
+          <c:when test="#{not empty categoriaBean.categoriasAtivas or not empty categoriaBean.categoriasInativas}">
+
+            <div class="row">
+
+              <div class="col-md-8">
+
+                <h3>
+                  Categorias Ativas
+                </h3>
+
+                <div class="list-group">
+
+                  <ui:repeat value="#{categoriaBean.categoriasAtivas}" var="_categoria">
+
+                    <a href="#{request.contextPath}/backoffice/quarto/categoria/alterar?id=#{_categoria.id}" class="list-group-item">
+
+                      <h4 class="list-group-item-heading">
+                        #{_categoria.titulo}
+                      </h4>
+
+                      <p class="list-group-item-text">
+                        <i class="fa fa-fw fa-money"></i>
+                        Diária:
+                        <h:outputText value="#{_categoria.valor}">
+                          <f:convertNumber currencyCode="BRL" type="currency" />
+                        </h:outputText>
+                      </p>
+
+                    </a>
+
+                  </ui:repeat>
+
+                </div>
+
+
+                <c:if test="#{not empty categoriaBean.categoriasInativas}">
+
+                  <hr />
+
+                  <h3>
+                    Categorias Inativas
+                  </h3>
+
+                  <div class="list-group">
+
+                    <ui:repeat value="#{categoriaBean.categoriasInativas}" var="_categoria">
+
+                      <a href="#{request.contextPath}/backoffice/quarto/categoria/alterar?id=#{_categoria.id}" class="list-group-item">
+
+                        <h4 class="list-group-item-heading">
+                          #{_categoria.titulo}
+                        </h4>
+
+                        <p class="list-group-item-text">
+                          <i class="fa fa-fw fa-money"></i>
+                          Diária:
+                          <h:outputText value="#{_categoria.valor}">
+                            <f:convertNumber currencyCode="BRL" type="currency" />
+                          </h:outputText>
+                        </p>
+
+                      </a>
+
+                    </ui:repeat>
+
+                  </div>
+
+                </c:if>
+
+              </div>
+
+              <div class="col-md-4">
+
+                <h3 class="text-muted">
+                  <i class="fa fa-info-circle"></i>
+                </h3>
+
+                <p class="lead text-muted">
+                  Ao clicar em uma das categorias, você pode visualizar ou 
+                  alterar as informações dela.
+                </p>
+
+              </div>
+
+            </div>
+
+          </c:when>
+
+          <c:otherwise>
+
+            <p class="lead">
+              Não existem categorias cadastradas no momento.
+            </p>
+            <p class="lead">
+              Acesse o menu lateral para cadastrar uma Categoria de Quarto no sistema.
+            </p>
+
+          </c:otherwise>          
+
+        </c:choose>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

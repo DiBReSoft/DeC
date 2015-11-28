@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
@@ -10,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,8 +12,8 @@ import javax.persistence.Table;
  * @author udimberto.sjunior
  */
 @Entity
-@Table(name = "DeC_QUARTO")
-public class Quarto implements Serializable {
+@Table(name = "DeC_CATEGORIA")
+public class Categoria implements Serializable {
 
   private static final long serialVersionUID = 1L;
   @Id
@@ -27,13 +21,7 @@ public class Quarto implements Serializable {
   private Long id;
 
   private boolean status;
-  
   private String titulo;
-
-  @OneToOne
-  private Hotel hotel;
-
-  private String categoria;
 
   private double valor;
 
@@ -61,22 +49,6 @@ public class Quarto implements Serializable {
     this.titulo = titulo;
   }
 
-  public Hotel getHotel() {
-    return hotel;
-  }
-
-  public void setHotel(Hotel hotel) {
-    this.hotel = hotel;
-  }
-
-  public String getCategoria() {
-    return categoria;
-  }
-
-  public void setCategoria(String categoria) {
-    this.categoria = categoria;
-  }
-
   public double getValor() {
     return valor;
   }
@@ -95,10 +67,10 @@ public class Quarto implements Serializable {
   @Override
   public boolean equals(Object object) {
     // TODO: Warning - this method won't work in the case the id fields are not set
-    if (!(object instanceof Quarto)) {
+    if (!(object instanceof Categoria)) {
       return false;
     }
-    Quarto other = (Quarto) object;
+    Categoria other = (Categoria) object;
     if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
       return false;
     }
@@ -107,7 +79,7 @@ public class Quarto implements Serializable {
 
   @Override
   public String toString() {
-    return "br.com.dibresoft.dec.entidade.Quarto[ id=" + id + " ]";
+    return "br.com.dibresoft.dec.entidade.Categoria[ id=" + id + " ]";
   }
 
 }

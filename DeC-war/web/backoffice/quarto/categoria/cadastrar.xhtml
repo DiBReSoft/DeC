@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Cadastro de Categoria de Quarto</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header>
+
+        <h2 class="page-header">
+          Cadastro de Categoria de Quarto
+        </h2>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+        <h:form class="form-cadastrar-categoria cadastroCategoriaForm" id="cadastroCategoriaForm" enctype="utf-8">
+
+          <h:messages />
+
+          <h:selectBooleanCheckbox styleClass="hidden"
+                                   value="#{categoriaBean.categoria.status}"
+                                   pt:checked="checked">
+          </h:selectBooleanCheckbox>
+
+          <div class="col-md-4">
+
+            <!-- Categoria Titulo -->
+            <div class="form-group">
+
+              <label for="cadastroCategoriaTitulo">
+                Titulo da Categoria:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroCategoriaTitulo">
+                    <i class="fa fa-fw fa-bed"></i>
+                  </label>
+
+                </div>
+
+                <h:inputText styleClass="form-control"
+                             pt:required=""
+                             pt:id="cadastroCategoriaTitulo"
+                             value="#{categoriaBean.categoria.titulo}"
+                             pt:placeholder="Ex.: Solteiro Duplo" />
+
+              </div>
+
+            </div>
+            <!-- Categoria Titulo -->
+
+            <!-- Categoria Valor -->
+            <div class="form-group">
+
+              <label for="cadastroCategoriaValor">
+                Valor da Categoria:
+              </label>
+
+              <div class="input-group input-group-lg">
+
+                <div class="input-group-addon">
+
+                  <label for="cadastroCategoriaValor">
+                    <i class="fa fa-fw fa-money"></i>
+                  </label>
+
+                </div>
+
+                <h:inputText styleClass="form-control"
+                             pt:required=""
+                             pt:id="cadastroCategoriaValor"
+                             value="#{categoriaBean.categoria.valor}"
+                             pt:placeholder="Ex.: 149.90" />
+
+              </div>
+
+            </div>
+            <!-- Categoria Valor -->
+
+          </div>
+
+          <div class="clearfix" style="padding: 15px 0px;"></div>
+
+          <!-- Botão Cadastrar -->
+          <div class="row">
+
+            <div class="col-md-3">
+
+              <button jsf:action="#{categoriaBean.cadastrar()}"
+                      styleClass="btn btn-block btn-lg btn-primary">
+                <i class="fa fa-lg fa-floppy-o"></i>
+                CADASTRAR
+              </button>
+
+            </div>
+
+          </div>
+          <!-- Botão Cadastrar -->
+
+        </h:form>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

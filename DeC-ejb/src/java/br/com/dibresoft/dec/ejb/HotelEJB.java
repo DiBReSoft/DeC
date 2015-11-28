@@ -38,22 +38,6 @@ public class HotelEJB implements HotelEJBLocal {
   }
 
   @Override
-  public void inativar(Hotel hotel) {
-
-    hotel.setStatus(false);    
-    em.merge(hotel);
-
-  }
-  
-  @Override
-  public void reativar(Hotel hotel) {
-
-    hotel.setStatus(true);    
-    em.merge(hotel);
-
-  }
-
-  @Override
   public List<Hotel> listarTodos() {
 
     Query query = em.createQuery("Select c from Hotel c ORDER BY c.tituloHotel");

@@ -6,7 +6,7 @@
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Lista de Hotéis</ui:define>
+    <ui:define name="pagina-titulo">Lista de Quartos</ui:define>
 
     <ui:define name="pagina-head">
       <style type="text/css">
@@ -23,7 +23,7 @@
       <header>
 
         <h2 class="page-header">
-          Lista de Hotéis
+          Lista de Quartos
         </h2>
 
       </header>
@@ -33,51 +33,42 @@
 
         <c:choose>
 
-          <c:when test="#{not empty hotelBean.hoteisAtivos or not empty hotelBean.hoteisInativos}">
+          <c:when test="#{not empty quartoBean.quartosAtivos or not empty quartoBean.quartosInativos}">
 
             <div class="row">
 
               <div class="col-md-8">
 
                 <h3>
-                  Unidades Ativas
+                  Quartos Ativos
                 </h3>
 
                 <div class="list-group">
 
-                  <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
+                  <ui:repeat value="#{quartoBean.quartosAtivos}" var="_quarto">
 
-                    <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                    <a href="#{request.contextPath}/backoffice/quarto/alterar?id=#{_quarto.id}" class="list-group-item">
+
                       <h4 class="list-group-item-heading">
-                        #{_hotel.tituloHotel}
+                        #{_quarto.titulo}
                       </h4>
+
                       <div class="row">
 
-                        <div class="col-sm-3">
+                        <div class="col-sm-4">
 
                           <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-map-marker"></i>
-                            #{_hotel.endereco.cidade}
-                            -
-                            #{_hotel.endereco.estado}
+                            <i class="fa fa-fw fa-building"></i>
+                            #{_quarto.hotel.tituloHotel}
                           </p>
 
                         </div>
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
 
                           <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-envelope"></i>
-                            #{_hotel.email}
-                          </p>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                          <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-phone"></i>
-                            #{_hotel.telefone}
+                            <i class="fa fa-fw fa-tags"></i>
+                            #{_quarto.categoria}
                           </p>
 
                         </div>
@@ -91,49 +82,40 @@
                 </div>
 
 
-                <c:if test="#{not empty hotelBean.hoteisInativos}">
+                <c:if test="#{not empty quartoBean.quartosInativos}">
 
                   <hr />
 
                   <h3>
-                    Unidades Inativas
+                    Quartos Inativos
                   </h3>
 
                   <div class="list-group">
 
-                    <ui:repeat value="#{hotelBean.hoteisInativos}" var="_hotel">
+                    <ui:repeat value="#{quartoBean.quartosInativos}" var="_quarto">
 
-                      <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                      <a href="#{request.contextPath}/backoffice/quarto/alterar?id=#{_quarto.id}" class="list-group-item">
+
                         <h4 class="list-group-item-heading">
-                          #{_hotel.tituloHotel}
+                          #{_quarto.titulo}
                         </h4>
+
                         <div class="row">
 
-                          <div class="col-sm-3">
+                          <div class="col-sm-4">
 
                             <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-map-marker"></i>
-                              #{_hotel.endereco.cidade}
-                              -
-                              #{_hotel.endereco.estado}
+                              <i class="fa fa-fw fa-building"></i>
+                              #{_quarto.hotel.tituloHotel}
                             </p>
 
                           </div>
 
-                          <div class="col-sm-6">
+                          <div class="col-sm-5">
 
                             <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-envelope"></i>
-                              #{_hotel.email}
-                            </p>
-
-                          </div>
-
-                          <div class="col-sm-3">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-phone"></i>
-                              #{_hotel.telefone}
+                              <i class="fa fa-fw fa-tags"></i>
+                              #{_quarto.categoria}
                             </p>
 
                           </div>
@@ -157,7 +139,7 @@
                 </h3>
 
                 <p class="lead text-muted">
-                  Ao clicar em um dos hotéis, você pode visualizar ou 
+                  Ao clicar em um dos quartos, você pode visualizar ou 
                   alterar as informações dele.
                 </p>
 
@@ -170,10 +152,10 @@
           <c:otherwise>
 
             <p class="lead">
-              Não existem hoteis cadastrados no momento.
+              Não existem quartos cadastrados no momento.
             </p>
             <p class="lead">
-              Acesse o menu lateral para cadastrar uma unidade do Hotel no sistema.
+              Acesse o menu lateral para cadastrar um Quarto no sistema.
             </p>
 
           </c:otherwise>          

@@ -79,7 +79,7 @@ public class IndexBean {
       lista.add(
               new SelectItem(
                       quarto.getId(),
-                      quarto.getNome() + " ( Diária: R$ " + quarto.getValor() + " )"
+                      quarto.getTitulo() + " ( Diária: R$ " + quarto.getValor() + " )"
               )
       );
     }

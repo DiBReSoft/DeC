@@ -4,7 +4,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
@@ -58,6 +59,7 @@
                                  pt:id="cadastroQuartoHotel"
                                  value="#{quartoBean.quarto.hotel}">
                   <f:selectItem itemValue="" itemLabel="Selecione..." />
+                  <f:selectItems value="#{hotelBean.comboHoteis}"/>
                 </h:selectOneMenu>
 
               </div>
@@ -90,11 +92,13 @@
                                  value="#{quartoBean.quarto.categoria}">
 
                   <f:selectItem itemValue="" itemLabel="Selecione..." />
-                  <f:selectItem itemValue="Solteiro" itemLabel="Solteiro" /> 
-                  <f:selectItem itemValue="Solteiro Duplo" itemLabel="Solteiro Duplo" />   
-                  <f:selectItem itemValue="Casal" itemLabel="Casal" />
-                  <f:selectItem itemValue="Casal Duplo" itemLabel="Casal Duplo" />
-                  <f:selectItem itemValue="Quarto Conjulgado" itemLabel="Quarto Conjulgado" />
+
+                  <ui:repeat value="#{categoriaBean.categoriasAtivas}" var="_categoria">
+
+                    <f:selectItem itemValue="#{_categoria.titulo}" 
+                                  itemLabel="#{_categoria.titulo} (Diária: R$ #{_categoria.valor})" />
+
+                  </ui:repeat>
 
                 </h:selectOneMenu>
 
@@ -105,18 +109,18 @@
 
             <div class="clearfix"></div>
 
-            <!-- Quantidade de Quartos -->
+            <!-- Titulo do Quarto -->
             <div class="form-group">
 
-              <label for="cadastroQuartoQuantidade">
-                Quantidade de Quartos:
+              <label for="cadastroQuartoTitulo">
+                Titulo do Quarto:
               </label>
 
               <div class="input-group input-group-lg">
 
                 <div class="input-group-addon">
 
-                  <label for="cadastroQuartoQuantidade">
+                  <label for="cadastroQuartoTitulo">
                     <i class="fa fa-fw fa-bed"></i>
                   </label>
 
@@ -124,15 +128,14 @@
 
                 <h:inputText styleClass="form-control"
                              pt:required=""
-                             pt:type="number"
-                             pt:id="cadastroQuartoQuantidade"
-                             value="#{quartoBean.quarto.quantidade}"
-                             pt:placeholder="Ex.: 4" />
+                             pt:id="cadastroQuartoTitulo"
+                             value="#{quartoBean.quarto.titulo}"
+                             pt:placeholder="Ex.: 1010" />
 
               </div>
 
             </div>
-            <!-- Quantidade de Quartos -->
+            <!-- Titulo do Quarto -->
 
           </div>
 
@@ -143,9 +146,11 @@
 
             <div class="col-md-3">
 
-              <h:commandButton styleClass="btn btn-block btn-lg btn-primary"
-                               value="Cadastrar"
-                               action="#{quartoBean.cadastrar()}"/>
+              <button jsf:action="#{quartoBean.cadastrar()}"
+                      styleClass="btn btn-block btn-lg btn-primary">
+                <i class="fa fa-lg fa-floppy-o"></i>
+                CADASTRAR
+              </button>
 
             </div>
 
