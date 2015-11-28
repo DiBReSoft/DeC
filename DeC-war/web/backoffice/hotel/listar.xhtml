@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Lista de Hotéis</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header>
+
+        <h2 class="page-header">
+          Lista de Hotéis
+        </h2>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <c:choose>
+
+          <c:when test="#{not empty hotelBean.hoteisAtivos or not empty hotelBean.hoteisInativos}">
+
+            <div class="row">
+
+              <div class="col-md-8">
+
+                <h3>
+                  Unidades Ativas
+                </h3>
+
+                <div class="list-group">
+
+                  <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
+
+                    <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                      <h4 class="list-group-item-heading">
+                        #{_hotel.tituloHotel}
+                      </h4>
+                      <div class="row">
+
+                        <div class="col-sm-4">
+
+                          <p class="list-group-item-text">
+                            <i class="fa fa-fw fa-map-marker"></i>
+                            #{_hotel.endereco.cidade}
+                            -
+                            #{_hotel.endereco.estado}
+                          </p>
+
+                        </div>
+
+                        <div class="col-sm-5">
+
+                          <p class="list-group-item-text">
+                            <i class="fa fa-fw fa-envelope"></i>
+                            #{_hotel.email}
+                          </p>
+
+                        </div>
+
+                        <div class="col-sm-3">
+
+                          <p class="list-group-item-text">
+                            <i class="fa fa-fw fa-phone"></i>
+                            #{_hotel.telefone}
+                          </p>
+
+                        </div>
+
+                      </div>
+
+                    </a>
+
+                  </ui:repeat>
+
+                </div>
+
+
+                <c:if test="#{not empty hotelBean.hoteisInativos}">
+
+                  <hr />
+
+                  <h3>
+                    Unidades Inativas
+                  </h3>
+
+                  <div class="list-group">
+
+                    <ui:repeat value="#{hotelBean.hoteisInativos}" var="_hotel">
+
+                      <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                        <h4 class="list-group-item-heading">
+                          #{_hotel.tituloHotel}
+                        </h4>
+                        <div class="row">
+
+                          <div class="col-sm-4">
+
+                            <p class="list-group-item-text">
+                              <i class="fa fa-fw fa-map-marker"></i>
+                              #{_hotel.endereco.cidade}
+                              -
+                              #{_hotel.endereco.estado}
+                            </p>
+
+                          </div>
+
+                          <div class="col-sm-5">
+
+                            <p class="list-group-item-text">
+                              <i class="fa fa-fw fa-envelope"></i>
+                              #{_hotel.email}
+                            </p>
+
+                          </div>
+
+                          <div class="col-sm-3">
+
+                            <p class="list-group-item-text">
+                              <i class="fa fa-fw fa-phone"></i>
+                              #{_hotel.telefone}
+                            </p>
+
+                          </div>
+
+                        </div>
+
+                      </a>
+
+                    </ui:repeat>
+
+                  </div>
+
+                </c:if>
+
+              </div>
+
+              <div class="col-md-4 text-muted">
+
+                <i class="fa fa-3x fa-info-circle"></i>
+
+                <p class="lead">
+                  Ao clicar em um dos hotéis, você pode visualizar ou 
+                  alterar as informações dele.
+                </p>
+
+              </div>
+
+            </div>
+
+          </c:when>
+
+          <c:otherwise>
+
+            <p class="lead">
+              Não existem hoteis cadastrados no momento.
+            </p>
+            <p class="lead">
+              Acesse o menu lateral para cadastrar uma unidade do Hotel no sistema.
+            </p>
+
+          </c:otherwise>          
+
+        </c:choose>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

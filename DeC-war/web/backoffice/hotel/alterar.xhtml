@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf">
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Cadastrar Hotel</ui:define>
+    <ui:define name="pagina-titulo">Alterar Hotel</ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -15,7 +16,7 @@
       <header>
 
         <h2 class="page-header">
-          Cadastrar Hotel
+          Alterar Hotel
         </h2>
 
       </header>
@@ -26,22 +27,40 @@
         <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
         <h:form class="form-cadastrar-hotel cadastroHotelForm" id="cadastroHotelForm" enctype="utf-8">
 
+          <f:metadata>
+            <f:viewParam name="id" value="#{hotelBean.hotel.id}" />
+            <f:viewAction action="#{hotelBean.carregarInfos}" />
+          </f:metadata>
+
           <ui:include src="hotel-form-campos.xhtml" />
 
-          <!-- Botão para Salvar -->
           <div class="row form-me-cadastrar-botoes">
 
+            <!-- Botão para Alterar -->
             <div class="col-md-3">
 
-              <button jsf:action="#{hotelBean.cadastrar()}"
+              <button jsf:action="#{hotelBean.alterar()}"
                       styleClass="btn btn-block btn-lg btn-primary">
                 <i class="fa fa-lg fa-floppy-o"></i>
-                CADASTRAR
+                ALTERAR
               </button>
+
             </div>
+            <!-- Botão para Alterar -->
+
+            <!-- Botão para Alterar e Inativar -->
+            <div class="col-md-3 col-md-offset-9">
+
+              <button jsf:action="#{hotelBean.inativar()}"
+                      styleClass="btn btn-block btn-lg btn-default">
+                <i class="fa fa-lg fa-toggle-off"></i>
+                ALTERAR e INATIVAR
+              </button>
+
+            </div>
+            <!-- Botão para Alterar e Inativar -->
 
           </div>
-          <!-- Botão para Salvar -->
 
         </h:form>
 

@@ -20,7 +20,13 @@ public interface HotelEJBLocal {
   public void inativar(Hotel hotel);
 
   public List<Hotel> listarTodos();
-  
+
+  public List<Hotel> listarAtivos();
+
+  public List<Hotel> listarInativos();
+
   public Hotel buscarHotel(String nome);
+
+  public Hotel buscarHotelPorID(Long id);
 
 }

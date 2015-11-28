@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +22,9 @@ public class Endereco implements Serializable {
   private Long id;
 
   private boolean status;
+  
+  @OneToOne
+  private Hotel hotel;
 
   private String logradouro;
   private String numero;
@@ -109,6 +113,14 @@ public class Endereco implements Serializable {
 
   public void setPais(String pais) {
     this.pais = pais;
+  }
+
+  public Hotel getHotel() {
+    return hotel;
+  }
+
+  public void setHotel(Hotel hotel) {
+    this.hotel = hotel;
   }
 
 }

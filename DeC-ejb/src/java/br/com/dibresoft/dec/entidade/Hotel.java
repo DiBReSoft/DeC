@@ -1,10 +1,12 @@
 package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,14 +24,17 @@ public class Hotel implements Serializable {
   private Long id;
 
   private boolean status;
-  
+
   private String tituloHotel;
-  @OneToOne
-  private Endereco endereco;
+
   private int qtdeQuartos;
-  private String cidade;
-  private int telefone;
+
+  private String telefone;
+
   private String email;
+
+  @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
+  private Endereco endereco;
 
   public Long getId() {
     return id;
@@ -47,12 +52,36 @@ public class Hotel implements Serializable {
     this.status = status;
   }
 
-  public String getTitulo() {
+  public String getTituloHotel() {
     return tituloHotel;
   }
 
-  public void setTitulo(String tituloHotel) {
+  public void setTituloHotel(String tituloHotel) {
     this.tituloHotel = tituloHotel;
+  }
+
+  public int getQtdeQuartos() {
+    return qtdeQuartos;
+  }
+
+  public void setQtdeQuartos(int qtdeQuartos) {
+    this.qtdeQuartos = qtdeQuartos;
+  }
+
+  public String getTelefone() {
+    return telefone;
+  }
+
+  public void setTelefone(String telefone) {
+    this.telefone = telefone;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public Endereco getEndereco() {
@@ -86,46 +115,6 @@ public class Hotel implements Serializable {
   @Override
   public String toString() {
     return "br.com.dibresoft.dec.entidade.Hotel[ id=" + id + " ]";
-  }
-
-  public String getTituloHotel() {
-    return tituloHotel;
-  }
-
-  public void setTituloHotel(String tituloHotel) {
-    this.tituloHotel = tituloHotel;
-  }
-
-  public int getQtdeQuartos() {
-    return qtdeQuartos;
-  }
-
-  public void setQtdeQuartos(int qtdeQuartos) {
-    this.qtdeQuartos = qtdeQuartos;
-  }
-
-  public String getCidade() {
-    return cidade;
-  }
-
-  public void setCidade(String cidade) {
-    this.cidade = cidade;
-  }
-
-  public int getTelefone() {
-    return telefone;
-  }
-
-  public void setTelefone(int telefone) {
-    this.telefone = telefone;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
   }
 
 }

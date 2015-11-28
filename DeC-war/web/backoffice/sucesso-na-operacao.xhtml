@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Sucesso na Operação</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header>
+
+        <h2 class="page-header">
+          Sucesso na Operação
+          <i class="fa fa-lg fa-check-circle text-success pull-right"></i>
+        </h2>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <h3 style="margin: 0px 0px 25px 0px;">
+          Tudo certo!
+        </h3>
+
+        <p class="lead">
+          A operação foi realizada conforme previsto.
+        </p>
+        
+        <p class="lead">
+          Os dados foram salvos com sucesso.
+        </p>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>

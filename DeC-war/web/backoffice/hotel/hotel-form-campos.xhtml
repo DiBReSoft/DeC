@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <h:head>
+
+    <title>Facelet Title</title>
+
+  </h:head>
+
+  <h:body>
+
+    <ui:composition>
+
+      <h:messages />
+
+      <h:selectBooleanCheckbox styleClass="hidden"
+                               value="#{hotelBean.hotel.status}"
+                               pt:checked="checked">
+      </h:selectBooleanCheckbox>
+
+      <!-- Nome Hotel-->
+      <div class="col-md-8">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelNome">
+            Título do Hotel:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelNome">
+
+                <i class="fa fa-fw fa-building"></i>
+
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelNome" 
+                         pt:required=""
+                         pt:id="cadastroHotelNome"
+                         value="#{hotelBean.hotel.tituloHotel}"
+                         pt:placeholder="Ex.: São Paulo - Brooklin">
+              <f:validateLength minimum="6" maximum="100"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Nome Hotel-->
+
+      <!-- Quartos Hotel -->
+      <div class="col-md-4">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelQuartos">
+            Quantidade de Quartos:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelQuartos">
+                <i class="fa fa-fw fa-bed"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelQuartos"
+                         pt:required=""
+                         pt:id="cadastroHotelQuartos"
+                         value="#{hotelBean.hotel.qtdeQuartos}"
+                         pt:placeholder="Ex.: 100"
+                         pt:type="number"
+                         pt:maxlenght="500">
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Quartos Hotel -->
+
+      <div class="clearfix"></div>
+
+      <h:selectBooleanCheckbox styleClass="hidden"
+                               value="#{hotelBean.endereco.status}"
+                               pt:checked="checked">
+      </h:selectBooleanCheckbox>
+
+      <!-- Hotel - Endereço Logradouro -->
+      <div class="col-md-6">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoLogradouro">
+            Logradouro:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoLogradouro">
+                <i class="fa fa-fw fa-map-pin"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoLogradouro" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoLogradouro"
+                         value="#{hotelBean.endereco.logradouro}"
+                         pt:placeholder="Ex.: Av. Paulista">
+              <f:validateLength minimum="4" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Logradouro -->
+
+      <!-- Hotel - Endereço Numero -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoNumero">
+            Número:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoNumero">
+                <i class="fa fa-fw fa-barcode"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoNumero" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoNumero"
+                         value="#{hotelBean.endereco.numero}"
+                         pt:placeholder="Ex.: 3421">
+              <f:validateLength minimum="1" maximum="8"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Numero -->
+
+      <!-- Hotel - Endereço Bairro -->
+      <div class="col-md-4">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoBairro">
+            Bairro:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoBairro">
+                <i class="fa fa-fw fa-bullseye"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoBairro" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoBairro"
+                         value="#{hotelBean.endereco.bairro}"
+                         pt:placeholder="Ex.: Brooklin">
+              <f:validateLength minimum="2" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Bairro -->
+
+      <div class="clearfix"></div>
+
+      <!-- Hotel - Endereço Cidade -->
+      <div class="col-md-4">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoCidade">
+            Cidade:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoCidade">
+                <i class="fa fa-fw fa-map-marker"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoCidade" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoCidade"
+                         value="#{hotelBean.endereco.cidade}"
+                         pt:placeholder="Ex.: São Paulo">
+              <f:validateLength minimum="2" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Cidade -->
+
+      <!-- Hotel - Endereço Estado -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoEstado">
+            Estado:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoEstado">
+                <i class="fa fa-fw fa-map-signs"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoEstado" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoEstado"
+                         value="#{hotelBean.endereco.estado}"
+                         pt:placeholder="Ex.: SP">
+              <f:validateLength minimum="2" maximum="2"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Estado -->
+
+      <!-- Hotel - Endereço Pais -->
+      <div class="col-md-3">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoPais">
+            País:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoPais">
+                <i class="fa fa-fw fa-globe"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control disabled cadastroHotelEnderecoPais" 
+                         pt:required="" pt:disabled=""
+                         pt:id="cadastroHotelEnderecoPais"
+                         value="#{hotelBean.endereco.pais}"
+                         pt:placeholder="Ex.: Brasil">
+              <f:validateLength minimum="2" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço Pais -->
+
+      <!-- Hotel - Endereço CEP -->
+      <div class="col-md-3">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEnderecoCEP">
+            CEP:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEnderecoCEP">
+                <i class="fa fa-fw fa-barcode"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelEnderecoCEP" 
+                         pt:required=""
+                         pt:id="cadastroHotelEnderecoCEP"
+                         value="#{hotelBean.endereco.cep}"
+                         pt:placeholder="Ex.: 012345-678"
+                         pt:maxlenght="10">
+              <f:validateLength minimum="9" maximum="10"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Hotel - Endereço CEP -->
+
+      <div class="clearfix"></div>
+
+      <!-- Telefone Hotel-->
+      <div class="col-md-6">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelTelefone">
+            Telefone:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelTelefone">
+                <i class="fa fa-fw fa-phone"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelTelefone"
+                         pt:required=""
+                         pt:id="cadastroHotelTelefone"
+                         value="#{hotelBean.hotel.telefone}"
+                         pt:placeholder="Ex.: (11) 1234-5678">
+              <f:validateLength minimum="10" maximum="15"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Telefone Hotel -->
+
+      <!-- Email Hotel-->
+      <div class="col-md-6">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelEmail">
+            E-mail para contato:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelEmail">
+                <i class="fa fa-fw fa-envelope"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control"
+                         pt:placeholder="Ex.: sp.saopaulo"
+                         pt:required=""
+                         pt:id="cadastroHotelEmail"
+                         value="#{hotelBean.hotel.email}">
+              <f:validateLength minimum="4" maximum="72"/>
+            </h:inputText>
+
+            <span class="input-group-addon">@lebrehotel.com.br</span>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Email Hotel-->
+
+      <div class="clearfix" style="padding: 15px 0px;"></div>
+
+    </ui:composition>
+
+  </h:body>
+
+</html>
+

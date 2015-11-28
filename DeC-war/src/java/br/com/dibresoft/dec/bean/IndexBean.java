@@ -26,7 +26,7 @@ public class IndexBean {
   private List<Hotel> hoteis;
   @EJB
   private HotelEJBLocal hoteisEJB;
-  
+
   private List<Quarto> quartos;
   @EJB
   private QuartoEJBLocal quartosEJB;
@@ -64,13 +64,13 @@ public class IndexBean {
       lista.add(
               new SelectItem(
                       hotel.getId(),
-                      hotel.getEndereco().getEstado() + " - " + hotel.getTitulo()
+                      hotel.getEndereco().getEstado() + " - " + hotel.getTituloHotel()
               )
       );
     }
     return lista;
   }
-  
+
   public List<SelectItem> getComboQuartos() {
 
     List<SelectItem> lista = new ArrayList<>();
