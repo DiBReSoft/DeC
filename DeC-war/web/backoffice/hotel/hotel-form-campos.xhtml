@@ -18,10 +18,33 @@
 
       <h:messages />
 
-      <h:selectBooleanCheckbox styleClass="hidden"
-                               value="#{hotelBean.hotel.status}"
-                               pt:checked="checked">
-      </h:selectBooleanCheckbox>
+      <!-- Status do Hotel -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Status:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelStatus"
+                                       value="#{hotelBean.hotel.status}"
+                                       pt:id="cadastroHotelStatus"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; ATIVO"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; INATIVO">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Status do Hotel -->
 
       <!-- Nome Hotel-->
       <div class="col-md-8">
@@ -60,7 +83,7 @@
       <!-- Nome Hotel-->
 
       <!-- Quartos Hotel -->
-      <div class="col-md-4">
+      <div class="col-md-2">
 
         <div class="form-group">
 

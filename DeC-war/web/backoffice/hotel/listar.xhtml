@@ -8,6 +8,15 @@
 
     <ui:define name="pagina-titulo">Lista de Hotéis</ui:define>
 
+    <ui:define name="pagina-head">
+      <style type="text/css">
+        hr {
+          margin-top: 55px;
+          margin-bottom: 35px;
+        }
+      </style>
+    </ui:define>
+
     <ui:define name="pagina-conteudo">
 
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
@@ -141,11 +150,13 @@
 
               </div>
 
-              <div class="col-md-4 text-muted">
+              <div class="col-md-4">
 
-                <i class="fa fa-3x fa-info-circle"></i>
+                <h3 class="text-muted">
+                  <i class="fa fa-info-circle"></i>
+                </h3>
 
-                <p class="lead">
+                <p class="lead text-muted">
                   Ao clicar em um dos hotéis, você pode visualizar ou 
                   alterar as informações dele.
                 </p>

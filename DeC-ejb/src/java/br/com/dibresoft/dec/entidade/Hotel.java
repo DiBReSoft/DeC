@@ -3,6 +3,7 @@ package br.com.dibresoft.dec.entidade;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Hotel implements Serializable {
 
   private String email;
 
-  @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
   private Endereco endereco;
 
   public Long getId() {

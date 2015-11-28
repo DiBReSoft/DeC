@@ -40,7 +40,15 @@ public class HotelEJB implements HotelEJBLocal {
   @Override
   public void inativar(Hotel hotel) {
 
-    hotel.setStatus(false);
+    hotel.setStatus(false);    
+    em.merge(hotel);
+
+  }
+  
+  @Override
+  public void reativar(Hotel hotel) {
+
+    hotel.setStatus(true);    
     em.merge(hotel);
 
   }
