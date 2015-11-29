@@ -93,7 +93,7 @@
                       <i class="fa fa-lg fa-building"></i>
                       Hotel
                     </f:facet>
-                    #{item.quarto.hotel.tituloHotel}
+                    #{item.quarto.hotel.titulo}
                   </h:column>
 
                   <h:column>
@@ -109,7 +109,7 @@
                       <i class="fa fa-lg fa-money"></i>
                       Diária
                     </f:facet>
-                    <h:outputText value="#{item.quarto.valor}">
+                    <h:outputText value="#{item.quarto.categoria.valor}">
                       <f:convertNumber currencyCode="BRL" type="currency" />
                     </h:outputText>
                   </h:column>

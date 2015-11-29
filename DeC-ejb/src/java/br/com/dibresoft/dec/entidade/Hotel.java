@@ -1,14 +1,12 @@
 package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,7 +25,7 @@ public class Hotel implements Serializable {
 
   private boolean status;
 
-  private String tituloHotel;
+  private String titulo;
 
   private int qtdeQuartos;
 
@@ -36,9 +34,9 @@ public class Hotel implements Serializable {
   private String email;
 
   @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-  private Endereco endereco;
+  private Endereco endereco;  
 
-  @ManyToOne(fetch = FetchType.EAGER)
+  @OneToOne(mappedBy = "hotel")
   private Quarto quartos;
 
   public Long getId() {
@@ -57,12 +55,12 @@ public class Hotel implements Serializable {
     this.status = status;
   }
 
-  public String getTituloHotel() {
-    return tituloHotel;
+  public String getTitulo() {
+    return titulo;
   }
 
-  public void setTituloHotel(String tituloHotel) {
-    this.tituloHotel = tituloHotel;
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
   }
 
   public int getQtdeQuartos() {

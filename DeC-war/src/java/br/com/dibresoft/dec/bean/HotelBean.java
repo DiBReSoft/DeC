@@ -101,7 +101,7 @@ public class HotelBean {
       lista.add(
               new SelectItem(
                       hotel.getId(),
-                      hotel.getEndereco().getEstado() + " - " + hotel.getTituloHotel()
+                      hotel.getEndereco().getEstado() + " - " + hotel.getTitulo()
               )
       );
     }

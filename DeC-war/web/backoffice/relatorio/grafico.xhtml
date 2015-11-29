@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+  <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
+
+    <ui:define name="pagina-titulo">Relatório de Vendas</ui:define>
+
+    <ui:define name="pagina-head">
+
+      <link type="text/css" rel="stylesheet" href="#{request.contextPath}/css/morris.css" />
+
+    </ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <header>
+
+        <h2 class="page-header">
+          Relatório de Vendas
+          <small>
+            (Exemplificação)
+          </small>
+        </h2>
+
+      </header>
+
+      <section>
+
+        <div class="col-md-6">
+
+          <h3>
+            Exemplo #1
+          </h3>
+
+          <div id="morris-donut-chart"></div>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <h3>
+            Exemplo #2
+          </h3>
+
+          <div id="morris-bar-chart"></div>
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      
+      <script type="text/javascript" src="#{request.contextPath}/js/raphael.min.js" />
+      <script type="text/javascript" src="#{request.contextPath}/js/morris.min.js" />
+
+      <!-- EXEMPLO: JS QUE CONSTROI OS GRAFICOS -->
+      <script type="text/javascript">
+
+        $(function () {
+
+          Morris.Donut({
+            element: 'morris-donut-chart',
+            data: [{
+                label: "Hotéis SP",
+                value: 50
+              }, {
+                label: "Hotéis SC",
+                value: 30
+              }, {
+                label: "Hotéis RJ",
+                value: 20
+              }],
+            resize: true
+          });
+
+          Morris.Bar({
+            element: 'morris-bar-chart',
+            data: [{
+                y: '2014',
+                a: 75,
+                b: 65
+              }, {
+                y: '2015',
+                a: 100,
+                b: 90
+              }],
+            xkey: 'y',
+            ykeys: ['a', 'b'],
+            labels: ['Barra #1', 'Barra #2'],
+            hideHover: 'auto',
+            resize: true
+          });
+
+        });
+
+      </script>
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

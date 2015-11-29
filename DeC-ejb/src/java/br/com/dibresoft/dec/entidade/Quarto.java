@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.dibresoft.dec.entidade;
 
 import java.io.Serializable;
@@ -10,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,15 +23,14 @@ public class Quarto implements Serializable {
   private Long id;
 
   private boolean status;
-  
+
   private String titulo;
 
   @OneToOne
   private Hotel hotel;
-
-  private String categoria;
-
-  private double valor;
+  
+  @OneToOne
+  private Categoria categoria;
 
   public Long getId() {
     return id;
@@ -69,20 +64,12 @@ public class Quarto implements Serializable {
     this.hotel = hotel;
   }
 
-  public String getCategoria() {
+  public Categoria getCategoria() {
     return categoria;
   }
 
-  public void setCategoria(String categoria) {
+  public void setCategoria(Categoria categoria) {
     this.categoria = categoria;
-  }
-
-  public double getValor() {
-    return valor;
-  }
-
-  public void setValor(double valor) {
-    this.valor = valor;
   }
 
   @Override

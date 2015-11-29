@@ -71,27 +71,20 @@
                   <c:when test="#{clienteSessionBean.cliente.nome != null}">
                   <div class="btn-group">
                     <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
-                            data-toggle="modal" data-target="#login"
-                            title="Acesse sua conta para reservar ou gerenciar suas reservas">
+                            onclick="location.href = '#{request.contextPath}/clientes/perfil'">
                       #{clienteSessionBean.cliente.nome}
                       <i class="fa fa-fw fa-lg fa-user"></i>
                     </button>
                     <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            title="Outras Opções">
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <span class="caret"></span>
                       <span class="sr-only">Outras Opções</span>
                     </button>
                     <ul class="dropdown-menu">
                       <li>
-                        <a href="#{request.contextPath}/clientes/me-cadastrar">
-                          Cadastre-se
-                        </a>
-                      </li>
-                      <li role="separator" class="divider"></li>
-                      <li>
-                        <a href="#{request.contextPath}/clientes/recuperar-senha">
-                          Recupere sua senha
+                        <a href="#{request.contextPath}/clientes/logout">
+                          <i class="fa fa-fw fa-sign-out"></i>
+                          Encerrar Sessão
                         </a>
                       </li>
                     </ul>

@@ -64,7 +64,7 @@ public class IndexBean {
       lista.add(
               new SelectItem(
                       hotel.getId(),
-                      hotel.getEndereco().getEstado() + " - " + hotel.getTituloHotel()
+                      hotel.getEndereco().getEstado() + " - " + hotel.getTitulo()
               )
       );
     }
@@ -79,7 +79,7 @@ public class IndexBean {
       lista.add(
               new SelectItem(
                       quarto.getId(),
-                      quarto.getTitulo() + " ( Diária: R$ " + quarto.getValor() + " )"
+                      quarto.getTitulo() + " ( Diária: R$ " + quarto.getCategoria().getValor() + " )"
               )
       );
     }

@@ -3,6 +3,7 @@ package br.com.dibresoft.dec.bean;
 import br.com.dibresoft.dec.ejb.CategoriaEJBLocal;
 import br.com.dibresoft.dec.ejb.QuartoEJBLocal;
 import br.com.dibresoft.dec.entidade.Categoria;
+import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.entidade.Quarto;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class QuartoBean {
 
   private Quarto quarto;
   private Categoria categoria;
+  private Hotel hotel;
 
   private List<Quarto> quartos;
   private List<Quarto> quartosAtivos;
@@ -46,19 +48,20 @@ public class QuartoBean {
     quartos = quartoEJB.listarTodos();
     quartosAtivos = quartoEJB.listarAtivos();
     quartosInativos = quartoEJB.listarInativos();
+    categoria = new Categoria();
+    hotel = new Hotel();
   }
 
   public void cadastrar() throws IOException {
+    
+    quarto.setCategoria(categoria);
+    
+    quarto.setHotel(hotel);
 
-    String categoriaSelecionada = quarto.getCategoria();
-
-    Long categoriaSeleciodaID = 0L;
-    categoriaSeleciodaID.parseLong(categoriaSelecionada);
-
-    categoria = categoriaEJB.buscarCategoriaPorID(categoriaSeleciodaID);
-
-    quarto.setCategoria(categoria.getTitulo());
-    quarto.setValor(categoria.getValor());
+    System.out.println("[INFO] QUARTO SUBMETIDO A CADASTRO");
+    System.out.println("Título: " + quarto.getTitulo());
+    System.out.println("Categoria: " + quarto.getCategoria().getTitulo());
+    System.out.println("Hotel: " + quarto.getHotel().getTitulo());
 
     quartoEJB.cadastrar(quarto);
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
@@ -66,11 +69,15 @@ public class QuartoBean {
   }
 
   public void alterar() throws IOException {
+    
+    quarto.setCategoria(categoria);
+    
+    quarto.setHotel(hotel);
 
-    String categoriaSelecionada = quarto.getCategoria();
-    categoria = categoriaEJB.buscarCategoria(categoriaSelecionada);
-
-    quarto.setValor(categoria.getValor());
+    System.out.println("[INFO] QUARTO SUBMETIDO A CADASTRO");
+    System.out.println("Título: " + quarto.getTitulo());
+    System.out.println("Categoria: " + quarto.getCategoria().getTitulo());
+    System.out.println("Hotel: " + quarto.getHotel().getTitulo());
 
     quartoEJB.alterar(quarto);
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
@@ -84,7 +91,12 @@ public class QuartoBean {
 
     Long paramQuartoID = Long.parseLong(params.get("id"));
 
-    quarto = quartoEJB.buscarQuartoPorID(paramQuartoID);
+    Quarto quartoAlterar = quartoEJB.buscarQuartoPorID(paramQuartoID);
+    
+    quarto = quartoAlterar;
+    
+    categoria = quartoAlterar.getCategoria();
+    hotel = quartoAlterar.getHotel();
 
   }
 
@@ -141,6 +153,14 @@ public class QuartoBean {
 
   public void setQuartosInativos(List<Quarto> quartosInativos) {
     this.quartosInativos = quartosInativos;
+  }
+
+  public Hotel getHotel() {
+    return hotel;
+  }
+
+  public void setHotel(Hotel hotel) {
+    this.hotel = hotel;
   }
 
 }

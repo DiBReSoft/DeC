@@ -27,7 +27,7 @@ public class ReservaEJB implements ReservaEJBLocal {
     if (t3 < 0) {
       return 0;
     } else {
-      return valor = t3 * reserva.getQuarto().getValor();
+      return valor = t3 * reserva.getQuarto().getCategoria().getValor();
     }
   }
 

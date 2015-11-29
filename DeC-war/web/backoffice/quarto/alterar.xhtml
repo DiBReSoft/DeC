@@ -9,7 +9,7 @@
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Cadastro de Quarto</ui:define>
+    <ui:define name="pagina-titulo">Alterar Quarto</ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -17,7 +17,7 @@
       <header>
 
         <h2 class="page-header">
-          Cadastro de Quarto
+          Alterar Quarto
         </h2>
 
       </header>
@@ -28,14 +28,38 @@
         <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
         <h:form class="form-cadastrar-quarto cadastroQuartoForm" id="cadastroQuartoForm" enctype="utf-8">
 
+          <f:metadata>
+            <f:viewParam name="id" value="#{quartoBean.quarto.id}" />
+            <f:viewAction action="#{quartoBean.carregarInfos}" />
+          </f:metadata>
+
           <h:messages />
 
-          <h:selectBooleanCheckbox styleClass="hidden"
-                                   value="#{quartoBean.quarto.status}"
-                                   pt:checked="checked">
-          </h:selectBooleanCheckbox>
-
           <div class="col-md-6">
+
+            <!-- Status do Quarto -->
+            <div class="form-group">
+
+              <label>
+                Status:
+              </label>
+
+              <div class="checkbox" style="margin: 0;">
+
+                <label>
+                  <h:selectBooleanCheckbox styleClass="cadastroQuartoStatus"
+                                           value="#{quartoBean.quarto.status}"
+                                           pt:id="cadastroQuartoStatus"
+                                           pt:data-toggle="toggle"
+                                           pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; ATIVO"
+                                           pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; INATIVO">
+                  </h:selectBooleanCheckbox>
+                </label>
+
+              </div>
+
+            </div>
+            <!-- Status do Quarto -->
 
             <!-- Hotel do Quarto -->
             <div class="form-group">
@@ -143,7 +167,7 @@
 
             <div class="col-md-3">
 
-              <button jsf:action="#{quartoBean.cadastrar()}"
+              <button jsf:action="#{quartoBean.alterar()}"
                       styleClass="btn btn-block btn-lg btn-primary">
                 <i class="fa fa-lg fa-floppy-o"></i>
                 CADASTRAR

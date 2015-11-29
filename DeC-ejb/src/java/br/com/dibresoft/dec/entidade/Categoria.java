@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +22,10 @@ public class Categoria implements Serializable {
   private Long id;
 
   private boolean status;
+
+  @OneToOne(mappedBy = "categoria")
+  private Quarto quarto;
+
   private String titulo;
 
   private double valor;
@@ -39,6 +44,14 @@ public class Categoria implements Serializable {
 
   public void setStatus(boolean status) {
     this.status = status;
+  }
+
+  public Quarto getQuarto() {
+    return quarto;
+  }
+
+  public void setQuarto(Quarto quarto) {
+    this.quarto = quarto;
   }
 
   public String getTitulo() {
