@@ -60,8 +60,8 @@ public class QuartoBean {
 
     System.out.println("[INFO] QUARTO SUBMETIDO A CADASTRO");
     System.out.println("Título: " + quarto.getTitulo());
-    System.out.println("Categoria: " + quarto.getCategoria().getTitulo());
-    System.out.println("Hotel: " + quarto.getHotel().getTitulo());
+    System.out.println("Categoria: " + quarto.getCategoria().getId());
+    System.out.println("Hotel: " + quarto.getHotel().getId());
 
     quartoEJB.cadastrar(quarto);
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");

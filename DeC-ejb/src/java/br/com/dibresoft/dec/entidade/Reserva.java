@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -17,6 +19,16 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "DeC_RESERVA")
+@NamedQueries({
+  @NamedQuery(
+          name = "Reserva.verificarDisponibilidade",
+          query
+          = "SELECT r FROM Reserva r "
+          + "left join Quarto q on q.id != r.quarto_id "
+          + "inner join Categoria c on c.id != q.categoria_id "
+          + "inner join Hotel h on h.id != q.hotel_id "
+          + "WHERE r.checkIn between :checkIn and :checkOut")
+})
 public class Reserva implements Serializable {
 
   private static final long serialVersionUID = 1L;

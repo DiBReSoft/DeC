@@ -1,6 +1,9 @@
 package br.com.dibresoft.dec.ejb;
 
+import br.com.dibresoft.dec.entidade.Categoria;
+import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.entidade.Quarto;
+import br.com.dibresoft.dec.entidade.Reserva;
 import java.util.List;
 import javax.ejb.Local;
 

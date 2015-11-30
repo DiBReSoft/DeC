@@ -28,7 +28,7 @@ $(document).ready(function () {
       $(".reservaCheckOut").focus().datepicker({
         language: "pt-BR",
         format: "dd/mm/yyyy"
-      }).datepicker('setStartDate', ($(".reservaCheckIn").val() + 1)).show();
+      }).datepicker('setStartDate', ($(".reservaCheckIn").val())).show();
       $(".reservaCheckOut").removeAttr('disabled');
       $(".form-control.reservaCheckOut").focus();
       

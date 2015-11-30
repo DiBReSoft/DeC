@@ -7,7 +7,6 @@ import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -55,13 +54,13 @@ public class CarrinhoTesteBean {
    * Essa função primeiro verificaria se existem quartos da CATEGORIA
    * selecionada, disponíveis no HOTEL selecionado pelo usuário, na tela inicial
    * do e-commerce
+   * @throws java.io.IOException
    */
   public void preReserva() throws IOException {
 
-    boolean checarQuartos = false;
-    // checarQuartos = reservaEJB.verificarDisponibilidadeQuartos(reserva);
+    reserva = reservaEJB.verificarDisponibilidade(categoria, hotel, reserva);
 
-    if (checarQuartos) {
+    if (reserva.getQuarto() != null) {
       /**
        * Se existirem quartos vagos, aí sim CRIA A RESERVA e então ADICIONA ELA
        * NO CARRINHO
@@ -86,8 +85,8 @@ public class CarrinhoTesteBean {
       
       reserva.setId(lista.size());
       
-      long oi = reserva.getQuarto().getId();
-      reserva.setQuarto(quartoEJB.buscarQuartoPorID(oi));
+      //long oi = reserva.getQuarto().getId();
+      //reserva.setQuarto(quartoEJB.buscarQuartoPorID(oi));
 
       double valorEstadia = reservaEJB.calcularValorReserva(reserva);
       reserva.setValorEstadia(valorEstadia);
@@ -96,11 +95,15 @@ public class CarrinhoTesteBean {
       System.out.println("[INFO SITE] Adicionada nova reserva à Mala de Reservas:");
       System.out.println("Data de CheckIn: " + reserva.getCheckIn());
       System.out.println("Data de CheckOut: " + reserva.getCheckOut());
-      System.out.println("Quarto Selecionado: " + reserva.getQuarto());
-      System.out.println("Itens na Mala: " + lista.size());
+      System.out.println("Quarto Selecionado: " + reserva.getQuarto().getTitulo());
+      System.out.println("Categoria do Quarto: " + reserva.getQuarto().getCategoria().getTitulo());
+      System.out.println("Hotel do Quarto: " + reserva.getQuarto().getHotel().getTitulo());
+      System.out.println("Reservas na Mala: " + lista.size());
 
       reserva = new Reserva();
       reserva.setQuarto(new Quarto());
+      categoria = new Categoria();
+      hotel = new Hotel();
 
       FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/mala");
 
