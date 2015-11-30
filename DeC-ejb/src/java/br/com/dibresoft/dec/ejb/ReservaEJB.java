@@ -2,9 +2,11 @@ package br.com.dibresoft.dec.ejb;
 
 import br.com.dibresoft.dec.entidade.Reserva;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -50,5 +52,23 @@ public class ReservaEJB implements ReservaEJBLocal {
   public void inativar(Reserva reserva) {
     throw new UnsupportedOperationException("Not supported yet.");
   }
-
+ @Override
+  public boolean verificarDisponibilidadeQuartos(Reserva reserva,Long categoriaId, Long hotelId) {
+        List <Reserva> reservas;
+    
+    Query q = em.createNamedQuery("Reserva.verificarDisponibilidade");
+    q.setParameter("checkIn",reserva.getCheckIn());
+    q.setParameter("checkOut",reserva.getCheckOut());
+    q.setParameter("categoriaId",categoriaId);
+    q.setParameter("hotelId",hotelId);
+    
+    reservas = q.getResultList();
+    
+    for(Reserva r : reservas)
+    {
+      System.out.println(r.getQuarto().getTitulo()+" "+r.getQuarto().getHotel()+" "+r.getQuarto().getCategoria());
+    }
+    
+    throw new UnsupportedOperationException("Not supported yet.");
+  }
 }

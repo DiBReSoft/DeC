@@ -59,7 +59,7 @@ public class CarrinhoTesteBean {
   public void preReserva() throws IOException {
 
     boolean checarQuartos = false;
-    // checarQuartos = reservaEJB.verificarDisponibilidadeQuartos(reserva);
+     checarQuartos = reservaEJB.verificarDisponibilidadeQuartos(reserva,reserva.getQuarto().getCategoria().getId(),hotel.getId());
 
     if (checarQuartos) {
       /**
