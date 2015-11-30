@@ -24,5 +24,7 @@ public interface ReservaEJBLocal {
   public void alterar(Reserva reserva);
 
   public void inativar(Reserva reserva);
+  
+  public boolean verificarDisponibilidadeQuartos(Reserva reserva,Long categoriaId, Long hotelId);
 
 }
