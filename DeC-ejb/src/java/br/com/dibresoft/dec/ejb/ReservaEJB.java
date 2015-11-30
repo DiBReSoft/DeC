@@ -2,6 +2,7 @@ package br.com.dibresoft.dec.ejb;
 
 import br.com.dibresoft.dec.entidade.Categoria;
 import br.com.dibresoft.dec.entidade.Hotel;
+import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
 import java.util.Date;
 import java.util.List;
@@ -44,7 +45,13 @@ public class ReservaEJB implements ReservaEJBLocal {
     for(Reserva r : reservas){
       System.out.println(r.getQuarto().getTitulo() + " " + r.getQuarto().getHotel() + " " + r.getQuarto().getCategoria());
     }
+    Quarto quarto = new Quarto();
+    quarto.setId(0L);
+    
+    reserva.setQuarto(quarto);
+    
     return reserva;
+    
   }
 
   @Override
