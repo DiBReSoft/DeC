@@ -134,7 +134,7 @@
             <!-- BOTÃO ENVIAR -->
             <h:commandButton styleClass="btn btn-lg btn-primary"
                              value="Enviar" 
-                             action="#{compraBean.gravar(clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}"/>
+                             action="#{compraBean.verificarClienteSessao(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}"/>
             <!-- BOTÃO ENVIAR -->
 
           </h:form> 

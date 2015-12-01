@@ -1,11 +1,14 @@
 package br.com.dibresoft.dec.bean;
 
 import br.com.dibresoft.dec.ejb.CompraEJBLocal;
+import br.com.dibresoft.dec.ejb.ReservaEJBLocal;
 import br.com.dibresoft.dec.entidade.Cliente;
 import br.com.dibresoft.dec.entidade.Compra;
 import br.com.dibresoft.dec.entidade.Email;
+import br.com.dibresoft.dec.entidade.Reserva;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -33,28 +36,42 @@ public class CompraBean {
   @EJB
   private CompraEJBLocal compraEJB;
 
+  @EJB
+  private ReservaEJBLocal reservaEJB;
+
   public CompraBean() {
     compra = new Compra();
   }
 
-  public void gravar(Cliente cliente, double valorTotal) throws IOException {
+  public void verificarClienteSessao(List<Reserva> reservas, Cliente cliente, double valorTotal) throws IOException {
 
     if (cliente.getId() != null) {
 
-      compra.setStatus("aprovada");
-      compra.setCliente(cliente);
-      compra.setDataCompra(new Date());
-      compra.setValorParcelas(valorTotal / compra.getCartaoParcelas());
-      compra.setValorTotal(valorTotal);
-
-      compraEJB.cadastrar(compra);
-      montaEmail(compra);
-      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
+      gravar(reservas, cliente, valorTotal);
 
     } else {
-      
+
       FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/login");
-      
+
+    }
+
+  }
+
+  public void gravar(List<Reserva> reservas, Cliente cliente, double valorTotal) throws IOException {
+
+    compra.setStatus("aprovada");
+    compra.setCliente(cliente);
+    compra.setDataCompra(new Date());
+    compra.setValorParcelas(valorTotal / compra.getCartaoParcelas());
+    compra.setValorTotal(valorTotal);
+
+    compraEJB.cadastrar(compra);
+    montaEmail(compra);
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
+
+    for (Reserva r : reservas) {
+      r.setCliente(cliente);
+      reservaEJB.cadastrar(r);
     }
 
   }
