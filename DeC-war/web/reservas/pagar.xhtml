@@ -4,11 +4,60 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
     <ui:define name="pagina-titulo">Pagamento</ui:define>
+
+    <ui:define name="pagina-head">
+
+      <style type="text/css">        
+        #bandeira-container .table tr td input {
+          float: left;
+          margin-top: 15.5px;
+          margin-left: 60px;
+        }
+        #bandeira-container .table tr td label {
+          float: left;
+          padding: 10px 0px 10px 90px;
+          margin-left: -85px;
+          margin-bottom: 0;
+        }
+
+        #bandeira-container .table > tbody > tr > td::before {
+          position: absolute;
+          width: 50px;
+          height: 35px;
+          margin-top: 4px;
+          font: normal normal normal 14px/1 FontAwesome;
+          font-size: 35px;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          text-align: center;
+        }
+
+        #bandeira-container .table > tbody > tr:first-child > td::before {          
+          content: "\f1f0";
+        }
+
+        #bandeira-container .table > tbody > tr:nth-child(2) > td::before {          
+          content: "\f1f1";
+        }
+
+        #bandeira-container .table > tbody > tr:nth-child(3) > td::before {          
+          content: "\f24c";
+        }
+
+        #bandeira-container .table > tbody > tr:nth-child(4) > td::before {          
+          content: "\f1f3";
+        }
+      </style>
+
+    </ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -30,114 +79,223 @@
 
         <div class="container-fluid">
 
-          <h1 style="margin-top: 0;">
-            Informe os dados do seu cartão de crédito
-          </h1>
+          <c:choose>
 
-          <h:form>
 
-            <!-- BANDEIRA -->
-            <div class="form-group">
+            <c:when test="#{not empty carrinhoTesteBean.lista and clienteSessionBean.cliente.id != null}">
 
-              <h:selectOneRadio styleClass="table"
-                                value="#{compraBean.compra.cartaoBandeira}"
-                                pt:required="">
+              <h1 style="margin-top: 0;">
+                Informe os dados do seu cartão de crédito
+              </h1>
 
-                <f:selectItem class="cartao-visa" itemLabel="Visa" itemValue="visa" />
-                <f:selectItem class="cartao-mastercard" itemLabel="MasterCard" itemValue="mastercard" />
-                <f:selectItem class="cartao-diners" itemLabel="Diners Club International" itemValue="diners" />
-                <f:selectItem class="cartao-amex" itemLabel="American Express" itemValue="amex" />
+              <div style="padding: 15px 0px;"></div>
 
-              </h:selectOneRadio>
+              <h:form>
 
-            </div>
-            <!-- BANDEIRA -->
+                <h:messages />
 
-            <div class="row">
+                <div class="row">
 
-              <div class="col-sm-3"></div>
+                  <div class="col-sm-4">
 
-              <div class="col-sm-6">
+                    <!-- BANDEIRA -->
+                    <div class="form-group" id="bandeira-container">
 
-                <!-- PARCELAS -->
-                <div class="form-group">
+                      <h:outputLabel value="Bandeira: " />
 
-                  <h:outputLabel value="Parcelas: " />
+                      <h:selectOneRadio styleClass="table table-striped table-hover" 
+                                        layout="pageDirection"
+                                        value="#{compraBean.compra.cartaoBandeira}">
 
-                  <h:selectOneMenu styleClass="form-control"
+                        <f:selectItem id="cartao-visa" itemLabel="Visa" itemValue="visa" />
+                        <f:selectItem class="cartao-mastercard" itemLabel="MasterCard" itemValue="mastercard" />
+                        <f:selectItem class="cartao-diners" itemLabel="Diners Club" itemValue="diners" />
+                        <f:selectItem class="cartao-amex" itemLabel="American Express" itemValue="amex" />
+
+                      </h:selectOneRadio>
+
+                    </div>
+                    <!-- BANDEIRA -->
+
+                  </div>
+
+                  <div class="col-sm-4">
+
+                    <!-- CARTÃO NOME IMPRESSO -->
+                    <div class="form-group">
+
+                      <h:outputLabel value="Nome Impresso no Cartão: "
+                                     pt:for="cartao-nome" />
+
+                      <h:inputText styleClass="form-control"
                                    pt:required=""
-                                   value="#{compraBean.compra.cartaoParcelas}">
+                                   pt:id="cartao-nome" />
 
-                    <f:selectItem itemValue="" itemLabel="Selecione..." />
-                    <f:selectItem itemValue="1" itemLabel="1x" /> 
-                    <f:selectItem itemValue="2" itemLabel="2x" />   
-                    <f:selectItem itemValue="3" itemLabel="3x" />           
+                    </div>
+                    <!-- CARTÃO NOME IMPRESSO -->
 
-                  </h:selectOneMenu>
+                    <div class="row">
+
+                      <div class="col-md-7">                    
+
+                        <!-- CARTÃO NÚMERO -->
+                        <div class="form-group">
+
+                          <h:outputLabel value="Número do Cartão: "
+                                         pt:for="cartao-numero" />
+
+                          <h:inputText styleClass="form-control"
+                                       pt:required=""
+                                       pt:max="16"
+                                       pt:id="cartao-numero" />
+
+                        </div>
+                        <!-- CARTÃO NÚMERO -->
+
+                      </div>
+
+                      <div class="col-md-5">
+
+                        <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+                        <div class="form-group">
+
+                          <h:outputLabel value="Cód. Segurança: "
+                                         pt:for="cartao-seguranca" />
+
+                          <h:inputText styleClass="form-control"
+                                       pt:required=""
+                                       pt:max="3"
+                                       pt:id="cartao-seguranca"
+                                       />
+
+                        </div>
+                        <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+
+                      </div>
+
+                    </div>
+
+                    <!-- CARTÃO VALIDADE -->
+                    <div class="form-group">
+
+                      <h:outputLabel value="Validade do Cartão: "
+                                     pt:for="cartao-validade"/>
+
+                      <h:inputText styleClass="form-control init-datepicker cartaoValidade"
+                                   pt:required=""
+                                   pt:id="cartao-validade">
+                        <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
+                      </h:inputText>
+
+                    </div>
+                    <!-- CARTÃO VALIDADE -->
+
+                  </div>
+
+                  <div class="col-sm-4">
+
+                    <!-- PARCELAS -->
+                    <div class="form-group">
+
+                      <h:outputLabel value="Quantidade de Parcelas: "
+                                     pt:for="cartao-parcelas" />
+
+                      <h:selectOneMenu styleClass="form-control"
+                                       pt:required=""
+                                       pt:id="cartao-parcelas"
+                                       value="#{compraBean.compra.cartaoParcelas}">
+
+                        <f:selectItem itemValue="1" itemLabel="1x" /> 
+                        <f:selectItem itemValue="2" itemLabel="2x" />   
+                        <f:selectItem itemValue="3" itemLabel="3x" />           
+
+                      </h:selectOneMenu>
+
+                    </div>
+                    <!-- PARCELAS -->
+
+                    <!-- VALORES -->
+
+                    <div class="row">
+
+                      <div class="col-sm-6">
+
+                        <div class="form-group">
+                          <h:outputLabel value="Valor parcelas: " />                      
+                          <span class="form-control" id="valor-parcelas">                        
+                            <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
+                              <f:convertNumber currencyCode="BRL" type="currency" />
+                            </h:outputText>
+                          </span>
+                        </div>
+
+                      </div>
+
+                      <div class="col-sm-6">
+
+                        <div class="form-group">
+
+                          <h:outputLabel value="Valor total: " />
+
+                          <span class="form-control" id="valor-total">                        
+                            <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
+                              <f:convertNumber currencyCode="BRL" type="currency" />
+                            </h:outputText>                        
+                          </span>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <!-- VALORES -->
+
+                    <div style="padding: 15px 0px;"></div>
+
+                    <!-- BOTÃO ENVIAR -->
+                    <button class="btn btn-primary"
+                            jsf:action="#{compraBean.gravar(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}">
+                      <i class="fa fa-fw fa-check-circle-o"></i>
+                      Concluir Pagamento
+                    </button>
+                    <!-- BOTÃO ENVIAR -->
+
+                  </div>
 
                 </div>
-                <!-- PARCELAS -->
 
-                <!-- CARTÃO NOME IMPRESSO -->
-                <div class="form-group">
+              </h:form>
 
-                  <h:outputLabel value="Nome Impresso no Cartão: " />
+            </c:when>
 
-                  <h:inputText styleClass="form-control"
-                               pt:required="" />
 
-                </div>
-                <!-- CARTÃO NOME IMPRESSO -->
+            <c:when test="#{not empty carrinhoTesteBean.lista and clienteSessionBean.cliente.id == null}">
 
-                <!-- CARTÃO NÚMERO -->
-                <div class="form-group">
+              <h1>
+                Necessário o Login para pagamento das reservas
+              </h1>
 
-                  <h:outputLabel value="Número do Cartão: " />
+              <p class="lead">
+                Você deve fazer login para prosseguir no pagamento de reservas.
+              </p>
 
-                  <h:inputText styleClass="form-control"
-                               pt:required=""
-                               pt:max="16" />
+            </c:when>
 
-                </div>
-                <!-- CARTÃO NÚMERO -->
 
-                <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
-                <div class="form-group">
+            <c:otherwise>
 
-                  <h:outputLabel value="Código de Segurança: " />
+              <h1>
+                Sem Reservas para pagamento
+              </h1>
 
-                  <h:inputText styleClass="form-control"
-                               pt:required=""
-                               pt:max="3"
-                               />
+              <p class="lead">
+                Você ainda não tem reservas para pagar.
+              </p>
 
-                </div>
-                <!-- CARTÃO CÓDIGO DE SEGURANÇA -->
+            </c:otherwise>
 
-                <!-- CARTÃO VALIDADE -->
-                <div class="form-group">
 
-                  <h:outputLabel value="Validade do Cartão: " />
-
-                  <h:inputText styleClass="form-control init-datepicker cartaoValidade"
-                               pt:required="">
-                    <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00" />
-                  </h:inputText>
-
-                </div>
-                <!-- CARTÃO VALIDADE -->
-
-              </div>
-
-            </div>
-
-            <!-- BOTÃO ENVIAR -->
-            <h:commandButton styleClass="btn btn-lg btn-primary"
-                             value="Enviar" 
-                             action="#{compraBean.verificarClienteSessao(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}"/>
-            <!-- BOTÃO ENVIAR -->
-
-          </h:form> 
+          </c:choose>
 
         </div>
 

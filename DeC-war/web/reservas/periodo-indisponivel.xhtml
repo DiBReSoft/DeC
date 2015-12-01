@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Selecione outro local ou período</ui:define>
+
+    <ui:define name="pagina-head">
+      <!-- Adiciona CSS e outros que vão no <head> da página -->
+    </ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Período e Quarto Indisponíveis
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
+      <section>
+
+        <div class="container-fluid">
+
+          <div class="col-md-8">
+
+            <h1 class="titulo-secao">
+              Hospede-se conosco
+            </h1>
+
+            <div class="panel panel-primary">
+
+              <div class="panel-body">
+
+                <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
+                <h:form id="formReservar" enctype="utf-8">
+
+                  <div class="col-md-6">
+
+                    <div class="form-group" id="reservaCheckInContainer">
+
+                      <label for="reservaCheckIn" class="hidden-lg hidden-md">
+                        Data de Check-in:
+                      </label>
+
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+
+                          <label for="reservaCheckIn">
+
+                            <i class="fa fa-fw fa-calendar-plus-o"></i>
+
+                            <span class="hidden-sm hidden-xs">
+                              Check-in: 
+                            </span>
+
+                          </label>
+
+                        </div>
+
+                        <h:inputText class="form-control reservaCheckIn"
+                                     id="reservaCheckIn" 
+                                     pt:required=""
+                                     value="#{carrinhoTesteBean.reserva.checkIn}">
+                          <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                        </h:inputText>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="form-group" id="reservaCheckOutContainer">
+
+                      <label for="reservaCheckOut" class="hidden-lg hidden-md">
+                        Data de Check-out:
+                      </label>
+
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+
+                          <label for="reservaCheckOut">
+
+                            <i class="fa fa-fw fa-calendar-minus-o"></i>
+
+                            <span class="hidden-sm hidden-xs">
+                              Check-out:
+                            </span>
+
+                          </label>
+
+                        </div>
+
+                        <h:inputText class="form-control reservaCheckOut" 
+                                     id="reservaCheckOut"
+                                     pt:required=""
+                                     value="#{carrinhoTesteBean.reserva.checkOut}" >    
+                          <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                        </h:inputText>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+
+                      <label class="control-label hidden-lg hidden-md" for="reservaCategoria">
+                        Selecione uma Categoria:
+                      </label>
+
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+
+                          <label for="reservaCategoria">
+
+                            <i class="fa fa-fw fa-bed"></i>
+
+                            <span class="hidden-sm hidden-xs">
+                              Categoria:
+                            </span>
+
+                          </label>
+
+                        </div>
+
+                        <h:selectOneMenu class="form-control reservaCategoria"
+                                         id="reservaCategoria" 
+                                         pt:required=""
+                                         value="#{carrinhoTesteBean.categoria.id}">
+                          <f:selectItem itemValue="" itemLabel="Selecione..." />
+
+                          <f:selectItems value="#{categoriaBean.comboCategorias}"/>
+
+                        </h:selectOneMenu>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+
+                    <div class="form-group">
+
+                      <label class="control-label hidden-lg hidden-md" for="reservaHotel">
+                        Selecione um Hotel:
+                      </label>
+
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+
+                          <label for="reservaHotel">
+
+                            <i class="fa fa-fw fa-building"></i>
+
+                            <span class="hidden-sm hidden-xs">
+                              Hotel:
+                            </span>
+
+                          </label>
+
+                        </div>
+
+                        <h:selectOneMenu class="form-control reservaHotel"
+                                         id="reservaHotel" 
+                                         pt:required=""
+                                         value="#{carrinhoTesteBean.hotel.id}">
+                          <f:selectItem itemValue="" itemLabel="Selecione..." />
+                          <f:selectItems value="#{hotelBean.comboHoteis}"/>
+                        </h:selectOneMenu>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="col-md-8" style="padding: 8px 30px;">
+                    Previsão do Total:
+                    R$ XXX,XX
+                  </div>
+
+                  <div class="col-md-4">
+
+                    <button class="btn btn-primary btn-block" id="teste"
+                            jsf:action="#{carrinhoTesteBean.preReserva()}">
+                      <i class="fa fa-fw fa-plus"></i>
+                      ADICIONAR À MALA
+                      <i class="fa fa-fw fa-lg fa-suitcase"></i>
+                    </button>
+                  </div>
+
+                </h:form>      
+
+              </div>
+
+              <div class="panel-footer text-center">
+
+                Encontre o melhor custo benefício para seu conforto
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

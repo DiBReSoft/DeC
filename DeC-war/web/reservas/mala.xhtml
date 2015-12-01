@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -57,7 +58,7 @@
           <h:panelGroup layout="block" rendered="#{not empty carrinhoTesteBean.lista}"
                         styleClass="row">
 
-            <div class="col-md-9">
+            <div class="col-md-12">
 
               <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
                 Reservas escolhidas por você
@@ -99,8 +100,10 @@
                   <h:column>
                     <f:facet name="header">
                       <i class="fa fa-lg fa-bed"></i>
-                      Quarto
+                      Acomodação
                     </f:facet>
+                    #{item.quarto.categoria.titulo}
+                    | Quarto 
                     #{item.quarto.titulo}
                   </h:column>
 
@@ -145,39 +148,57 @@
 
               </h:form>
 
-              <p class="lead">
-                <a class="btn btn-primary"
-                   href="#{request.contextPath}/">
-                  <i class="fa fa-lg fa-suitcase"></i>
-                  Continue comprando
-                </a>
-              </p>
+              <div class="clearfix"></div>
 
-            </div>
 
-            <div class="col-lg-1 visible-lg"></div>
+              <div class="row">
 
-            <div class="col-md-4 col-lg-3">
+                <div class="col-sm-4">
 
-              <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
-                Finalizar compra
-              </h1>
+                  <p class="lead">
+                    <a class="btn btn-primary"
+                       href="#{request.contextPath}/">
+                      <i class="fa fa-lg fa-suitcase"></i>
+                      Continue comprando
+                    </a>
+                  </p>
 
-              <p class="lead">
-                <a class="btn btn-lg btn-block btn-success"
-                   href="#{request.contextPath}/reservas/pagar">
-                  <i class="fa fa-lg fa-paypal"></i>
-                  Pague em até 3x
-                </a>
-              </p>
+                </div>
 
-              <h:form>
-                <p class="lead">
-                  <h:commandLink action="#{carrinhoTesteBean.limparCarrinho()}"
-                                 value="Esvaziar a Mala"
-                                 styleClass="btn btn-lg btn-block btn-link" />
-                </p>
-              </h:form>
+                <div class="col-sm-4 col-md-5 text-right">
+
+                  <h:form>
+                    <p class="lead">
+                      <h:commandLink action="#{carrinhoTesteBean.limparCarrinho()}"
+                                     value="Esvaziar a Mala"
+                                     styleClass="btn btn-link" />
+                    </p>
+                  </h:form>
+
+                </div>
+
+                <div class="col-md-3 col-sm-4">
+
+                  <h:form>
+
+                    <p class="lead">
+
+                      <button class="btn btn-block btn-success"
+                              jsf:action="#{compraBean.verificarClienteSessao(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}">
+
+                        FINALIZAR COMPRA
+
+                        <i class="fa fa-lg fa-check-square-o"></i>
+
+                      </button>
+
+                    </p>
+
+                  </h:form>
+
+                </div>
+
+              </div>
 
             </div>
 

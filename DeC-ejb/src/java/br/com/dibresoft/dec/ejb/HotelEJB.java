@@ -51,7 +51,7 @@ public class HotelEJB implements HotelEJBLocal {
   @Override
   public List<Hotel> listarAtivos() {
 
-    Query query = em.createQuery("Select c from Hotel c WHERE c.status = 1 ORDER BY c.titulo");
+    Query query = em.createQuery("Select c from Hotel c WHERE c.status = true ORDER BY c.titulo");
 
     List<Hotel> hoteis = query.getResultList();
 
@@ -62,7 +62,7 @@ public class HotelEJB implements HotelEJBLocal {
   @Override
   public List<Hotel> listarInativos() {
 
-    Query query = em.createQuery("Select c from Hotel c WHERE c.status = 0 ORDER BY c.titulo");
+    Query query = em.createQuery("Select c from Hotel c WHERE c.status = false ORDER BY c.titulo");
 
     List<Hotel> hoteis = query.getResultList();
 

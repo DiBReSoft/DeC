@@ -47,7 +47,7 @@ public class CompraBean {
 
     if (cliente.getId() != null) {
 
-      gravar(reservas, cliente, valorTotal);
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/pagar");
 
     } else {
 
@@ -71,6 +71,7 @@ public class CompraBean {
 
     for (Reserva r : reservas) {
       r.setCliente(cliente);
+      r.setStatus(true);
       reservaEJB.cadastrar(r);
     }
 

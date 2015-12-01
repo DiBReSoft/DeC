@@ -54,19 +54,12 @@ public class CarrinhoTesteBean {
    * Essa função primeiro verificaria se existem quartos da CATEGORIA
    * selecionada, disponíveis no HOTEL selecionado pelo usuário, na tela inicial
    * do e-commerce
+   *
    * @throws java.io.IOException
    */
   public void preReserva() throws IOException {
-    
-    Quarto quarto;
-    List<Quarto> quartosLista = quartoEJB.listarAtivos();
-    
-    quarto = quartosLista.get(0);
-    
-    reserva.setQuarto(quarto);
-    
-    //Linha abaixo foi comentada para a pré-entrega do Código Fonte
-    //reserva = reservaEJB.verificarDisponibilidade(categoria, hotel, reserva);
+
+    reserva = reservaEJB.verificarDisponibilidade(categoria, hotel, reserva);
 
     if (reserva.getQuarto() != null) {
       /**
@@ -77,7 +70,7 @@ public class CarrinhoTesteBean {
 
     } else {
       /**
-       * Se não existirem quartos da Categoia selecionada no Hotel selecionado, 
+       * Se não existirem quartos da Categoia selecionada no Hotel selecionado,
        * aí encaminha o usuário para uma pagina informando que o periodo está
        * indisponível
        */
@@ -90,11 +83,8 @@ public class CarrinhoTesteBean {
   public void adicionarReserva() throws IOException {
 
     try {
-      
+
       reserva.setId(lista.size());
-      
-      //long oi = reserva.getQuarto().getId();
-      //reserva.setQuarto(quartoEJB.buscarQuartoPorID(oi));
 
       double valorEstadia = reservaEJB.calcularValorReserva(reserva);
       reserva.setValorEstadia(valorEstadia);
@@ -128,6 +118,7 @@ public class CarrinhoTesteBean {
   public void removerReserva(int idReserva) throws IOException {
 
     try {
+
       lista.remove(idReserva);
 
       FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/mala");
@@ -142,9 +133,11 @@ public class CarrinhoTesteBean {
 
   }
 
-  public void limparCarrinho() {
+  public void limparCarrinho() throws IOException {
 
     lista.clear();
+    
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/mala");
 
   }
 

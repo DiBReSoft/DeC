@@ -25,48 +25,49 @@ import javax.mail.PasswordAuthentication;
 @Stateless
 public class ClienteEJB implements ClienteEJBLocal {
 
-    @PersistenceContext
-    private EntityManager em;
+  @PersistenceContext
+  private EntityManager em;
 
-    /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
-    @Override
-    public boolean cadastrar(Cliente membro) {
-       em.persist(membro);
-        montaEmail(membro);
-        return true;
-    }
-    /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
-
-    @Override
-    public boolean inativar(Cliente membro) {
-        membro.setStatus(false);
-        em.refresh(membro);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void alterar(Cliente membro) {
-        em.refresh(membro);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public boolean validar(String cpf, String email) {
-        List <Cliente> clientes;
-    
-    Query q = em.createNamedQuery("Cliente.validar");
-    q.setParameter("cpf",cpf);
-    q.setParameter("email",email);
-    
-    clientes = q.getResultList();
-        
-    if (clientes.isEmpty()){
-      
+  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
+  @Override
+  public boolean cadastrar(Cliente membro) {
+    em.persist(membro);
+    montaEmail(membro);
     return true;
+  }
+
+  /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
+
+  @Override
+  public boolean inativar(Cliente membro) {
+    membro.setStatus(false);
+    em.refresh(membro);
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public void alterar(Cliente membro) {
+    em.refresh(membro);
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public boolean validar(String cpf, String email) {
+    List<Cliente> clientes;
+
+    Query q = em.createNamedQuery("Cliente.validar");
+    q.setParameter("cpf", cpf);
+    q.setParameter("email", email);
+
+    clientes = q.getResultList();
+
+    if (clientes.isEmpty()) {
+
+      return true;
     }
-    
-   return false; 
-    }
+
+    return false;
+  }
 
   @Override
   public boolean buscarClientePorCpf(String cpf) {
@@ -75,32 +76,37 @@ public class ClienteEJB implements ClienteEJBLocal {
 
   @Override
   public Cliente autenticar(String email, String senha) {
-    Cliente c = null;
-    List <Cliente> clientes;
     
+    Cliente c = new Cliente();
+    List<Cliente> clientes;
+
     Query q = em.createNamedQuery("Cliente.autenticar");
-    q.setParameter("email",email);
-    q.setParameter("senha",senha);
-    
+    q.setParameter("email", email);
+    q.setParameter("senha", senha);
+
     clientes = q.getResultList();
-        
-    if (clientes.size() > 0){
+
+    if (clientes.size() > 0) {
+
       c = clientes.get(0);
-      
-    return c;
+
+      return c;
+
+    } else {
+
+      return c;
+
     }
     
-   return c; 
   }
 
   @Override
-  public Cliente buscarClientePorId(long id) {    
+  public Cliente buscarClientePorId(long id) {
     Query query = em.createQuery("Select c from Cliente c where c.id = " + id);
     return (Cliente) query.getSingleResult();
   }
-  
-  
-   private void montaEmail(Cliente p) {
+
+  private void montaEmail(Cliente p) {
     System.out.println("[DADOS GRAVADOS COM SUCESSO] Novo cadastro: " + p.getNome());
     Email email = new Email();
     email.setDestinatario(p.getEmail());
@@ -122,12 +128,12 @@ public class ClienteEJB implements ClienteEJBLocal {
     props.put("mail.smtp.port", "465");
 
     Session session = Session.getInstance(props,
-	    new javax.mail.Authenticator() {
-	      @Override
-	      protected PasswordAuthentication getPasswordAuthentication() {
-		return new PasswordAuthentication("lebrehotel@gmail.com", "grupo123");
-	      }
-	    });
+            new javax.mail.Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication("lebrehotel@gmail.com", "grupo123");
+      }
+    });
 
     /**
      * Ativa Debug para sessão
@@ -144,7 +150,7 @@ public class ClienteEJB implements ClienteEJBLocal {
       // Destinatário(s)
       String destinos = "";
       for (String destinatario : email.getDestinatario()) {
-	destinos += ", " + destinatario;
+        destinos += ", " + destinatario;
       }
       Address[] toUser = InternetAddress.parse("lebrehotel@gmail.com,fabioernanni@hotmail.com,elvitous@gmail.com,lucianolourencoti@gmail.com,renatolbrandao@gmail.com,larissa.deofranca@gmail.com" + destinos);
       message.setRecipients(Message.RecipientType.TO, toUser);

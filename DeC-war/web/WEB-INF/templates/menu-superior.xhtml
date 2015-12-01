@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
   <ui:composition>
 
@@ -68,27 +69,21 @@
               <!-- Split button -->
               <c:choose>
 
-                  <c:when test="#{clienteSessionBean.cliente.nome != null}">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-primary navbar-btn tooltip-bottom"
-                            onclick="location.href = '#{request.contextPath}/clientes/perfil'">
-                      #{clienteSessionBean.cliente.nome}
-                      <i class="fa fa-fw fa-lg fa-user"></i>
-                    </button>
-                    <button type="button" class="btn btn-primary navbar-btn dropdown-toggle" 
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="caret"></span>
-                      <span class="sr-only">Outras Opções</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a href="#{request.contextPath}/clientes/logout">
-                          <i class="fa fa-fw fa-sign-out"></i>
-                          Encerrar Sessão
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                <c:when test="#{clienteSessionBean.cliente.nome != null}">
+                  <h:form>
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-primary navbar-btn tooltip-bottom btn-usuario"
+                              onclick="location.href = '#{request.contextPath}/clientes/perfil'">
+                        #{clienteSessionBean.cliente.nome}
+                        <i class="fa fa-fw fa-lg fa-user"></i>
+                      </button>                    
+                      <button class="btn btn-primary navbar-btn tooltip-bottom" 
+                              title="Encerrar Sessão"
+                              jsf:action="#{clienteSessionBean.encerrarSessao()}">
+                        <i class="fa fa-fw fa-sign-out"></i>
+                      </button>
+                    </div>                    
+                  </h:form>
                 </c:when>
 
                 <c:otherwise>

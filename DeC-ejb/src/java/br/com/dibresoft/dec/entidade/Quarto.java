@@ -16,6 +16,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "DeC_QUARTO")
+@NamedQueries({
+  @NamedQuery(
+          name = "Quarto.listarCategoriaHotel",
+          query
+          = "SELECT q FROM Quarto q WHERE q.categoria.id = :categoria_id AND q.hotel.id = :hotel_id ")
+})
 public class Quarto implements Serializable {
 
   private static final long serialVersionUID = 1L;

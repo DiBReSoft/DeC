@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
   <ui:composition>
 
@@ -28,9 +30,11 @@
 
             </div>
 
-            <input type="email" class="form-control" 
-                   required="required"
-                   id="loginEmail" name="loginEmail" />
+            <h:inputText class="form-control"
+                         pt:required=""
+                         pt:type="email"
+                         id="usuarioCredencial"
+                         value="#{clienteSessionBean.cliente.email}" />
 
           </div>
 
@@ -59,9 +63,10 @@
 
             </div>
 
-            <input type="password" class="form-control" 
-                   required="required"
-                   id="loginSenha" name="loginSenha" />
+            <h:inputSecret class="form-control"
+                           pt:required=""
+                           id="usuarioSenha"
+                           value="#{clienteSessionBean.cliente.senha}" />
 
           </div>
 
@@ -73,24 +78,18 @@
 
       <div class="row form-me-cadastrar-botoes">
 
-        <div class="col-md-6">
+        <div class="col-md-8 col-md-offset-2">
 
-          <button id="cadastroLimpar" type="reset" class="btn btn-block btn-lg btn-link">
-            LIMPAR<i class="fa fa-fw fa-lg fa-eraser"></i>
-          </button>
-
-        </div>
-
-        <div class="col-md-6">
-
-          <button id="cadastroCadastrar" type="button" class="btn btn-block btn-lg btn-primary disabled">
-            <i class="fa fa-fw fa-lg fa-unlock-alt"></i>ENTRAR
+          <button id="cadastroCadastrar" class="btn btn-block btn-primary"
+                  jsf:action="#{clienteSessionBean.autenticar()}">
+            <i class="fa fa-fw fa-unlock-alt"></i>
+            ENTRAR
           </button>
 
         </div>
 
       </div>
-      
+
       <div class="clearfix"></div>
 
     </h:form>

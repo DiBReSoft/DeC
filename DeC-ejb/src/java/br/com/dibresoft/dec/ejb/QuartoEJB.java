@@ -50,7 +50,7 @@ public class QuartoEJB implements QuartoEJBLocal {
   @Override
   public List<Quarto> listarAtivos() {
 
-    Query query = em.createQuery("Select c from Quarto c WHERE c.status = 1 ORDER BY c.titulo");
+    Query query = em.createQuery("Select c from Quarto c WHERE c.status = true ORDER BY c.titulo");
 
     List<Quarto> hoteis = query.getResultList();
 
@@ -61,7 +61,7 @@ public class QuartoEJB implements QuartoEJBLocal {
   @Override
   public List<Quarto> listarInativos() {
 
-    Query query = em.createQuery("Select c from Quarto c WHERE c.status = 0 ORDER BY c.titulo");
+    Query query = em.createQuery("Select c from Quarto c WHERE c.status = false ORDER BY c.titulo");
 
     List<Quarto> hoteis = query.getResultList();
 
