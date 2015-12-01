@@ -57,8 +57,16 @@ public class CarrinhoTesteBean {
    * @throws java.io.IOException
    */
   public void preReserva() throws IOException {
-
-    reserva = reservaEJB.verificarDisponibilidade(categoria, hotel, reserva);
+    
+    Quarto quarto;
+    List<Quarto> quartosLista = quartoEJB.listarAtivos();
+    
+    quarto = quartosLista.get(0);
+    
+    reserva.setQuarto(quarto);
+    
+    //Linha abaixo foi comentada para a pré-entrega do Código Fonte
+    //reserva = reservaEJB.verificarDisponibilidade(categoria, hotel, reserva);
 
     if (reserva.getQuarto() != null) {
       /**
