@@ -27,48 +27,55 @@ import javax.mail.PasswordAuthentication;
 @ManagedBean
 @RequestScoped
 public class CompraBean {
-  
+
   private Compra compra;
-  
+
   @EJB
   private CompraEJBLocal compraEJB;
-  
+
   public CompraBean() {
     compra = new Compra();
   }
-  
+
   public void gravar(Cliente cliente, double valorTotal) throws IOException {
-    
-    compra.setStatus("aprovada");
-    compra.setCliente(cliente);
-    compra.setDataCompra(new Date());    
-    compra.setValorParcelas(valorTotal / compra.getCartaoParcelas());
-    compra.setValorTotal(valorTotal);
-    
-    compraEJB.cadastrar(compra);
-    montaEmail(compra);
-    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
-    
+
+    if (cliente.getId() != null) {
+
+      compra.setStatus("aprovada");
+      compra.setCliente(cliente);
+      compra.setDataCompra(new Date());
+      compra.setValorParcelas(valorTotal / compra.getCartaoParcelas());
+      compra.setValorTotal(valorTotal);
+
+      compraEJB.cadastrar(compra);
+      montaEmail(compra);
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
+
+    } else {
+      
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/login");
+      
+    }
+
   }
-  
+
   public Compra getCompra() {
     return compra;
   }
-  
+
   public void setCompra(Compra compra) {
     this.compra = compra;
   }
-  
-    
-   private void montaEmail(Compra c) {
+
+  private void montaEmail(Compra c) {
     System.out.println("[DADOS GRAVADOS COM SUCESSO] Reserva: " + c.getCliente().getNome());
     Email email = new Email();
     email.setDestinatario(c.getCliente().getEmail());
     email.setAssunto("Reserva Efetuada");
-    email.setMensagem(c.getCliente().getNome() + ", obrigado por reservar na Lebre Hotel! </br></br>"+
-    "sua compra foi efetuada no dia:"+c.getDataCompra()+"</br></br>"+
-            "parcelado em "+c.getCartaoParcelas()+"</br></br>"+
-            "em um total de "+c.getValorTotal());
+    email.setMensagem(c.getCliente().getNome() + ", obrigado por reservar na Lebre Hotel! </br></br>"
+            + "sua compra foi efetuada no dia:" + c.getDataCompra() + "</br></br>"
+            + "parcelado em " + c.getCartaoParcelas() + "</br></br>"
+            + "em um total de " + c.getValorTotal());
     EnviarEmail(email);
   }
 
@@ -85,12 +92,12 @@ public class CompraBean {
     props.put("mail.smtp.port", "465");
 
     Session session = Session.getInstance(props,
-	    new javax.mail.Authenticator() {
-	      @Override
-	      protected PasswordAuthentication getPasswordAuthentication() {
-		return new PasswordAuthentication("lebrehotel@gmail.com", "grupo123");
-	      }
-	    });
+            new javax.mail.Authenticator() {
+      @Override
+      protected PasswordAuthentication getPasswordAuthentication() {
+        return new PasswordAuthentication("lebrehotel@gmail.com", "grupo123");
+      }
+    });
 
     /**
      * Ativa Debug para sessão
@@ -107,7 +114,7 @@ public class CompraBean {
       // Destinatário(s)
       String destinos = "";
       for (String destinatario : email.getDestinatario()) {
-	destinos += ", " + destinatario;
+        destinos += ", " + destinatario;
       }
       Address[] toUser = InternetAddress.parse("lebrehotel@gmail.com,fabioernanni@hotmail.com,elvitous@gmail.com,lucianolourencoti@gmail.com,renatolbrandao@gmail.com,larissa.deofranca@gmail.com" + destinos);
       message.setRecipients(Message.RecipientType.TO, toUser);
@@ -126,5 +133,4 @@ public class CompraBean {
     }
   }
 
-  
 }
