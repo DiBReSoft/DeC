@@ -48,8 +48,10 @@ public class ClienteSessionBean {
     return "404?faces-redirect=true";
   }
   
+  public void encerrarSessao (){
+    
+    cliente = null;
+    
+}
   
-
-
-
 }
