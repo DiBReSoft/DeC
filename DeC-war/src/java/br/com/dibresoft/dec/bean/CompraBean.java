@@ -98,7 +98,7 @@ public class CompraBean {
   }
 
   public void EnviarEmail(Email email) {
-
+    
     Properties props = new Properties();
     /**
      * Parâmetros de conexão com servidor Gmail
@@ -147,7 +147,8 @@ public class CompraBean {
       Transport.send(message);
 
     } catch (MessagingException e) {
-      throw new RuntimeException(e);
+      //throw new RuntimeException(e);
+      System.out.println("ATENÇÃO!!! E-mail não foi enviado\n"+e);
     }
   }
 

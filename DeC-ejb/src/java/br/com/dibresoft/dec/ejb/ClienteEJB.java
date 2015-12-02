@@ -32,7 +32,12 @@ public class ClienteEJB implements ClienteEJBLocal {
   @Override
   public boolean cadastrar(Cliente membro) {
     em.persist(membro);
-    montaEmail(membro);
+    try {
+      montaEmail(membro);
+    } catch (Exception e) {
+      System.out.println("ALERTA!!! E-mail não enviado.");
+      return true;
+    }
     return true;
   }
 
