@@ -105,7 +105,8 @@
 
                       <h:selectOneRadio styleClass="table table-striped table-hover" 
                                         layout="pageDirection"
-                                        value="#{compraBean.compra.cartaoBandeira}">
+                                        value="#{compraBean.compra.cartaoBandeira}"
+                                        pt:required="">
 
                         <f:selectItem id="cartao-visa" itemLabel="Visa" itemValue="visa" />
                         <f:selectItem class="cartao-mastercard" itemLabel="MasterCard" itemValue="mastercard" />
@@ -221,7 +222,7 @@
                       <div class="col-sm-6">
 
                         <div class="form-group">
-                          <h:outputLabel value="Valor parcelas: " />                      
+                          <h:outputLabel value="Valor por parcela: " />                      
                           <span class="form-control" id="valor-parcelas">                        
                             <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
                               <f:convertNumber currencyCode="BRL" type="currency" />
@@ -253,7 +254,7 @@
                     <div style="padding: 15px 0px;"></div>
 
                     <!-- BOTÃO ENVIAR -->
-                    <button class="btn btn-primary"
+                    <button class="btn btn-primary pull-right"
                             jsf:action="#{compraBean.gravar(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}">
                       <i class="fa fa-fw fa-check-circle-o"></i>
                       Concluir Pagamento
@@ -306,6 +307,50 @@
     <ui:define name="pagina-bottom">
 
       <!-- Adiciona JS e outros que vão no final da página -->
+      <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
+
+      <script type="text/javascript">
+        $(document).ready(function () {
+
+          $('#cartao-numero').mask('**** **** **** ****');
+          $('#cartao-seguranca').mask('***');
+          
+          /* CAMPO DE PARCELAS */
+          $("#cartao-parcelas").change(function () {
+
+            var nParcelas = $("#cartao-parcelas").val();
+            console.log("Número de Parcelas: " + nParcelas);
+
+            var vTotal = $("#valor-total").text();
+            vTotal = vTotal.replace("R$ ", "");
+            vTotal = vTotal.replace(".", "");
+            vTotal = vTotal.replace(",", ".");
+            vTotal = parseFloat(vTotal);
+            console.log("Valor Total: " + vTotal);
+
+            var vParcelas = vTotal / nParcelas;
+            console.log("Valor por Parcela: " + vParcelas);
+            vParcelas = format1(vParcelas, "R$");
+            console.log("Valor por Parcela: " + vParcelas);
+
+
+            $("#valor-parcelas").text(vParcelas);
+
+          });
+          /* CAMPO DE PARCELAS */
+
+        });
+
+        function format1(n, currency) {
+          return currency + " " + n.toFixed(2).replace(/./g, function (c, i, a) {
+            return i > 0 &amp;&amp; c !== "." &amp;&amp; (a.length - i) % 3 === 0 ? "," + c : c;
+          });
+        }
+
+        function format2(n, currency) {
+          return currency + " " + n.toFixed(2).replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+        }
+      </script>
 
     </ui:define>
 
