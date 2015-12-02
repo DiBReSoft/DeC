@@ -54,22 +54,26 @@ public class ReservaEJB implements ReservaEJBLocal {
 
     Quarto quarto = new Quarto();
 
-    for (Reserva reser : reservas) {
+    if (!reservas.isEmpty() && !quartos.isEmpty()) {
 
-      for (Quarto quar : quartos) {
+      for (Reserva reser : reservas) {
 
-        if (reser.getQuarto().getId() != quar.getId()) {
+        for (Quarto quar : quartos) {
 
-          quarto = quar;
+          if (reser.getQuarto().getId() != quar.getId()) {
 
-        } else {
+            quarto = quar;
 
-          quarto = new Quarto();
+          }
 
         }
 
       }
 
+    } else if (!quartos.isEmpty()) {
+      
+      quarto = quartos.get(0);
+      
     }
 
     if (quarto.getId() != null) {

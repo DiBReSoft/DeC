@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Reservas efetuadas</ui:define>
+
+    <ui:define name="pagina-head">
+      <!-- Adiciona CSS e outros que vão no <head> da página -->
+    </ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Reservas Efetuadas com Sucesso
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
+      <section>
+
+        <div class="container-fluid">
+
+          <h1 class="titulo-secao">
+            Tudo certo
+          </h1>
+
+          <div>
+
+            <h1>
+              <i class="fa fa-fw fa-2x fa-clock-o"></i><br /><small>Curta e Relaxe</small>
+            </h1>
+
+            <p class="lead">
+              O restante é por nossa conta!<br />
+              Te notificaremos por e-mail quanto sua estadia estiver se aproximando.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+      <!-- SEÇÃO PARA HOSPEDAGEM -->
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+
