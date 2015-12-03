@@ -37,133 +37,130 @@
 
             <div class="row">
 
-              <div class="col-md-8">
+              <div class="col-md-6">
 
                 <h3>
                   Unidades Ativas
                 </h3>
 
-                <div class="list-group">
-
-                  <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
-
-                    <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
-                      <h4 class="list-group-item-heading">
-                        #{_hotel.titulo}
-                      </h4>
-                      <div class="row">
-
-                        <div class="col-sm-3">
-
-                          <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-map-marker"></i>
-                            #{_hotel.endereco.cidade}
-                            -
-                            #{_hotel.endereco.estado}
-                          </p>
-
-                        </div>
-
-                        <div class="col-sm-6">
-
-                          <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-envelope"></i>
-                            #{_hotel.email}
-                          </p>
-
-                        </div>
-
-                        <div class="col-sm-3">
-
-                          <p class="list-group-item-text">
-                            <i class="fa fa-fw fa-phone"></i>
-                            #{_hotel.telefone}
-                          </p>
-
-                        </div>
-
-                      </div>
-
-                    </a>
-
-                  </ui:repeat>
-
-                </div>
-
-
-                <c:if test="#{not empty hotelBean.hoteisInativos}">
-
-                  <hr />
-
-                  <h3>
-                    Unidades Inativas
-                  </h3>
-
-                  <div class="list-group">
-
-                    <ui:repeat value="#{hotelBean.hoteisInativos}" var="_hotel">
-
-                      <a href="#{request.contextPath}/backoffice/hoteis/unidade?id=#{_hotel.id}" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                          #{_hotel.titulo}
-                        </h4>
-                        <div class="row">
-
-                          <div class="col-sm-3">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-map-marker"></i>
-                              #{_hotel.endereco.cidade}
-                              -
-                              #{_hotel.endereco.estado}
-                            </p>
-
-                          </div>
-
-                          <div class="col-sm-6">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-envelope"></i>
-                              #{_hotel.email}
-                            </p>
-
-                          </div>
-
-                          <div class="col-sm-3">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-phone"></i>
-                              #{_hotel.telefone}
-                            </p>
-
-                          </div>
-
-                        </div>
-
-                      </a>
-
-                    </ui:repeat>
-
-                  </div>
-
-                </c:if>
-
               </div>
 
-              <div class="col-md-4">
+              <div class="col-md-6">
 
-                <h3 class="text-muted">
-                  <i class="fa fa-info-circle"></i>
-                </h3>
-
-                <p class="lead text-muted">
-                  Ao clicar em um dos hotéis, você pode visualizar ou 
-                  alterar as informações dele.
+                <p class="text-muted" style="padding-top: 30px; margin-bottom: 0px;">
+                  <i class="fa fa-lg fa-info-circle"></i>
+                  Clique no hotel para visualizar ou 
+                  alterar as informações.
                 </p>
 
               </div>
 
             </div>
+
+            <div class="list-group">
+
+              <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
+
+                <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                  <h4 class="list-group-item-heading">
+                    #{_hotel.titulo}
+                  </h4>
+                  <div class="row">
+
+                    <div class="col-sm-4">
+
+                      <p class="list-group-item-text">
+                        <i class="fa fa-fw fa-map-marker"></i>
+                        #{_hotel.endereco.cidade}
+                        -
+                        #{_hotel.endereco.estado}
+                      </p>
+
+                    </div>
+
+                    <div class="col-sm-5">
+
+                      <p class="list-group-item-text">
+                        <i class="fa fa-fw fa-envelope"></i>
+                        #{_hotel.email}
+                      </p>
+
+                    </div>
+
+                    <div class="col-sm-3">
+
+                      <p class="list-group-item-text">
+                        <i class="fa fa-fw fa-phone"></i>
+                        #{_hotel.telefone}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </a>
+
+              </ui:repeat>
+
+            </div>
+
+
+            <c:if test="#{not empty hotelBean.hoteisInativos}">
+
+              <hr />
+
+              <h3>
+                Unidades Inativas
+              </h3>
+
+              <div class="list-group">
+
+                <ui:repeat value="#{hotelBean.hoteisInativos}" var="_hotel">
+
+                  <a href="#{request.contextPath}/backoffice/hotel/alterar?id=#{_hotel.id}" class="list-group-item">
+                    <h4 class="list-group-item-heading">
+                      #{_hotel.titulo}
+                    </h4>
+                    <div class="row">
+
+                      <div class="col-sm-3">
+
+                        <p class="list-group-item-text">
+                          <i class="fa fa-fw fa-map-marker"></i>
+                          #{_hotel.endereco.cidade}
+                          -
+                          #{_hotel.endereco.estado}
+                        </p>
+
+                      </div>
+
+                      <div class="col-sm-6">
+
+                        <p class="list-group-item-text">
+                          <i class="fa fa-fw fa-envelope"></i>
+                          #{_hotel.email}
+                        </p>
+
+                      </div>
+
+                      <div class="col-sm-3">
+
+                        <p class="list-group-item-text">
+                          <i class="fa fa-fw fa-phone"></i>
+                          #{_hotel.telefone}
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </a>
+
+                </ui:repeat>
+
+              </div>
+
+            </c:if>     
 
           </c:when>
 

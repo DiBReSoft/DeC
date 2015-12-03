@@ -83,6 +83,9 @@ public class HotelBean {
     Long paramHotelID = Long.parseLong(params.get("id"));
 
     Hotel hotelCarregar = hotelEJB.buscarHotelPorID(paramHotelID);
+    
+    String email = hotelCarregar.getEmail();    
+    hotelCarregar.setEmail(email.replaceAll("@lebrehotel.com.br", ""));
 
     hotel = hotelCarregar;
     endereco = hotelCarregar.getEndereco();

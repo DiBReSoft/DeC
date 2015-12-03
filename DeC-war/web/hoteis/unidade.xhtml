@@ -3,20 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:jsf="http://xmlns.jcp.org/jsf">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
     <ui:define name="pagina-head">
 
       <style type="text/css">
+        header h1 small {
+          display: block;
+          margin: 10px 0px 15px -17px;
+        }
         .hotel-icones {
-          margin: 20px 0px;
+          margin: 10px 0px;
         }
         .hotel-icones .fa {
-          margin-right: 10px;
+          margin: 0px 5px;
+        }
+        #map-canvas {
+          width: 100%;
+          height: 350px;
         }
       </style>
 
@@ -38,6 +46,11 @@
 
           <h1>
             #{hotelBean.hotel.titulo}
+            <small>
+              #{hotelBean.hotel.endereco.cidade}
+              -
+              #{hotelBean.hotel.endereco.estado}
+            </small>
           </h1>
 
         </div>
@@ -45,7 +58,7 @@
       </header>
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
 
-      <section>
+      <section style="padding-bottom: 60px;">
 
         <div class="container-fluid">
 
@@ -54,94 +67,81 @@
             <!-- COLUNA ESQUERDA -->
             <div class="col-md-7">
 
-              <h1>
-                #{hotelBean.hotel.titulo}
+              <h1 style="margin-bottom: 30px;">
+                Mais sobre a unidade
               </h1>
 
-              <h4 class="hotel-icones">
-                <span title="4,5 estrelas">
-                  <i class="fa fa-lg fa-star"></i>
-                  <i class="fa fa-lg fa-star"></i>
-                  <i class="fa fa-lg fa-star"></i>
-                  <i class="fa fa-lg fa-star"></i>
-                  <i class="fa fa-lg fa-star-half-o"></i>
-                </span>
-                <small class="text-uppercase text-muted">
-                  Avaliação dos Hospedes
-                </small>
-              </h4>
-
-              <h4 class="hotel-icones">
-                <i class="fa fa-lg fa-bed"
-                   title="Serviço de Quarto"></i>
-                <i class="fa fa-lg fa-cutlery"
-                   title="Restaurante"></i>
-                <i class="fa fa-lg fa-shield"
-                   title="Segurança Particular"></i>
-                <i class="fa fa-lg fa-automobile"
-                   title="Estacionamento para Hóspedes"></i>
-                <small class="text-uppercase text-muted">
-                  Serviços Disponíveis
-                </small>
-              </h4>
-
               <p class="lead">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. 
+                <h:outputText value="#{hotelBean.hotel.descricao}" />
               </p>
 
             </div>
             <!-- COLUNA ESQUERDA -->
 
             <!-- COLUNA DIREITA -->
-
             <div class="col-md-5">
 
-              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <div id="carousel-categorias" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  <li data-target="#carousel-categorias" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-categorias" data-slide-to="1"></li>
+                  <li data-target="#carousel-categorias" data-slide-to="2"></li>
+                  <li data-target="#carousel-categorias" data-slide-to="3"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
+
                   <div class="item active">
-                    <img src="#{request.contextPath}/img/acomodacoes/apartamento_superior_1.jpg" 
-                         alt="Apartamento Superior" />
+                    <img src="#{request.contextPath}/img/acomodacoes/categoria_solteiro.jpg" 
+                         alt="Apartamento Solteiro"
+                         class="center-block"/>
                     <div class="carousel-caption">
-                      Apartamento Superior
+                      Categoria Solteiro
                     </div>
                   </div>
+
                   <div class="item">
-                    <img src="#{request.contextPath}/img/acomodacoes/apartamento_luxo_2.jpg" 
-                         alt="Apartamento Luxo" />
+                    <img src="#{request.contextPath}/img/acomodacoes/categoria_solteiro-duplo.jpg" 
+                         alt="Apartamento Solteiro Duplo"
+                         class="center-block"/>
                     <div class="carousel-caption">
-                      Apartamento Luxo
+                      Categoria Solteiro Duplo
                     </div>
                   </div>
+
                   <div class="item">
-                    <img src="#{request.contextPath}/img/acomodacoes/apartamento_executivo_1.jpg" 
-                         alt="Apartamento Executivo" />
+                    <img src="#{request.contextPath}/img/acomodacoes/categoria_casal.jpg" 
+                         alt="Apartamento Casal"
+                         class="center-block"/>
                     <div class="carousel-caption">
-                      Apartamento Executivo
+                      Categoria Casal
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <img src="#{request.contextPath}/img/acomodacoes/categoria_casal-duplo.jpg" 
+                         alt="Apartamento Casal Duplo"
+                         class="center-block"/>
+                    <div class="carousel-caption">
+                      Categoria Casal Duplo
                     </div>
                   </div>
 
                 </div>
 
                 <!-- Controls -->
-                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <a class="left carousel-control" href="#carousel-categorias" role="button" data-slide="prev">
                   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+
+                <a class="right carousel-control" href="#carousel-categorias" role="button" data-slide="next">
                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
+
               </div>
 
             </div>
@@ -156,7 +156,7 @@
             <div class="col-md-7">
 
               <h1>
-                Contato
+                Contato e Serviços
               </h1>
 
               <div class="clearfix" style="padding: 5px 0px;"></div>
@@ -168,8 +168,52 @@
 
               <p class="lead">
                 <i class="fa fa-fw fa-lg fa-envelope-square"></i>
-                #{hotelBean.hotel.email}
+                #{hotelBean.hotel.email}@lebrehotel.com.br
               </p>
+
+              <div class="row">
+
+                <h:panelGroup layout="block" styleClass="col-md-6"
+                              rendered="#{hotelBean.hotel.servicoQuarto}">
+                  <h4 class="hotel-icones">
+                    <i class="fa fa-fw fa-lg fa-bed" />
+                    <small class="text-uppercase">
+                      Serviço de Quarto
+                    </small>
+                  </h4>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="col-md-6"
+                              rendered="#{hotelBean.hotel.restaurante}">
+                  <h4 class="hotel-icones">
+                    <i class="fa fa-fw fa-lg fa-cutlery" />
+                    <small class="text-uppercase">
+                      Restaurante
+                    </small>
+                  </h4>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="col-md-6"
+                              rendered="#{hotelBean.hotel.piscina}">
+                  <h4 class="hotel-icones">
+                    <i class="fa fa-fw fa-lg fa-life-ring" />
+                    <small class="text-uppercase">
+                      Piscina para Hóspedes
+                    </small>
+                  </h4>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="col-md-6"
+                              rendered="#{hotelBean.hotel.estacionamento}">
+                  <h4 class="hotel-icones">
+                    <i class="fa fa-fw fa-lg fa-automobile" />
+                    <small class="text-uppercase">
+                      Estacionamento
+                    </small>
+                  </h4>
+                </h:panelGroup>
+
+              </div>
 
             </div>
 
@@ -181,107 +225,147 @@
 
               <div class="clearfix" style="padding: 5px 0px;"></div>
 
-              <div class="panel panel-primary">
+              <h:form id="formReservar" enctype="utf-8">
 
-                <div class="panel-body">
+                <h:inputHidden id="reservaHotel" 
+                               pt:required=""
+                               value="#{carrinhoTesteBean.hotel.id}" />
 
-                  <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+                <div class="row">
 
-                  <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-                  <form method="post" action="reservar" enctype="utf-8">
+                  <div class="col-md-12">
 
-                    <div class="col-xs-12">
+                    <div class="form-group" id="reservaCheckInContainer">
 
-                      <div class="form-group" id="reservaCheckInContainer">
+                      <label for="reservaCheckIn" class="hidden-lg hidden-md">
+                        Data de Check-in:
+                      </label>
 
-                        <label for="reservaCheckIn" class="hidden-lg hidden-md">
-                          Data de Check-in:
-                        </label>
+                      <div class="input-group">
 
-                        <div class="input-group">
+                        <div class="input-group-addon">
 
-                          <div class="input-group-addon">
+                          <label for="reservaCheckIn">
 
-                            <label for="reservaCheckIn">
+                            <i class="fa fa-fw fa-calendar-plus-o"></i>
 
-                              <i class="fa fa-fw fa-calendar-plus-o"></i>
+                            <span class="hidden-sm hidden-xs">
+                              Check-in: 
+                            </span>
 
-                              <span class="hidden-sm hidden-xs">
-                                Check-in: 
-                              </span>
-
-                            </label>
-
-                          </div>
-
-                          <input type="text" class="form-control init-datepicker"
-                                 id="reservaCheckIn" name="reservaCheckIn"
-                                 required="required" />
+                          </label>
 
                         </div>
+
+                        <h:inputText class="form-control reservaCheckIn"
+                                     id="reservaCheckIn" 
+                                     pt:required=""
+                                     value="#{carrinhoTesteBean.reserva.checkIn}">
+                          <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                        </h:inputText>
 
                       </div>
 
                     </div>
 
-                    <div class="col-xs-12">
+                  </div>
 
-                      <div class="form-group" id="reservaCheckOutContainer">
+                  <div class="clearfix"></div>
 
-                        <label for="reservaCheckOut" class="hidden-lg hidden-md">
-                          Data de Check-out:
-                        </label>
+                  <div class="col-md-12">
 
-                        <div class="input-group">
+                    <div class="form-group" id="reservaCheckOutContainer">
 
-                          <div class="input-group-addon">
+                      <label for="reservaCheckOut" class="hidden-lg hidden-md">
+                        Data de Check-out:
+                      </label>
 
-                            <label for="reservaCheckOut">
+                      <div class="input-group">
 
-                              <i class="fa fa-fw fa-calendar-minus-o"></i>
+                        <div class="input-group-addon">
 
-                              <span class="hidden-sm hidden-xs">
-                                Check-out:
-                              </span>
+                          <label for="reservaCheckOut">
 
-                            </label>
+                            <i class="fa fa-fw fa-calendar-minus-o"></i>
 
-                          </div>
+                            <span class="hidden-sm hidden-xs">
+                              Check-out:
+                            </span>
 
-                          <input type="text" class="form-control init-datepicker" 
-                                 id="reservaCheckOut" name="reservaCheckOut"
-                                 required="required" />
+                          </label>
 
                         </div>
+
+                        <h:inputText class="form-control reservaCheckOut" 
+                                     id="reservaCheckOut"
+                                     pt:required=""
+                                     value="#{carrinhoTesteBean.reserva.checkOut}" >    
+                          <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                        </h:inputText>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="clearfix"></div>
+
+                  <div class="col-md-12">
+
+                    <div class="form-group">
+
+                      <label class="control-label hidden-lg hidden-md" for="reservaCategoria">
+                        Selecione uma Categoria:
+                      </label>
+
+                      <div class="input-group">
+
+                        <div class="input-group-addon">
+
+                          <label for="reservaCategoria">
+
+                            <i class="fa fa-fw fa-bed"></i>
+
+                            <span class="hidden-sm hidden-xs">
+                              Categoria:
+                            </span>
+
+                          </label>
+
+                        </div>
+
+                        <h:selectOneMenu class="form-control reservaCategoria"
+                                         id="reservaCategoria" 
+                                         pt:required=""
+                                         value="#{carrinhoTesteBean.categoria.id}">
+                          <f:selectItem itemValue="" itemLabel="Selecione..." />
+
+                          <f:selectItems value="#{categoriaBean.comboCategorias}"/>
+
+                        </h:selectOneMenu>
 
                       </div>
 
                     </div>
 
-                    <div class="clearfix"></div>
+                  </div>
 
-                    <div class="col-md-3"></div>
+                  <div class="clearfix"></div>
 
-                    <div class="col-md-6">
+                  <div class="col-md-12">
 
-                      <button id="reservaCotar" type="button" class="btn btn-primary btn-block disabled">
-                        Cotar Preço
-                        <i class="fa fa-fw fa-search"></i>
-                      </button>
+                    <button class="btn btn-primary" id="teste"
+                            jsf:action="#{carrinhoTesteBean.preReserva()}">
+                      <i class="fa fa-fw fa-plus"></i>
+                      ADICIONAR À MALA
+                      <i class="fa fa-fw fa-lg fa-suitcase"></i>
+                    </button>
 
-                    </div>
-
-                  </form>        
-
-                </div>
-
-                <div class="panel-footer text-center">
-
-                  Esta busca corresponde aos cômodos desta unidade
+                  </div>
 
                 </div>
 
-              </div>
+              </h:form>
 
             </div>
 
@@ -295,17 +379,17 @@
 
         <div class="container-fluid">
 
-          <h1>
-            Localização
-          </h1>
-
           <div class="row">
 
             <div class="col-md-4">
 
+              <h1 class="page-header">
+                Localização
+              </h1>
+
               <p>
                 <i class="fa fa-fw fa-lg fa-road"></i>
-                #{hotelBean.hotel.endereco.logradouro},#{hotelBean.hotel.endereco.numero}
+                #{hotelBean.hotel.endereco.logradouro}, #{hotelBean.hotel.endereco.numero}
               </p>
 
               <p>
@@ -318,11 +402,32 @@
                 #{hotelBean.hotel.endereco.cidade} - #{hotelBean.hotel.endereco.estado}
               </p>
 
+              <p>
+                <i class="fa fa-fw fa-lg fa-globe"></i>
+                #{hotelBean.hotel.endereco.pais}
+              </p>
+
+              <p>
+                <i class="fa fa-fw fa-lg fa-barcode"></i>
+                #{hotelBean.hotel.endereco.cep}
+              </p>
+
             </div>
 
             <div class="col-md-8">
 
-              Aqui vai o mapa do Google
+              <div id="map-canvas" class="hidden-xs">
+                Mapa do Google
+              </div>
+
+              <span id="map-input" class="hidden">
+                #{hotelBean.hotel.endereco.logradouro},
+                #{hotelBean.hotel.endereco.numero},
+                #{hotelBean.hotel.endereco.bairro},
+                #{hotelBean.hotel.endereco.cidade} -
+                #{hotelBean.hotel.endereco.estado},
+                #{hotelBean.hotel.endereco.cep}
+              </span>
 
             </div>
 
@@ -333,40 +438,62 @@
       </section>
 
     </ui:define>
-    
+
     <ui:define name="pagina-bottom">
       <!-- Adiciona JS e outros que vão no final da página -->
 
-      <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
+      <script type="text/javascript" src="#{request.contextPath}/js/index-reservas.js"></script>
+
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;extension=.js&amp;output=embed"></script>
       <script type="text/javascript">
-        $(document).ready(function () {
 
-          $("#cadastroNewsletter").bootstrapToggle();
+        if ($(window).width() > 767) {
 
-          $('#cadastroRG').mask('**.999.999-*');
-          $('#cadastroCPF').mask('999.999.999-99');
-          $('#cadastroNascimento').mask('**/**/****');
+          /* google maps */
+          google.maps.visualRefresh = true;
 
-          // verificação de email
-          $("#cadastroEmail").focus(function () {
-            $("#cadastroEmailContainer .input-group").removeClass("has-success");
-          });
-          $("#cadastroEmail").blur(function () {
-            var email = $("#cadastroEmail");
-            if (email.val() !== "") {
-              if (!(/^\w([\.-]?\w)*@\w([\.-]?\w)*(\.\w{2,3})$/.test(email.val()))) {
-                $("#cadastroEmailContainer .input-group").addClass("has-error");
-                email.focus();
-                return false;
-              } else {
-                $("#cadastroEmailContainer .input-group").removeClass("has-error");
-                $("#cadastroEmailContainer .input-group").addClass("has-success");
-              }
+          var map;
+          function initializeGoogleMaps() {
+            var geocoder = new google.maps.Geocoder();
+            var address = $('#map-input').text(); /* change the map-input to your address */
+            var mapOptions = {
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              scrollwheel: false
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            if (geocoder) {
+              geocoder.geocode({'address': address}, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                  if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                    map.setCenter(results[0].geometry.location);
+
+                    var infowindow = new google.maps.InfoWindow(
+                            {
+                              content: address,
+                              map: map,
+                              position: results[0].geometry.location
+                            });
+
+                    var marker = new google.maps.Marker({
+                      position: results[0].geometry.location,
+                      map: map,
+                      title: address
+                    });
+
+                  } else {
+                    alert("Localizacao no Mapa nao encontrada.");
+                  }
+                }
+              });
             }
-          });
-          // verificação de email
+          }
+          google.maps.event.addDomListener(window, 'load', initializeGoogleMaps);
+          /* end google maps */
 
-        });
+        }
+
       </script>
 
     </ui:define>

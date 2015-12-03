@@ -38,6 +38,8 @@ public class Hotel implements Serializable {
   private boolean piscina;
   private boolean estacionamento;
   
+  private String descricao;
+  
 
   @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
   private Endereco endereco;
@@ -123,6 +125,14 @@ public class Hotel implements Serializable {
 
   public void setEstacionamento(boolean estacionamento) {
     this.estacionamento = estacionamento;
+  }
+
+  public String getDescricao() {
+    return descricao;
+  }
+
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
   }
 
   public Endereco getEndereco() {

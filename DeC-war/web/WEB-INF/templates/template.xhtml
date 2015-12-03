@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
   <h:head>
 
@@ -70,7 +71,7 @@
                   Login:
                 </label>
                 <h:inputText class="form-control"
-                             required="required"
+                             pt:required=""
                              id="usuarioCredencial"
                              value="#{clienteSessionBean.cliente.email}" />
 
@@ -80,7 +81,7 @@
                 Senha:
               </label>
               <h:inputSecret class="form-control"
-                             required="required"
+                             pt:required=""
                              id="usuarioSenha"
                              value="#{clienteSessionBean.cliente.senha}" />
 

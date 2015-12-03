@@ -23,12 +23,11 @@ public class ClienteSessionBean {
   private ClienteEJBLocal clienteEJB;
 
   public ClienteSessionBean() {
-
+    cliente = new Cliente();
   }
 
   @PostConstruct
   public void init() {
-    cliente = new Cliente();
   }
 
   public void autenticar() throws IOException {
@@ -52,6 +51,32 @@ public class ClienteSessionBean {
     cliente = new Cliente();
 
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/");
+
+  }
+
+  public void autenticarAdm() throws IOException {
+
+    System.out.println("Autenticar ADM");
+
+    cliente = clienteEJB.autenticar(cliente.getEmail(), cliente.getSenha());
+
+    if (cliente.getId() != null && cliente.getPrivilegio() == 'a') {
+
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/dashboard");
+
+    } else {
+
+      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/dec?erro=nao-autorizado");
+
+    }
+
+  }
+
+  public void encerrarSessaoAdm() throws IOException {
+
+    cliente = new Cliente();
+
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/login");
 
   }
 

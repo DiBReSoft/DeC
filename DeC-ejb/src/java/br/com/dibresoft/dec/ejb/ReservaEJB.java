@@ -6,6 +6,7 @@ import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -60,7 +61,7 @@ public class ReservaEJB implements ReservaEJBLocal {
 
         for (Quarto quar : quartos) {
 
-          if (reser.getQuarto().getId() != quar.getId()) {
+          if (!Objects.equals(reser.getQuarto().getId(), quar.getId())) {
 
             quarto = quar;
 
