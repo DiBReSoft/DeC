@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -16,11 +20,16 @@
         }
       </style>
 
-    </ui:define>    
+    </ui:define>
 
-    <ui:define name="pagina-titulo">Unidade São Paulo</ui:define>
+    <ui:define name="pagina-titulo">Unidade #{hotelBean.hotel.titulo}</ui:define>
 
     <ui:define name="pagina-conteudo">
+
+      <f:metadata>
+        <f:viewParam name="id" value="#{hotelBean.hotel.id}" />
+        <f:viewAction action="#{hotelBean.carregarInfos()}" />
+      </f:metadata>
 
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
       <header class="header-generico bg-primary">
@@ -28,7 +37,7 @@
         <div class="container-fluid">
 
           <h1>
-            São Paulo | SP
+            #{hotelBean.hotel.titulo}
           </h1>
 
         </div>
@@ -46,7 +55,7 @@
             <div class="col-md-7">
 
               <h1>
-                Spa &amp; Resort
+                #{hotelBean.hotel.titulo}
               </h1>
 
               <h4 class="hotel-icones">
@@ -154,12 +163,12 @@
 
               <p class="lead">
                 <i class="fa fa-fw fa-lg fa-phone-square"></i>
-                (11) 0123-4567
+                #{hotelBean.hotel.telefone}
               </p>
 
               <p class="lead">
                 <i class="fa fa-fw fa-lg fa-envelope-square"></i>
-                saopaulo@lebrehotel.com.br
+                #{hotelBean.hotel.email}
               </p>
 
             </div>
@@ -296,25 +305,25 @@
 
               <p>
                 <i class="fa fa-fw fa-lg fa-road"></i>
-                Av. Engenheiro Eusério Stevaux, 000
+                #{hotelBean.hotel.endereco.logradouro},#{hotelBean.hotel.endereco.numero}
               </p>
 
               <p>
                 <i class="fa fa-fw fa-lg fa-map-signs"></i>
-                Campo Grande
+                #{hotelBean.hotel.endereco.bairro}
               </p>
 
               <p>
                 <i class="fa fa-fw fa-lg fa-map-marker"></i>
-                São Paulo - SP
+                #{hotelBean.hotel.endereco.cidade} - #{hotelBean.hotel.endereco.estado}
               </p>
 
             </div>
 
             <div class="col-md-8">
-              
+
               Aqui vai o mapa do Google
-              
+
             </div>
 
           </div>
@@ -324,7 +333,7 @@
       </section>
 
     </ui:define>
-
+    
     <ui:define name="pagina-bottom">
       <!-- Adiciona JS e outros que vão no final da página -->
 
