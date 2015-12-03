@@ -21,8 +21,7 @@ import javax.persistence.TemporalType;
 @NamedQueries({
   @NamedQuery(name ="Cliente.autenticar", query = "SELECT c FROM Cliente c WHERE c.email = :email and c.senha = :senha"),
   @NamedQuery(name ="Cliente.validar", query = "SELECT c FROM Cliente c WHERE c.cpf = :cpf or c.email = :email")
-}
-)
+})
 
 public class Cliente implements Serializable {
 
@@ -41,6 +40,9 @@ public class Cliente implements Serializable {
   private String senha;
   private boolean newsletter;
   private boolean privacidade;
+  
+  /* c = cliente || a = administrador */
+  private char privilegio;
 
   @Temporal(TemporalType.DATE)
   private Date dataNascimento;
@@ -131,6 +133,14 @@ public class Cliente implements Serializable {
 
   public void setPrivacidade(boolean privacidade) {
     this.privacidade = privacidade;
+  }
+
+  public char getPrivilegio() {
+    return privilegio;
+  }
+
+  public void setPrivilegio(char privilegio) {
+    this.privilegio = privilegio;
   }
 
   @Override

@@ -20,33 +20,6 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "DeC_RESERVA")
 @NamedQueries({
-  //  @NamedQuery(
-  //          name = "Reserva.numQuartosIndisponiveis",
-  //          query = "SELECT (SELECT COUNT(i) FROM Reserva i "
-  //          + "WHERE i.checkIn BETWEEN :checkIn and :checkOut) "
-  //          + "+ "
-  //          + "(SELECT COUNT(o) FROM Reserva o "
-  //          + "WHERE o.checkOut BETWEEN :checkIn and :checkOut)"),
-  //  @NamedQuery(
-  //          name = "Reserva.numQuartosTotal",
-  //          query = "SELECT COUNT (q) FROM Quarto q "
-  //          + "JOIN Categoria c on c.id = q.id_categoria "
-  //          + "JOIN Hotel h on h.id = q.hotel_id"),
-  //  @NamedQuery(
-  //          name = "Reserva.idQuartoDisponivel",
-  //          query = "SELECT r FROM Reserva r "
-  //          + "left join Quarto q on q.id != r.quarto_id "
-  //          + "inner join Categoria c on c.id != q.categoria_id "
-  //          + "inner join Hotel h on h.id != q.hotel_id "
-  //          + "WHERE r.id_quarto != q.id"),
-  @NamedQuery(
-          name = "Reserva.verificarDisponibilidade",
-          query
-          = "SELECT r FROM Reserva r "
-          + "left join Quarto q on q.id != r.quarto_id "
-          + "inner join Categoria c on c.id != q.categoria_id "
-          + "inner join Hotel h on h.id != q.hotel_id "
-          + "WHERE r.checkIn between :checkIn and :checkOut"),
   @NamedQuery(
           name = "Reserva.listarNoPeriodo",
           query
@@ -58,8 +31,9 @@ public class Reserva implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-
-  private boolean status;
+  
+  /* 'a' = aprovada || 'c' = cancelada */
+  private char status;
 
   @ManyToOne
   private Cliente cliente;
@@ -81,11 +55,11 @@ public class Reserva implements Serializable {
     this.id = id;
   }
 
-  public boolean isStatus() {
+  public char getStatus() {
     return status;
   }
 
-  public void setStatus(boolean status) {
+  public void setStatus(char status) {
     this.status = status;
   }
 

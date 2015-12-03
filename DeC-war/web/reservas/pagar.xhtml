@@ -255,7 +255,7 @@
 
                     <!-- BOTÃO ENVIAR -->
                     <button class="btn btn-primary pull-right"
-                            jsf:action="#{compraBean.gravar(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho())}">
+                            jsf:action="#{carrinhoTesteBean.atualiarCarrinho(compraBean.gravar(carrinhoTesteBean.lista, clienteSessionBean.cliente, carrinhoTesteBean.valorTotalCarrinho()))}">
                       <i class="fa fa-fw fa-check-circle-o"></i>
                       Concluir Pagamento
                     </button>

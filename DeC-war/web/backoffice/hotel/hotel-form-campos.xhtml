@@ -45,9 +45,125 @@
 
       </div>
       <!-- Status do Hotel -->
+      
+      <div class="col-md-2"></div>
+
+      <!-- ServicoQuarto do Hotel -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Serviço Quarto:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelServicoQuarto"
+                                       value="#{hotelBean.hotel.temServicoQuarto}"
+                                       pt:id="cadastroHotelServicoQuarto"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; POSSUI"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO POSSUI">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- ServicoQuarto do Hotel -->
+
+      <!-- Restaurante do Hotel -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Restaurante:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelRestaurante"
+                                       value="#{hotelBean.hotel.temRestaurante}"
+                                       pt:id="cadastroHotelRestaurante"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; POSSUI"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO POSSUI">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Restaurante do Hotel -->
+
+      <!-- Piscina do Hotel -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Piscina:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelPiscina"
+                                       value="#{hotelBean.hotel.temPiscina}"
+                                       pt:id="cadastroHotelPiscina"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; POSSUI"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO POSSUI">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Piscina do Hotel -->
+
+      <!-- Estacionamento do Hotel -->
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Estacionamento:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelEstacionamento"
+                                       value="#{hotelBean.hotel.temEstacionamento}"
+                                       pt:id="cadastroHotelEstacionamento"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; POSSUI"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO POSSUI">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Estacionamento do Hotel -->
+
+      <div class="clearfix"></div>
 
       <!-- Nome Hotel-->
-      <div class="col-md-7">
+      <div class="col-md-6">
 
         <div class="form-group">
 
@@ -82,32 +198,31 @@
       </div>
       <!-- Nome Hotel-->
 
-      <!-- Quartos Hotel -->
-      <div class="col-md-3">
+      <!-- Telefone Hotel-->
+      <div class="col-md-6">
 
         <div class="form-group">
 
-          <label for="cadastroHotelQuartos">
-            Quantidade de Quartos:
+          <label for="cadastroHotelTelefone">
+            Telefone:
           </label>
 
           <div class="input-group input-group-lg">
 
             <div class="input-group-addon">
 
-              <label for="cadastroHotelQuartos">
-                <i class="fa fa-fw fa-bed"></i>
+              <label for="cadastroHotelTelefone">
+                <i class="fa fa-fw fa-phone"></i>
               </label>
 
             </div>
 
-            <h:inputText styleClass="form-control cadastroHotelQuartos"
+            <h:inputText styleClass="form-control cadastroHotelTelefone"
                          pt:required=""
-                         pt:id="cadastroHotelQuartos"
-                         value="#{hotelBean.hotel.qtdeQuartos}"
-                         pt:placeholder="Ex.: 100"
-                         pt:type="number"
-                         pt:maxlenght="500">
+                         pt:id="cadastroHotelTelefone"
+                         value="#{hotelBean.hotel.telefone}"
+                         pt:placeholder="Ex.: (11) 1234-5678">
+              <f:validateLength minimum="10" maximum="15"/>
             </h:inputText>
 
           </div>
@@ -115,7 +230,7 @@
         </div>
 
       </div>
-      <!-- Quartos Hotel -->
+      <!-- Telefone Hotel -->
 
       <div class="clearfix"></div>
 
@@ -367,40 +482,6 @@
 
       <div class="clearfix"></div>
 
-      <!-- Telefone Hotel-->
-      <div class="col-md-6">
-
-        <div class="form-group">
-
-          <label for="cadastroHotelTelefone">
-            Telefone:
-          </label>
-
-          <div class="input-group input-group-lg">
-
-            <div class="input-group-addon">
-
-              <label for="cadastroHotelTelefone">
-                <i class="fa fa-fw fa-phone"></i>
-              </label>
-
-            </div>
-
-            <h:inputText styleClass="form-control cadastroHotelTelefone"
-                         pt:required=""
-                         pt:id="cadastroHotelTelefone"
-                         value="#{hotelBean.hotel.telefone}"
-                         pt:placeholder="Ex.: (11) 1234-5678">
-              <f:validateLength minimum="10" maximum="15"/>
-            </h:inputText>
-
-          </div>
-
-        </div>
-
-      </div>
-      <!-- Telefone Hotel -->
-
       <!-- Email Hotel-->
       <div class="col-md-6">
 
@@ -421,7 +502,7 @@
             </div>
 
             <h:inputText styleClass="form-control"
-                         pt:placeholder="Ex.: sp.saopaulo"
+                         pt:placeholder="Ex.: sp.saopaulo.brooklin"
                          pt:required=""
                          pt:id="cadastroHotelEmail"
                          value="#{hotelBean.hotel.email}">
@@ -436,6 +517,42 @@
 
       </div>
       <!-- Email Hotel-->
+
+      <!-- ChaveURL Hotel-->
+      <div class="col-md-6">
+
+        <div class="form-group">
+
+          <label for="cadastroHotelChaveURL"
+                 class="tooltip-bottom"
+                 title="Para a página no site">
+            Chave / URL:
+          </label>
+
+          <div class="input-group input-group-lg">
+
+            <div class="input-group-addon">
+
+              <label for="cadastroHotelChaveURL">
+                <i class="fa fa-fw fa-link"></i>
+              </label>
+
+            </div>
+
+            <h:inputText styleClass="form-control cadastroHotelChaveURL"
+                         pt:required=""
+                         pt:id="cadastroHotelChaveURL"
+                         value="#{hotelBean.hotel.chaveURL}"
+                         pt:placeholder="Ex.: sp-saopaulo-brooklin">
+              <f:validateLength minimum="4" maximum="64"/>
+            </h:inputText>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- ChaveURL Hotel -->
 
       <div class="clearfix" style="padding: 15px 0px;"></div>
 

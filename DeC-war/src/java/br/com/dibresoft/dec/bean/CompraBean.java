@@ -57,7 +57,7 @@ public class CompraBean {
 
   }
 
-  public void gravar(List<Reserva> reservas, Cliente cliente, double valorTotal) throws IOException {
+  public List<Reserva> gravar(List<Reserva> reservas, Cliente cliente, double valorTotal) throws IOException {
 
     compra.setStatus("aprovada");
     compra.setCliente(cliente);
@@ -70,10 +70,13 @@ public class CompraBean {
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/sucesso");
 
     for (Reserva r : reservas) {
+      /* Reserva Status = 'a' (de aprovada) */
+      r.setStatus('a');
       r.setCliente(cliente);
-      r.setStatus(true);
       reservaEJB.cadastrar(r);
     }
+
+    return reservas;
 
   }
 
@@ -90,15 +93,15 @@ public class CompraBean {
     Email email = new Email();
     email.setDestinatario(c.getCliente().getEmail());
     email.setAssunto("Reserva Efetuada");
-    email.setMensagem(c.getCliente().getNome() + ", obrigado por reservar na Lebre Hotel! </br></br>"
-            + "sua compra foi efetuada no dia:" + c.getDataCompra() + "</br></br>"
-            + "parcelado em " + c.getCartaoParcelas() + "</br></br>"
-            + "em um total de " + c.getValorTotal());
+    email.setMensagem(c.getCliente().getNome() + ", obrigado por reservar na Lebre Hotel! \n\n"
+            + "Compra foi efetuada no dia: " + c.getDataCompra() + "\n"
+            + "Parcelada em: " + c.getCartaoParcelas() + "x \n"
+            + "Total: " + c.getValorTotal());
     EnviarEmail(email);
   }
 
   public void EnviarEmail(Email email) {
-    
+
     Properties props = new Properties();
     /**
      * Parâmetros de conexão com servidor Gmail
@@ -148,7 +151,7 @@ public class CompraBean {
 
     } catch (MessagingException e) {
       //throw new RuntimeException(e);
-      System.out.println("ATENÇÃO!!! E-mail não foi enviado\n"+e);
+      System.out.println("ATENÇÃO!!! E-mail não foi enviado\n" + e);
     }
   }
 

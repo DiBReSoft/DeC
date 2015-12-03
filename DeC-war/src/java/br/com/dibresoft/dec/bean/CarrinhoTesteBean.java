@@ -136,7 +136,7 @@ public class CarrinhoTesteBean {
   public void limparCarrinho() throws IOException {
 
     lista.clear();
-    
+
     FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/mala");
 
   }
@@ -151,6 +151,22 @@ public class CarrinhoTesteBean {
 
     return valorTotalCarrinho;
 
+  }
+
+  public void atualiarCarrinho(List<Reserva> reservas) {
+    
+    lista = null;
+    
+    for (Reserva reserva : reservas) {
+      
+      if(reserva.getStatus() != 'a') {
+        
+        lista.add(reserva);
+        
+      }
+      
+    }
+    
   }
 
   public List<Reserva> getLista() {

@@ -27,14 +27,20 @@ public class Hotel implements Serializable {
 
   private String titulo;
 
-  private int qtdeQuartos;
-
   private String telefone;
 
   private String email;
+  
+  private String chaveURL;
+  
+  private boolean servicoQuarto;
+  private boolean restaurante;
+  private boolean piscina;
+  private boolean estacionamento;
+  
 
   @OneToOne(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-  private Endereco endereco;  
+  private Endereco endereco;
 
   @OneToOne(mappedBy = "hotel")
   private Quarto quartos;
@@ -63,14 +69,6 @@ public class Hotel implements Serializable {
     this.titulo = titulo;
   }
 
-  public int getQtdeQuartos() {
-    return qtdeQuartos;
-  }
-
-  public void setQtdeQuartos(int qtdeQuartos) {
-    this.qtdeQuartos = qtdeQuartos;
-  }
-
   public String getTelefone() {
     return telefone;
   }
@@ -85,6 +83,46 @@ public class Hotel implements Serializable {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public String getChaveURL() {
+    return chaveURL;
+  }
+
+  public void setChaveURL(String chaveURL) {
+    this.chaveURL = chaveURL;
+  }
+
+  public boolean isServicoQuarto() {
+    return servicoQuarto;
+  }
+
+  public void setServicoQuarto(boolean servicoQuarto) {
+    this.servicoQuarto = servicoQuarto;
+  }
+
+  public boolean isRestaurante() {
+    return restaurante;
+  }
+
+  public void setRestaurante(boolean restaurante) {
+    this.restaurante = restaurante;
+  }
+
+  public boolean isPiscina() {
+    return piscina;
+  }
+
+  public void setPiscina(boolean piscina) {
+    this.piscina = piscina;
+  }
+
+  public boolean isEstacionamento() {
+    return estacionamento;
+  }
+
+  public void setEstacionamento(boolean estacionamento) {
+    this.estacionamento = estacionamento;
   }
 
   public Endereco getEndereco() {
@@ -102,7 +140,7 @@ public class Hotel implements Serializable {
   public void setQuartos(Quarto quartos) {
     this.quartos = quartos;
   }
-
+  
   @Override
   public int hashCode() {
     int hash = 0;
