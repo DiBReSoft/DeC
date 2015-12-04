@@ -80,6 +80,12 @@ public class ClienteBean {
 
   }
 
+  public void carregarInfos(Cliente clienteSession) {
+
+    cliente = clienteSession;
+
+  }
+
   public void cadastrarBO() throws IOException {
 
     clienteEJB.cadastrar(cliente);

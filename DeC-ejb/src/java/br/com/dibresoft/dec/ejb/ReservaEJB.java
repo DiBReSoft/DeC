@@ -5,6 +5,7 @@ import br.com.dibresoft.dec.entidade.Cliente;
 import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -142,6 +143,30 @@ public class ReservaEJB implements ReservaEJBLocal {
     Query q = em.createNamedQuery("Reserva.listarReservasCliente");
 
     q.setParameter("clienteId", cliente.getId());
+
+    return reservas = q.getResultList();
+
+  }
+
+  @Override
+  public List<Reserva> listarReservasPeriodo(Date dtCheckIn, Date dtCheckOut) {
+
+    List<Reserva> reservas;
+
+    Query q = em.createNamedQuery("Reserva.listarNoPeriodo");
+    q.setParameter("checkIn", dtCheckIn);
+    q.setParameter("checkIn", dtCheckOut);
+
+    return reservas = q.getResultList();
+
+  }
+  
+  @Override
+  public List<Reserva> listarReservasTodas() {
+
+    List<Reserva> reservas;
+
+    Query q = em.createNamedQuery("Reserva.listarTodas");
 
     return reservas = q.getResultList();
 

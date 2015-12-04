@@ -25,6 +25,10 @@ import javax.persistence.Temporal;
           query
           = "SELECT r FROM Reserva r WHERE r.checkIn >= :checkIn OR r.checkOut <= :checkOut "),
   @NamedQuery(
+          name = "Reserva.listarTodas",
+          query
+          = "SELECT r FROM Reserva r "),
+  @NamedQuery(
           name = "Reserva.listarReservasCliente",
           query
           = "SELECT r FROM Reserva r WHERE r.cliente.id = :clienteId ")

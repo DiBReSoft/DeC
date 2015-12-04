@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+  <ui:composition template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="pagina-titulo">Meu Cadastro</ui:define>
+
+    <ui:define name="pagina-conteudo">
+
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+      <header class="header-generico bg-primary">
+
+        <div class="container-fluid">
+
+          <h1>
+            Meu cadastro
+          </h1>
+
+        </div>
+
+      </header>
+      <!-- TOPO, COM O TÍTULO DA PÁGINA -->
+
+      <section>
+
+        <div class="container-fluid">
+
+          <c:if test="#{clienteSessionBean.cliente.id != null}">
+
+            <f:metadata>
+              <f:viewAction action="#{clienteBean.carregarInfos(clienteSessionBean.cliente)}" />
+            </f:metadata>
+
+            <div class="row">
+
+              <div class="col-md-8" id="cadastroContainer">
+
+                <h1 style="margin-top: 0;">
+                  Dados registrados
+                </h1>
+
+                <div class="panel panel-primary">
+
+                  <div class="panel-body">
+
+                    <div class="hidden-sm hidden-xs" style="padding: 8px 0px;"></div>
+
+                    <h:form class="form-me-cadastrar cadastroClienteForm" pt:id="cadastroClienteForm" enctype="utf-8">
+
+                      <h:messages />
+
+                      <ui:include src="/clientes/me-cadastrar-form.xhtml" />
+
+                      <div class="clearfix"></div>
+
+                      <div class="row form-me-cadastrar-botoes">
+
+                        <div class="col-md-4 col-sm-6">
+
+                          <h:commandButton type="submit" 
+                                           pt:id="cadastroCadastrar"
+                                           styleClass="btn btn-block btn-success"
+                                           action="#{clienteBean.alterar()}"
+                                           value="ATUALIZAR DADOS">
+                          </h:commandButton>
+
+                        </div>
+
+                      </div>
+
+                    </h:form>
+
+                  </div>
+
+                  <div class="panel-footer text-center">
+
+                    Não se preocupe, seus dados estarão protegidos com a gente.
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </c:if>
+
+        </div>
+
+      </section>
+
+    </ui:define>
+
+    <ui:define name="pagina-bottom">
+      <!-- Adiciona JS e outros que vão no final da página -->
+
+      <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function(){
+
+          $('#cadastroClienteForm .cadastroEmail').attr('disabled', 'disabled');
+          $('#cadastroClienteForm .cadastroCPF').attr('disabled', 'disabled');
+
+          $('.cadastroClienteForm').on('submit', function () {
+            $('#cadastroClienteForm .cadastroCPF').removeAttr('disabled');
+            $('#cadastroClienteForm .cadastroEmail').removeAttr('disabled');
+          });
+
+        });
+      </script>
+
+    </ui:define>
+
+  </ui:composition>
+
+</html>
+

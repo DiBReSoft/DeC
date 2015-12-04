@@ -26,5 +26,9 @@ public interface ReservaEJBLocal {
   public void alterar(Reserva reserva);
 
   public List<Reserva> listarReservasCliente(Cliente cliente);
+  
+  public List<Reserva> listarReservasPeriodo(Date dtCheckIn, Date dtCheckOut);
+  
+  public List<Reserva> listarReservasTodas();
 
 }
