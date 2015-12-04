@@ -5,6 +5,7 @@ import br.com.dibresoft.dec.entidade.Cliente;
 import java.io.IOException;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -39,8 +40,9 @@ public class ClienteSessionBean {
       FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/reservas/mala");
 
     } else {
-
-      FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/login?erro=credenciais-nao-encontradas");
+      FacesMessage fm = new FacesMessage("Login ou senha inválidos!");
+      FacesContext.getCurrentInstance().addMessage("msg", fm);
+      //FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/login?erro=credenciais-nao-encontradas");
 
     }
 
