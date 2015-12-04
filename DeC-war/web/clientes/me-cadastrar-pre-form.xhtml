@@ -3,13 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
   <ui:composition>
 
     <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-    <h:form class="form-me-cadastrar" id="preCadastroClienteForm" enctype="utf-8">
+    <h:form class="form-me-cadastrar" pt:id="preCadastroClienteForm" enctype="utf-8">
 
       <h:messages />
 
@@ -20,9 +19,9 @@
       
       <div class="col-md-12">
         
-        <div class="form-group" id="cadastroCPFContainer">
+        <div class="form-group" pt:id="cadastroCPFContainer">
 
-          <label for="cadastroCPF"
+          <label for="preCadastroCPF"
                  title="Cadastro de Pessoa Física dos Cidadãos Brasileiros">
             CPF:
           </label>
@@ -31,7 +30,7 @@
 
             <div class="input-group-addon">
               
-              <label for="cadastroCPF">
+              <label for="preCadastroCPF">
                 <i class="fa fa-fw fa-barcode"></i>
               </label>
 
@@ -39,7 +38,7 @@
 
             <h:inputText styleClass="form-control cadastroCPF" 
                          pt:required=""
-                         id="preCadastroCPF"
+                         pt:id="preCadastroCPF"
                          value="#{clienteBean.cliente.cpf}"
                          pt:placeholder="Ex.: 400.500.600-70" />
 
@@ -53,9 +52,9 @@
 
       <div class="col-md-12">
 
-        <div class="form-group" id="preCadastroEmailContainer">
+        <div class="form-group" pt:id="preCadastroEmailContainer">
 
-          <label for="cadastroEmail"
+          <label for="preCadastroEmail"
                  title="Seu endereço de e-mail pessoal">
             E-mail de contato e login:
           </label>
@@ -64,7 +63,7 @@
 
             <div class="input-group-addon">
 
-              <label for="cadastroEmail">
+              <label for="preCadastroEmail">
                 <i class="fa fa-fw fa-envelope"></i>
               </label>
 
@@ -74,7 +73,7 @@
                          pt:type="email"
                          pt:placeholder="Ex.: voce@seuprovedor.com"
                          pt:required=""
-                         id="preCadastroEmail"
+                         pt:id="preCadastroEmail"
                          value="#{clienteBean.cliente.email}" />
 
           </div>
@@ -91,7 +90,7 @@
 
         <div class="col-md-8">
 
-          <h:commandButton type="submit" id="preCadastroVerificar"
+          <h:commandButton type="submit" pt:id="preCadastroVerificar"
                            styleClass="btn btn-block btn-primary"
                            action="#{clienteBean.verificar()}"
                            value="VERIFICAR">

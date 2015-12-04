@@ -84,8 +84,6 @@ public class CarrinhoTesteBean {
 
     try {
 
-      reserva.setId(lista.size());
-
       double valorEstadia = reservaEJB.calcularValorReserva(reserva);
       reserva.setValorEstadia(valorEstadia);
 
@@ -155,7 +153,7 @@ public class CarrinhoTesteBean {
 
   public void atualiarCarrinho(List<Reserva> reservas) {
     
-    lista = null;
+    lista = new ArrayList<>();
     
     for (Reserva reserva : reservas) {
       
@@ -166,6 +164,14 @@ public class CarrinhoTesteBean {
       }
       
     }
+    
+  }
+  
+  public void preReservaPaginaUnidade (Long idUnidade) throws IOException {
+    
+    hotel.setId(idUnidade);
+    
+    preReserva();
     
   }
 

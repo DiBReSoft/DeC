@@ -30,10 +30,10 @@ public class ClienteEJB implements ClienteEJBLocal {
 
   /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
   @Override
-  public boolean cadastrar(Cliente membro) {
-    em.persist(membro);
+  public boolean cadastrar(Cliente cliente) {
+    em.persist(cliente);
     try {
-      montaEmail(membro);
+      montaEmail(cliente);
     } catch (Exception e) {
       System.out.println("ALERTA!!! E-mail não enviado.");
       return true;
@@ -44,16 +44,14 @@ public class ClienteEJB implements ClienteEJBLocal {
   /* AJUSTAR PARA VERIFICAR O RESULTADO DA OPERAÇÃO */
 
   @Override
-  public boolean inativar(Cliente membro) {
-    membro.setStatus(false);
-    em.refresh(membro);
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void inativar(Cliente cliente) {
+    cliente.setStatus(false);
+    em.merge(cliente);
   }
 
   @Override
-  public void alterar(Cliente membro) {
-    em.refresh(membro);
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public void alterar(Cliente cliente) {
+    em.merge(cliente);
   }
 
   @Override

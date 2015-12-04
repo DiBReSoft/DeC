@@ -8,19 +8,63 @@
 
   <ui:composition>
 
-    <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-    <h:form class="form-me-cadastrar cadastroClienteForm" pt:id="cadastroClienteForm" enctype="utf-8">
+    <h:messages />
 
-      <h:messages />
+    <div class="row">
 
-      <h:selectBooleanCheckbox styleClass="hidden"
-                               value="#{clienteBean.cliente.status}"
-                               pt:checked="checked">
-      </h:selectBooleanCheckbox>
+      <div class="col-md-2">
+
+        <div class="form-group">
+
+          <label>
+            Status:
+          </label>
+
+          <div class="checkbox" style="margin: 0;">
+
+            <label>
+              <h:selectBooleanCheckbox styleClass="cadastroHotelStatus"
+                                       value="#{clienteBean.cliente.status}"
+                                       pt:id="cadastroHotelStatus"
+                                       pt:data-toggle="toggle"
+                                       pt:data-on="&lt;i class='fa fa-check-circle'&gt;&lt;/i&gt; ATIVO"
+                                       pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; INATIVO">
+              </h:selectBooleanCheckbox>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6 col-md-offset-4">
+
+        <div class="form-group">
+
+          <label>
+            Privilégio:
+          </label>
+
+          <h:selectOneRadio styleClass="table table-condensed" 
+                            layout="lineDirection"
+                            value="#{clienteBean.cliente.privilegio}"
+                            pt:required="">
+
+            <f:selectItem id="cartao-visa" itemLabel="Cliente" itemValue="c" />
+            <f:selectItem class="cartao-mastercard" itemLabel="Administrador" itemValue="a" />
+
+          </h:selectOneRadio>
+
+        </div>
+
+      </div>
+
+      <div class="clearfix"></div>
 
       <div class="col-md-8">
 
-        <div class="form-group" pt:id="cadastroNomeContainer">
+        <div class="form-group" id="cadastroNomeContainer">
 
           <label for="cadastroNome">
             Nome completo:
@@ -91,7 +135,7 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" pt:id="cadastroNascimentoContainer">
+        <div class="form-group" id="cadastroNascimentoContainer">
 
           <label for="cadastroNascimento">
             Data de Nascimento:
@@ -123,7 +167,7 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" pt:id="cadastroCPFContainer">
+        <div class="form-group" id="cadastroCPFContainer">
 
           <label for="cadastroCPF"
                  title="Cadastro de Pessoa Física dos Cidadãos Brasileiros">
@@ -154,7 +198,7 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" pt:id="cadastroRGContainer">
+        <div class="form-group" id="cadastroRGContainer">
 
           <label for="cadastroRG"
                  title="Registro Geral dos Cidadãos Brasileiros">
@@ -187,7 +231,7 @@
 
       <div class="col-md-8">
 
-        <div class="form-group" pt:id="cadastroEmailContainer">
+        <div class="form-group" id="cadastroEmailContainer">
 
           <label for="cadastroEmail"
                  title="Seu endereço de e-mail pessoal">
@@ -206,7 +250,7 @@
 
             <h:inputText styleClass="form-control cadastroEmail" 
                          pt:type="email"
-                         pt:placeholder="Ex.: voce@seuprovedor.com"
+                         pt:placeholder="Ex.: cliente@provedor.com"
                          pt:required=""
                          pt:id="cadastroEmail"
                          value="#{clienteBean.cliente.email}" />
@@ -219,10 +263,10 @@
 
       <div class="col-md-4">
 
-        <div class="form-group" pt:id="cadastroSenhaContainer">
+        <div class="form-group" id="cadastroSenhaContainer">
 
           <label for="cadastroSenha"
-                 title="Defina sua senha para acesso a sua conta conosco">
+                 title="Defina a senha para acesso a conta conosco">
             Senha no Lebre Hotel:
           </label>
 
@@ -240,7 +284,7 @@
                            pt:required=""
                            pt:id="cadastroSenha"
                            value="#{clienteBean.cliente.senha}"
-                           pt:placeholder="Ex.: eu@apelido" />
+                           pt:placeholder="Ex.: fulano@apelido" />
 
           </div>
 
@@ -252,7 +296,7 @@
 
       <div class="col-md-6">
 
-        <div class="form-group" pt:id="cadastroNewsletterContainer">
+        <div class="form-group" id="cadastroNewsletterContainer">
 
           <label title="Informes, promoções e ofertas exclusivas por e-mail">
             Deseja receber Newsletter?
@@ -279,7 +323,7 @@
 
       <div class="col-md-6">
 
-        <div class="form-group" pt:id="cadastroTermoContainer">
+        <div class="form-group" id="cadastroTermoContainer">
 
           <label>
             Aceita nossa
@@ -300,7 +344,7 @@
                                        pt:data-off="&lt;i class='fa fa-times-circle'&gt;&lt;/i&gt; NÃO"
                                        pt:data-onstyle="success">
               </h:selectBooleanCheckbox>
-              aceito a política de privacidade
+              aceita a política de privacidade
             </label>
 
           </div>
@@ -309,23 +353,7 @@
 
       </div>
 
-      <div class="clearfix"></div>
-
-      <div class="row form-me-cadastrar-botoes">
-
-        <div class="col-md-4">
-
-          <h:commandButton type="submit" pt:id="cadastroCadastrar"
-                           styleClass="btn btn-block btn-success"
-                           action="#{clienteBean.cadastrar()}"
-                           value="CADASTRAR">
-          </h:commandButton>
-
-        </div>
-
-      </div>
-
-    </h:form>
+    </div>
 
   </ui:composition>
 

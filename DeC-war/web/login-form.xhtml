@@ -25,7 +25,7 @@
             <div class="input-group-addon">
 
               <label for="loginEmail">
-                <i class="fa fa-fw fa-envelope"></i>
+                <i class="fa fa-fw fa-envelope text-success"></i>
               </label>
 
             </div>
@@ -33,7 +33,8 @@
             <h:inputText class="form-control"
                          pt:required=""
                          pt:type="email"
-                         id="usuarioCredencial"
+                         pt:id="loginEmail"
+                         pt:placeholder="Ex.: seuemail@provedor.com"
                          value="#{clienteSessionBean.cliente.email}" />
 
           </div>
@@ -58,14 +59,15 @@
             <div class="input-group-addon">
 
               <label for="loginSenha">
-                <i class="fa fa-fw fa-lock"></i>
+                <i class="fa fa-fw fa-lock text-success"></i>
               </label>
 
             </div>
 
             <h:inputSecret class="form-control"
                            pt:required=""
-                           id="usuarioSenha"
+                           pt:id="loginSenha"
+                           pt:placeholder="Ex.: suasenha"
                            value="#{clienteSessionBean.cliente.senha}" />
 
           </div>
@@ -80,7 +82,7 @@
 
         <div class="col-md-8 col-md-offset-2">
 
-          <button id="cadastroCadastrar" class="btn btn-block btn-primary"
+          <button id="cadastroCadastrar" class="btn btn-block btn-success"
                   jsf:action="#{clienteSessionBean.autenticar()}">
             <i class="fa fa-fw fa-unlock-alt"></i>
             ENTRAR

@@ -9,7 +9,7 @@
 
   <ui:composition template="/WEB-INF/templates/adm-template.xhtml">
 
-    <ui:define name="pagina-titulo">Alterar Hotel</ui:define>
+    <ui:define name="pagina-titulo">Alterar Cliente</ui:define>
 
     <ui:define name="pagina-conteudo">
 
@@ -17,15 +17,7 @@
       <header>
 
         <h2 class="page-header">
-          Alterar Hotel
-          <small>
-            <small>
-              <a target="_blank"
-                href="/DeC-war/hoteis/unidade?id=#{hotelBean.hotel.id}">
-                visite a página da Unidade no site
-              </a>
-            </small>
-          </small>
+          Alterar Cliente
         </h2>
 
       </header>
@@ -34,21 +26,23 @@
       <section>
 
         <!-- Guia de uso dos Forms: http://getbootstrap.com/css/#forms -->
-        <h:form class="form-cadastrar-hotel cadastroHotelForm" id="cadastroHotelForm" enctype="utf-8">
+        <h:form class="form-cadastrar-cliente cadastroClienteForm" id="cadastroClienteForm" enctype="utf-8">
 
           <f:metadata>
-            <f:viewParam name="id" value="#{hotelBean.hotel.id}" />
-            <f:viewAction action="#{hotelBean.carregarInfos}" />
+            <f:viewParam name="id" value="#{clienteBean.cliente.id}" />
+            <f:viewAction action="#{clienteBean.carregarInfos}" />
           </f:metadata>
 
-          <ui:include src="hotel-form-campos.xhtml" />
+          <ui:include src="cliente-form-campos.xhtml" />
+
+          <div class="clearfix" style="padding: 15px 0px;"></div>
 
           <div class="row form-me-cadastrar-botoes">
 
             <!-- Botão para Alterar -->
             <div class="col-md-3">
 
-              <button jsf:action="#{hotelBean.alterar()}"
+              <button jsf:action="#{clienteBean.alterarBO()}"
                       class="btn btn-block btn-lg btn-primary">
                 <i class="fa fa-lg fa-floppy-o"></i>
                 ALTERAR
@@ -57,9 +51,9 @@
             </div>
             <!-- Botão para Alterar -->
 
-          </div>
+            <div class="clearfix" style="padding: 35px 0px;"></div>
 
-          <div class="clearfix" style="padding: 35px 0px;"></div>
+          </div>
 
         </h:form>
 
@@ -70,7 +64,17 @@
     <ui:define name="pagina-bottom">
 
       <script type="text/javascript" src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
-      <script type="text/javascript" src="#{request.contextPath}/js/backoffice-hotel.js"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+
+          $(".cadastroNewsletter").bootstrapToggle();
+
+          $('.cadastroRG').mask('**.999.999-*');
+          $('.cadastroCPF').mask('999.999.999-99');
+          $('.cadastroNascimento').mask('**/**/****');
+
+        });
+      </script>
       <!-- Adiciona JS e outros que vão no final da página -->
 
     </ui:define>

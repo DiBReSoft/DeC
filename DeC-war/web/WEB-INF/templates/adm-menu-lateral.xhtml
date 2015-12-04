@@ -12,7 +12,7 @@
       <div class="sidebar-nav navbar-collapse">
         <ul class="nav" id="side-menu">
 
-          <li class="sidebar-search">            
+          <li class="sidebar-search">
             <h:form>
               <div class="input-group custom-search-form disabled" title="Desabilitado">
                 <h:inputText class="form-control" pt:disabled="" pt:placeholder="Buscar (em breve)" />
@@ -31,7 +31,28 @@
               Dashboard
             </a>
           </li>
-
+          
+          <li>
+            <a href="#">
+              <i class="fa fa-fw fa-user"></i> 
+              Clientes
+              <span class="fa arrow"></span>
+            </a>
+            <ul class="nav nav-second-level">
+              <li>
+                <a href="#{request.contextPath}/backoffice/cliente/cadastrar">
+                  Cadastrar
+                </a>
+              </li>
+              <li>
+                <a href="#{request.contextPath}/backoffice/cliente/buscar">
+                  Buscar / Alterar
+                </a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          
           <li>
             <a href="#">
               <i class="fa fa-fw fa-building"></i> 

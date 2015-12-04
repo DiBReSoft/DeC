@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
   <ui:composition template="/WEB-INF/templates/template.xhtml">
 
@@ -33,7 +34,7 @@
 
         <div class="container-fluid">
 
-          <h1 class="titulo-secao">
+          <h1 class="titulo-secao text-success">
             Excelência em serviço, comodidade, glamour e sofisticação.
           </h1>
 
@@ -41,58 +42,59 @@
 
             <c:when test="#{not empty hotelBean.hoteisAtivos}">
 
-              <div class="row" >
+              <div class="row">
 
-                <div class="col-md-8">
+                <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
 
-                  <div class="list-group text-center ">
+                  <div class="col-sm-4">
 
-                    <ui:repeat value="#{hotelBean.hoteisAtivos}" var="_hotel">
+                    <div class="thumbnail">
 
-                      <a href="#{request.contextPath}/hoteis/unidade?id=#{_hotel.id}" class="list-group-item">
-                        <h4 class="list-group-item-heading">
-                          #{_hotel.titulo}
-                        </h4>
-                        <div class="row">
+                      <a href="#{request.contextPath}/hoteis/unidade?id=#{_hotel.id}"
+                         title="Mais detalhes sobre a Unidade">
 
-                          <div class="col-sm-3">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-map-marker"></i>
-                              #{_hotel.endereco.cidade}
-                              -
-                              #{_hotel.endereco.estado}
-                            </p>
-
-                          </div>
-
-                          <div class="col-sm-6">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-envelope"></i>
-                              #{_hotel.email}
-                            </p>
-
-                          </div>
-
-                          <div class="col-sm-3">
-
-                            <p class="list-group-item-text">
-                              <i class="fa fa-fw fa-phone"></i>
-                              #{_hotel.telefone}
-                            </p>
-
-                          </div>
-
-                        </div>
+                        <img src="#{request.contextPath}/img/unidades/#{_hotel.chaveURL}.jpg" 
+                             alt="#{_hotel.titulo}" />
 
                       </a>
 
-                    </ui:repeat>
+                      <div class="caption">
+
+                        <h3>
+                          <h:outputText value="#{_hotel.titulo}" />
+                        </h3>
+
+                        <p>
+                          <i class="fa fa-fw fa-map-marker" />
+                          <h:outputText value="#{_hotel.endereco.cidade} - #{_hotel.endereco.estado}" />
+                        </p>
+
+                        <p>
+                          <i class="fa fa-fw fa-phone" />
+                          #{_hotel.telefone}
+                        </p>
+
+                        <p style="padding-bottom: 10px;">
+                          <i class="fa fa-fw fa-envelope" />
+                          <a href="mailto:#{_hotel.email}"
+                             title="Envie-nos um e-mail"
+                             >#{_hotel.email}</a>
+                        </p>
+
+                        <a class="btn btn-primary" role="button"
+                           href="#{request.contextPath}/hoteis/unidade?id=#{_hotel.id}"
+                           title="Mais detalhes sobre a Unidade">
+                          <i class="fa fa-lg fa-angle-double-right" />
+                          Conheça melhor
+                        </a>
+
+                      </div>
+
+                    </div>
 
                   </div>
 
-                </div>
+                </ui:repeat>
 
               </div>
 

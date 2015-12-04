@@ -23,7 +23,11 @@ import javax.persistence.Temporal;
   @NamedQuery(
           name = "Reserva.listarNoPeriodo",
           query
-          = "SELECT r FROM Reserva r WHERE r.checkIn >= :checkIn OR r.checkOut <= :checkOut ")
+          = "SELECT r FROM Reserva r WHERE r.checkIn >= :checkIn OR r.checkOut <= :checkOut "),
+  @NamedQuery(
+          name = "Reserva.listarReservasCliente",
+          query
+          = "SELECT r FROM Reserva r WHERE r.cliente.id = :clienteId ")
 })
 public class Reserva implements Serializable {
 
@@ -31,7 +35,7 @@ public class Reserva implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-  
+
   /* 'a' = aprovada || 'c' = cancelada */
   private char status;
 

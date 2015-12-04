@@ -10,11 +10,11 @@ import javax.ejb.Local;
 @Local
 public interface ClienteEJBLocal {
 
-  public boolean cadastrar(Cliente membro);
+  public boolean cadastrar(Cliente cliente);
 
-  public boolean inativar(Cliente membro);
+  public void inativar(Cliente cliente);
   
-  public void alterar(Cliente membro);
+  public void alterar(Cliente cliente);
   
   public boolean validar(String cpf, String Email);
   

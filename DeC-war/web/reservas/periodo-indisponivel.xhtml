@@ -36,11 +36,20 @@
 
         <div class="container-fluid">
 
-          <div class="col-md-8">
+          <h1 class="titulo-secao text-success">
+            Puxa, estamos com alta demanda...
+          </h1>
 
-            <h1 class="titulo-secao">
-              Hospede-se conosco
-            </h1>
+          <p class="lead">
+            Os quartos desta categoria, neste hotel, já estão reservados neste
+            período que selecionou.
+          </p>
+
+          <p class="lead">
+            Tente alterar a categoria ou então o período.
+          </p>
+
+          <div class="col-md-8">
 
             <div class="panel panel-primary">
 
@@ -76,7 +85,7 @@
                         </div>
 
                         <h:inputText class="form-control reservaCheckIn"
-                                     id="reservaCheckIn" 
+                                     pt:id="reservaCheckIn" 
                                      pt:required=""
                                      value="#{carrinhoTesteBean.reserva.checkIn}">
                           <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
@@ -113,7 +122,7 @@
                         </div>
 
                         <h:inputText class="form-control reservaCheckOut" 
-                                     id="reservaCheckOut"
+                                     pt:id="reservaCheckOut"
                                      pt:required=""
                                      value="#{carrinhoTesteBean.reserva.checkOut}" >    
                           <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
@@ -151,7 +160,7 @@
                         </div>
 
                         <h:selectOneMenu class="form-control reservaCategoria"
-                                         id="reservaCategoria" 
+                                         pt:id="reservaCategoria" 
                                          pt:required=""
                                          value="#{carrinhoTesteBean.categoria.id}">
                           <f:selectItem itemValue="" itemLabel="Selecione..." />
@@ -191,7 +200,7 @@
                         </div>
 
                         <h:selectOneMenu class="form-control reservaHotel"
-                                         id="reservaHotel" 
+                                         pt:id="reservaHotel" 
                                          pt:required=""
                                          value="#{carrinhoTesteBean.hotel.id}">
                           <f:selectItem itemValue="" itemLabel="Selecione..." />
@@ -206,10 +215,7 @@
 
                   <div class="clearfix"></div>
 
-                  <div class="col-md-8" style="padding: 8px 30px;">
-                    Previsão do Total:
-                    R$ XXX,XX
-                  </div>
+                  <div class="col-md-8"></div>
 
                   <div class="col-md-4">
 

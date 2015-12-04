@@ -1,10 +1,10 @@
 package br.com.dibresoft.dec.ejb;
 
 import br.com.dibresoft.dec.entidade.Categoria;
+import br.com.dibresoft.dec.entidade.Cliente;
 import br.com.dibresoft.dec.entidade.Hotel;
 import br.com.dibresoft.dec.entidade.Quarto;
 import br.com.dibresoft.dec.entidade.Reserva;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import javax.ejb.EJB;
@@ -72,9 +72,9 @@ public class ReservaEJB implements ReservaEJBLocal {
       }
 
     } else if (!quartos.isEmpty()) {
-      
+
       quarto = quartos.get(0);
-      
+
     }
 
     if (quarto.getId() != null) {
@@ -135,26 +135,16 @@ public class ReservaEJB implements ReservaEJBLocal {
   }
 
   @Override
-  public void inativar(Reserva reserva) {
-    throw new UnsupportedOperationException("Not supported yet.");
-  }
+  public List<Reserva> listarReservasCliente(Cliente cliente) {
 
-  @Override
-  public boolean verificarDisponibilidadeQuartos(Reserva reserva, Long categoriaId, Long hotelId) {
     List<Reserva> reservas;
 
-    Query q = em.createNamedQuery("Reserva.verificarDisponibilidade");
-    q.setParameter("checkIn", reserva.getCheckIn());
-    q.setParameter("checkOut", reserva.getCheckOut());
-    q.setParameter("categoriaId", categoriaId);
-    q.setParameter("hotelId", hotelId);
+    Query q = em.createNamedQuery("Reserva.listarReservasCliente");
 
-    reservas = q.getResultList();
+    q.setParameter("clienteId", cliente.getId());
 
-    for (Reserva r : reservas) {
-      System.out.println(r.getQuarto().getTitulo() + " " + r.getQuarto().getHotel() + " " + r.getQuarto().getCategoria());
-    }
+    return reservas = q.getResultList();
 
-    throw new UnsupportedOperationException("Not supported yet.");
   }
+
 }

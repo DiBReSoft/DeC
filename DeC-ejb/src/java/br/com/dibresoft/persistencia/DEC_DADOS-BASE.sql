@@ -1,7 +1,7 @@
 -- DADOS FICTÍCIOS: HOTEL --
 INSERT INTO app.DEC_HOTEL (ID, STATUS, TITULO, TELEFONE, EMAIL, SERVICOQUARTO, RESTAURANTE, PISCINA, ESTACIONAMENTO, CHAVEURL, DESCRICAO) VALUES
   (1, 1, 'Campo Grande', '(11) 5682-7300', 'sp.campogrande@lebrehotel.com.br', 1, 1, 1, 1, 'sp-campogrande', 'Apresentação da Unidade'),
-  (2, 1, 'Ipanema', '(21) 2525-2525', 'rj.ipanema@lebrehotel.com.br', 1, 1, 1, 0, 'rj-impanema', 'Apresentação da Unidade'),
+  (2, 1, 'Ipanema', '(21) 2525-2525', 'rj.ipanema@lebrehotel.com.br', 1, 1, 1, 0, 'rj-ipanema', 'Apresentação da Unidade'),
   (3, 1, 'Ipojuca', '(81) 2126-2160', 'pe.portodegalinhas@lebrehotel.com.br', 1, 1, 1, 1, 'pe-ipojuca', 'Apresentação da Unidade');
 
 
@@ -37,6 +37,7 @@ INSERT INTO app.DEC_QUARTO (ID, STATUS, TITULO, CATEGORIA_ID, HOTEL_ID) VALUES
   (11, 1, '1030', 3, 3),
   (12, 1, '1040', 4, 3);
 
+
 -- DADOS FICTÍCIOS: USUÁRIO ROOT --
-INSERT INTO app.DEC_CLIENTE (ID, STATUS, PRIVILEGIO, NOME, EMAIL, SENHA, CPF, RG, NEWSLETTER, PRIVACIDADE) VALUES
-  (01, 1, 'a', 'Administrador', 'lebrehotel@gmail.com', 'lebre@hotel', '000.000.000-00', '00.000.000-0', 1, 1);
+INSERT INTO app.DEC_CLIENTE (ID, STATUS, PRIVILEGIO, NOME, EMAIL, SENHA, CPF, RG, DATANASCIMENTO, NEWSLETTER, PRIVACIDADE) VALUES
+  (01, 1, 'a', 'Administrador', 'lebrehotel@gmail.com', 'lebre@hotel', '000.000.000-00', '00.000.000-0', '1970-01-01', 1, 1);

@@ -28,13 +28,12 @@ public class ClienteBean {
   public ClienteBean() {
 
     cliente = new Cliente();
+    cliente.setStatus(true);
+    cliente.setPrivilegio('c');
 
   }
 
   public void cadastrar() throws IOException {
-    
-    /* Quando se trata de um Char, temos de usar aspas simples */
-    cliente.setPrivilegio('c');
 
     clienteEJB.cadastrar(cliente);
 
@@ -51,10 +50,10 @@ public class ClienteBean {
     } else {
 
       FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/clientes/recuperar-senha");
-      
+
       FacesMessage fm = new FacesMessage("Já existe cadastro com estas informações.");
-      
-      FacesContext.getCurrentInstance().addMessage(null,fm);
+
+      FacesContext.getCurrentInstance().addMessage(null, fm);
 
     }
 
@@ -62,15 +61,12 @@ public class ClienteBean {
 
   public void alterar() throws IOException {
 
-    /* Quando se trata de um Char, temos de usar aspas simples */
-    cliente.setPrivilegio('c');
-
     clienteEJB.alterar(cliente);
 
     FacesContext.getCurrentInstance().getExternalContext().redirect("sucesso-no-cadastro");
 
   }
-  
+
   public void carregarInfos() {
 
     Map<String, String> params = FacesContext.getCurrentInstance().
@@ -84,17 +80,19 @@ public class ClienteBean {
 
   }
 
-  // TORNA UM CLIENTE ADMINISTRADOR.
-  // EXCLUSIVO PARA O BACKEND
-  public void administrador() throws IOException {
+  public void cadastrarBO() throws IOException {
 
-    cliente.setStatus(true);
-    /* Quando se trata de um Char, temos de usar aspas simples */
-    cliente.setPrivilegio('a');
+    clienteEJB.cadastrar(cliente);
+
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
+
+  }
+
+  public void alterarBO() throws IOException {
 
     clienteEJB.alterar(cliente);
 
-    FacesContext.getCurrentInstance().getExternalContext().redirect(";DeC-war/backoffice/sucesso-na-operacao");
+    FacesContext.getCurrentInstance().getExternalContext().redirect("/DeC-war/backoffice/sucesso-na-operacao");
 
   }
 

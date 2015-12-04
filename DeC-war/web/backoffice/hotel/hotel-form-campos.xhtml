@@ -45,7 +45,7 @@
 
       </div>
       <!-- Status do Hotel -->
-      
+
       <div class="col-md-2"></div>
 
       <!-- ServicoQuarto do Hotel -->
@@ -553,28 +553,29 @@
 
       </div>
       <!-- ChaveURL Hotel -->
-      
+
+      <div class="clear-fix"></div>
+
       <!-- Observacoes Hotel -->
-      <div class=col-md-12>
-        
+      <div class="col-md-12">
+
         <div class="form-group">
 
           <label for="detalhesHotel"
                  class="tooltip-bottom"
                  title="Sobre o hotel">
-            Observações sobre o hotel:
+            Detalhes sobre o hotel:
           </label>
-          
-          <div class="input-group input-group-lg">
-            
-            <h:inputTextarea styleClass="form-control detalhesHotel"
-              pt:id="detalhesHotel"
-              value="#{hotelBean.hotel.descricao}">
-            </h:inputTextarea>
-            
-          </div>
+
+          <h:inputTextarea styleClass="form-control detalhesHotel"
+                           pt:id="detalhesHotel"
+                           rows="3"
+                           pt:placeholder="Uma breve apresentação. Estas são as informações que vão na página da unidade em nosso site."
+                           value="#{hotelBean.hotel.descricao}">
+          </h:inputTextarea>
+
         </div>
-        
+
       </div>
       <!-- Observacoes Hotel -->
 

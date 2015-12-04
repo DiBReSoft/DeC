@@ -36,7 +36,7 @@
           <h:panelGroup layout="block" rendered="#{empty carrinhoTesteBean.lista}">
 
             <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
-              Você ainda não adicionou reservas
+              Você ainda não adicionou reservas à sua mala de compras
             </h1>
 
             <p class="lead">
@@ -44,7 +44,7 @@
             </p>
 
             <p class="lead">
-              <a class="btn btn-primary"
+              <a class="btn btn-lg btn-success"
                  href="#{request.contextPath}/">
                 <i class="fa fa-lg fa-suitcase"></i>
                 Vai lá! Faça suas escolhas
@@ -62,7 +62,7 @@
             <div class="col-md-12">
 
               <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
-                Reservas escolhidas por você
+                Reservas na mala de compras
               </h1>
 
               <h:form>
@@ -70,80 +70,80 @@
                 <h:dataTable var="item" value="#{carrinhoTesteBean.lista}"
                              styleClass="table table-responsive table-hover table-striped">
 
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-calendar-plus-o"></i>
-                        CheckIn
-                      </f:facet>
-                      <h:outputText value="#{item.checkIn}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
-                      </h:outputText>
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-calendar-minus-o"></i>
-                        CheckOut
-                      </f:facet>
-                      <h:outputText value="#{item.checkOut}">
-                        <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
-                      </h:outputText>
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-building"></i>
-                        Hotel
-                      </f:facet>
-                      #{item.quarto.hotel.titulo}
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-bed"></i>
-                        Acomodação
-                      </f:facet>
-                      #{item.quarto.categoria.titulo}
-                      | Quarto 
-                      #{item.quarto.titulo}
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-money"></i>
-                        Diária
-                      </f:facet>
-                      <h:outputText value="#{item.quarto.categoria.valor}">
-                        <f:convertNumber currencyCode="BRL" type="currency" />
-                      </h:outputText>
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-money"></i>
-                        Total
-                      </f:facet>
-                      <h:outputText value="#{item.valorEstadia}">
-                        <f:convertNumber currencyCode="BRL" type="currency" />
-                      </h:outputText>
-                    </h:column>
-
-                    <h:column>
-                      <f:facet name="header">
-                        <i class="fa fa-lg fa-suitcase"></i>                      
-                      </f:facet>
-                      <h:commandLink action="#{carrinhoTesteBean.removerReserva(item.id)}"
-                                     styleClass="btn btn-xs btn-primary">
-                        Remover
-                      </h:commandLink>
-                    </h:column>
-
-                    <f:facet name="footer">
-                      Total:
-                      <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
-                        <f:convertNumber currencyCode="BRL" type="currency" />
-                      </h:outputText>
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-calendar-plus-o"></i>
+                      CheckIn
                     </f:facet>
+                    <h:outputText value="#{item.checkIn}">
+                      <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-calendar-minus-o"></i>
+                      CheckOut
+                    </f:facet>
+                    <h:outputText value="#{item.checkOut}">
+                      <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-building"></i>
+                      Hotel
+                    </f:facet>
+                    #{item.quarto.hotel.titulo}
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-bed"></i>
+                      Acomodação
+                    </f:facet>
+                    #{item.quarto.categoria.titulo}
+                    | Quarto 
+                    #{item.quarto.titulo}
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-money"></i>
+                      Diária
+                    </f:facet>
+                    <h:outputText value="#{item.quarto.categoria.valor}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-money"></i>
+                      Total
+                    </f:facet>
+                    <h:outputText value="#{item.valorEstadia}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
+                  </h:column>
+
+                  <h:column>
+                    <f:facet name="header">
+                      <i class="fa fa-lg fa-suitcase"></i>                      
+                    </f:facet>
+                    <h:commandLink action="#{carrinhoTesteBean.removerReserva(item.id)}"
+                                   styleClass="btn btn-xs btn-primary">
+                      Remover
+                    </h:commandLink>
+                  </h:column>
+
+                  <f:facet name="footer">
+                    Total:
+                    <h:outputText value="#{carrinhoTesteBean.valorTotalCarrinho()}">
+                      <f:convertNumber currencyCode="BRL" type="currency" />
+                    </h:outputText>
+                  </f:facet>
 
                 </h:dataTable>
 
@@ -210,6 +210,115 @@
         </div>
 
       </section>
+
+      <c:if test="#{not empty reservaBean.listarReservasCliente(clienteSessionBean.cliente)}">
+
+        <section>
+
+          <div class="container-fluid">
+
+            <!-- CASO POSSUA RESERVAS JÁ REGISTRADAS NO HOTEL -->
+            <h:panelGroup layout="block" styleClass="row">
+
+              <div class="col-md-12">
+
+                <h1 style="margin-top: 0; margin-bottom: 25px;" class="text-success">
+                  Reservas no seu histórico
+                </h1>
+
+                <h:form>
+
+                  <h:dataTable var="item" value="#{reservaBean.listarReservasCliente(clienteSessionBean.cliente)}"
+                               styleClass="table table-responsive table-hover table-striped">
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-star"></i>
+                        Status
+                      </f:facet>
+                      <h:panelGroup rendered="#{item.status == 'a'}">
+                        Aprovada
+                      </h:panelGroup>
+                      <h:panelGroup rendered="#{item.status == 'c'}">
+                        Cancelada
+                      </h:panelGroup>
+                      <h:panelGroup rendered="#{item.status == 'p'}">
+                        Progresso
+                      </h:panelGroup>
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-calendar-plus-o"></i>
+                        CheckIn
+                      </f:facet>
+                      <h:outputText value="#{item.checkIn}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                      </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-calendar-minus-o"></i>
+                        CheckOut
+                      </f:facet>
+                      <h:outputText value="#{item.checkOut}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" locale="pt-BR" timeZone="GMT-03:00"/>
+                      </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-building"></i>
+                        Hotel
+                      </f:facet>
+                      #{item.quarto.hotel.titulo}
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-bed"></i>
+                        Acomodação
+                      </f:facet>
+                      #{item.quarto.categoria.titulo}
+                      | Quarto 
+                      #{item.quarto.titulo}
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-money"></i>
+                        Diária
+                      </f:facet>
+                      <h:outputText value="#{item.quarto.categoria.valor}">
+                        <f:convertNumber currencyCode="BRL" type="currency" />
+                      </h:outputText>
+                    </h:column>
+
+                    <h:column>
+                      <f:facet name="header">
+                        <i class="fa fa-lg fa-money"></i>
+                        Total
+                      </f:facet>
+                      <h:outputText value="#{item.valorEstadia}">
+                        <f:convertNumber currencyCode="BRL" type="currency" />
+                      </h:outputText>
+                    </h:column>
+
+                  </h:dataTable>
+
+                </h:form>
+
+              </div>
+
+            </h:panelGroup>
+            <!-- CASO POSSUA RESERVAS JÁ REGISTRADAS NO HOTEL -->
+
+          </div>
+
+        </section>
+
+      </c:if>
 
     </ui:define>
 

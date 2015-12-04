@@ -12,6 +12,15 @@
     <ui:define name="pagina-head">
 
       <style type="text/css">
+        #bg-cover_#{hotelBean.hotel.chaveURL} {
+          padding: 100px 0px;
+          background-size: 100%;
+          background-image: url('#{request.contextPath}/img/unidades/cover_#{hotelBean.hotel.chaveURL}.jpg') !important;
+          background-attachment: fixed;
+        }
+        header h1 {
+          text-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+        }
         header h1 small {
           display: block;
           margin: 10px 0px 15px -17px;
@@ -40,7 +49,7 @@
       </f:metadata>
 
       <!-- TOPO, COM O TÍTULO DA PÁGINA -->
-      <header class="header-generico bg-primary">
+      <header class="header-generico bg-primary" id="bg-cover_#{hotelBean.hotel.chaveURL}">
 
         <div class="container-fluid">
 
@@ -168,7 +177,9 @@
 
               <p class="lead">
                 <i class="fa fa-fw fa-lg fa-envelope-square"></i>
-                #{hotelBean.hotel.email}@lebrehotel.com.br
+                <a href="mailto:#{hotelBean.hotel.email}@lebrehotel.com.br"
+                   title="Envie-nos um e-mail"
+                   >#{hotelBean.hotel.email}@lebrehotel.com.br</a>
               </p>
 
               <div class="row">
@@ -226,10 +237,6 @@
               <div class="clearfix" style="padding: 5px 0px;"></div>
 
               <h:form id="formReservar" enctype="utf-8">
-
-                <h:inputHidden id="reservaHotel" 
-                               pt:required=""
-                               value="#{carrinhoTesteBean.hotel.id}" />
 
                 <div class="row">
 
@@ -355,7 +362,7 @@
                   <div class="col-md-12">
 
                     <button class="btn btn-primary" id="teste"
-                            jsf:action="#{carrinhoTesteBean.preReserva()}">
+                            jsf:action="#{carrinhoTesteBean.preReservaPaginaUnidade(hotelBean.hotel.id)}">
                       <i class="fa fa-fw fa-plus"></i>
                       ADICIONAR À MALA
                       <i class="fa fa-fw fa-lg fa-suitcase"></i>

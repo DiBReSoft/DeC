@@ -12,13 +12,27 @@
     <ui:define name="pagina-titulo">A rede de hotéis que mais surpreende no Brasil</ui:define>
 
     <ui:define name="pagina-head">
+
       <!-- Adiciona CSS e outros que vão no <head> da página -->
+      <link rel="stylesheet" type="text/css" href="#{request.contextPath}/css/vegas.min.css" />
+
+      <style type="text/css">
+        header {
+          padding: 50px 0px !important;          
+          color: #ffffff !important;
+        }
+        header h1 {
+          color: #ffffff !important;
+          text-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+        }
+      </style>
+
     </ui:define>
 
     <ui:define name="pagina-conteudo">
 
       <!-- TOPO DA PÁGINA COM AS SUGESTÕES -->
-      <header class="jumbotron fundo-foto-hotel">
+      <header class="jumbotron header-generico">
 
         <div class="container-fluid">
 
@@ -41,6 +55,30 @@
       <section>
 
         <div class="container-fluid">
+
+          <div class="col-md-4">
+
+            <h1 class="titulo-secao text-success">
+              Conheça as unidades
+            </h1>
+
+            <p class="lead">
+              Serviço de hospedagem a nível de excelência.
+            </p>
+
+            <p class="lead">
+              Hotéis com padrões uniformes, sofisticação, glamour e comodidade.
+            </p>
+
+            <p class="lead" style="padding-top: 10px;">
+              <a href="#{request.contextPath}/hoteis/unidades"
+                 class="btn btn-lg btn-success">
+                <i class="fa fa-lg fa-building"></i>
+                Veja a lista completa
+              </a>
+            </p>
+
+          </div>
 
           <div class="col-md-8">
 
@@ -239,31 +277,7 @@
             </div>
 
           </div>
-          
-          <div class="col-md-4">
 
-            <h1 class="titulo-secao text-success">
-              Conheça as unidades
-            </h1>
-            
-            <p class="lead">
-              Serviço de hospedagem a nível de excelência.
-            </p>
-            
-            <p class="lead">
-              Hotéis com padrões uniformes, sofisticação, glamour e comodidade.
-            </p>
-            
-            <p class="lead" style="padding-top: 10px;">
-              <a href="#{request.contextPath}/hoteis/unidades"
-                 class="btn btn-lg btn-success">
-                <i class="fa fa-lg fa-building"></i>
-                Veja a lista completa
-              </a>
-            </p>
-            
-          </div>
-          
         </div>
 
       </section>
@@ -642,6 +656,22 @@
       <!-- Adiciona JS e outros que vão no final da página -->
 
       <script type="text/javascript" src="#{request.contextPath}/js/index-reservas.js"></script>
+
+      <script type="text/javascript" src="#{request.contextPath}/js/vegas.min.js"></script>
+
+      <script type="text/javascript">
+
+        $("header").vegas({
+          slides: [
+            {src: "#{request.contextPath}/img/unidades/cover_sp-campogrande.jpg"},
+            {src: "#{request.contextPath}/img/unidades/cover_rj-ipanema.jpg"},
+            {src: "#{request.contextPath}/img/unidades/cover_pe-ipojuca.jpg"}
+          ],
+          transition: [ 'flash', 'swirlRight' ],
+          animation: 'kenburnsDownRight'
+        });
+
+      </script>
 
     </ui:define>
 
